@@ -105,7 +105,7 @@ const Status = ({route, navigation}) => {
       </View>
       <Image
         source={image}
-        style={{position: 'absolute', width: '100%', height: 600}}
+        style={{position: 'absolute', width: '100%', height: 525}}
       />
       <View
         style={{
@@ -130,7 +130,7 @@ const Status = ({route, navigation}) => {
             borderWidth: 0.5,
             fontSize: 15,
             color: 'white',
-            marginBottom: 40,
+            marginBottom: 5,
           }}
         />
         <TouchableOpacity onPress={() => navigation.goBack()}>

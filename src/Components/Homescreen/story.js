@@ -71,34 +71,39 @@ const Story = () => {
       id: 1,
       name: 'Your Story',
       image: require('../../assests/users/dhoni.jpg'),
-      story: require('../../assests/users/dhoni.jpg'),
+      //story: require('../../assests/users/dhoni.jpg'),
     },
     {
       id: 0,
       name: 'viratkholi',
       image: require('../../assests/users/virat.png'),
+      story: require('../../assests/users/virat.png'),
     },
     {
       id: 0,
-      name: 'elonmusk',
+      name: 'Anirudh',
       image: require('../../assests/users/ani.jpeg'),
+      story: require('../../assests/users/ani.jpeg'),
     },
     {
       id: 0,
       name: 'neymar',
       image: require('../../assests/users/neymar.png'),
+      story: require('../../assests/users/neymar.png'),
     },
     ,
     {
       id: 0,
-      name: 'anirudh',
+      name: 'Ratan',
       image: require('../../assests/users/ratan.jpg'),
+      story: require('../../assests/users/ratan.jpg'),
     },
     ,
     {
       id: 0,
       name: 'yuvan',
       image: require('../../assests/users/yuvan.jpg'),
+      story: require('../../assests/users/yuvan.jpg'),
     },
   ];
 
