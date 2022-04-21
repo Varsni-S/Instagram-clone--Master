@@ -1,0 +1,71 @@
+{
+  "project_info": {
+    "project_number": "619706230000",
+    "project_id": "appinstagram-398cb",
+    "storage_bucket": "appinstagram-398cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:619706230000:android:77dd46ff4815c6b5774e35",
+        "android_client_info": {
+          "package_name": "com.appinstagram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "619706230000-3r0epop06klnro2fv74ins03b74qr8b7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.appinstagram",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "619706230000-db1u1rhdc84sea7pbabb3f23ietej5vs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.appinstagram",
+            "certificate_hash": "b563b445ec38d7906578d7b89379fa319fbbe886"
+          }
+        },
+        {
+          "client_id": "619706230000-fgcj611i1s9qt4ofg9e815b9faiidd0a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.appinstagram",
+            "certificate_hash": "c76176ef0a73dc08f2aec143b4be3f8b921f7a99"
+          }
+        },
+        {
+          "client_id": "619706230000-tcstpklg69e3em7etqpc74j4gsvmo09j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.appinstagram",
+            "certificate_hash": "5be44ac6766514f64d67d0b19930b381d7a15835"
+          }
+        },
+        {
+          "client_id": "619706230000-1op90ql55uj89nd9qduapbuerves6sme.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCquUXDnpbfIa1NZihGB9s6ba8tw_Q-JSk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "619706230000-1op90ql55uj89nd9qduapbuerves6sme.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
