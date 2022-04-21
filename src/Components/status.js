@@ -95,7 +95,7 @@ const Status = ({route, navigation}) => {
             {name}
           </Text>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <FontAwesomeIcon icon="ellipsis-v" size={30} color="white" />
+            <FontAwesomeIcon icon="ellipsis-v" size={15} color="white" />
             {/* <Ionic
               name="close"
               style={{fontSize: 20, color: 'white', opacity: 0.6}}

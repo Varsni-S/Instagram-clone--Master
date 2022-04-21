@@ -18,7 +18,7 @@ export default function post({imageUrl, contentText, profileName}) {
           <Text style={style.profileUserName}>{profileName}</Text>
         </View>
         <View>
-          <FontAwesomeIcon icon="ellipsis-v" size={30} color="white" />
+          <FontAwesomeIcon icon="ellipsis-v" size={20} color="white" />
         </View>
       </View>
       <View style={style.postImageBox}>
