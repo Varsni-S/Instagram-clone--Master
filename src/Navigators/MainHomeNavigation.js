@@ -39,7 +39,11 @@ export default function MyStack() {
           component={DrawerFunction}
           options={{headerShown: false}}
         />
-        <Stack.Screen name="Status" component={Status} />
+        <Stack.Screen
+          name="Status"
+          component={Status}
+          options={{headerShown: false}}
+        />
         <Stack.Screen name="NewContentScreen" component={NewContentScreen} />
       </Stack.Navigator>
     </>

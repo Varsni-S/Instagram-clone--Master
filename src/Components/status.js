@@ -105,7 +105,7 @@ const Status = ({route, navigation}) => {
       </View>
       <Image
         source={image}
-        style={{position: 'absolute', width: '100%', height: 525}}
+        style={{position: 'absolute', width: '100%', height: 575}}
       />
       <View
         style={{
