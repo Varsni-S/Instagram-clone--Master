@@ -14,15 +14,16 @@ export default function HomeScreen() {
           horizontal={true}
           showsHorizontalScrollIndicator={false}
           style={style.body}>
-          <Story imageUrl={image} profileName="Your Story" />
-
+          <Story />
+          {/* <Story imageUrl={image} profileName="Your Story" />
+         
           {StaticDatas.map((content, index) => (
             <Story
               key={index}
               imageUrl={content.imageUrl}
               profileName={content.profileName}
             />
-          ))}
+          ))} */}
         </ScrollView>
         {StaticDatas.map((content, index) => (
           <Post
@@ -43,6 +44,6 @@ const style = StyleSheet.create({
     backgroundColor: 'black',
   },
   body: {
-    height: 120,
+    height: 140,
   },
 });
