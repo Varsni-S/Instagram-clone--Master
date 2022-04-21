@@ -8,7 +8,7 @@ import {
   Animated,
 } from 'react-native';
 import Ionic from 'react-native-vector-icons/Ionicons';
-import config from '../config/icon';
+import config from '../../config/icon';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 const Status = ({route, navigation}) => {
   const {name} = route.params;
