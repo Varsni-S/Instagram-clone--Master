@@ -7,13 +7,14 @@ import {
   TextInput,
   Animated,
 } from 'react-native';
-import Ionic from 'react-native-vector-icons/Ionicons';
 import config from '../../config/icon';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+
 const Status = ({route, navigation}) => {
   const {name} = route.params;
   const {image} = route.params;
   let progres = new Animated.Value(-300);
+
   useEffect(() => {
     let timer = setTimeout(() => {
       navigation.goBack();
@@ -56,6 +57,7 @@ const Status = ({route, navigation}) => {
             {transform: [{translateX: progres}]},
           ]}></Animated.View>
       </View>
+
       <View
         style={{
           padding: 15,
@@ -96,10 +98,6 @@ const Status = ({route, navigation}) => {
           </Text>
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <FontAwesomeIcon icon="ellipsis-v" size={15} color="white" />
-            {/* <Ionic
-              name="close"
-              style={{fontSize: 20, color: 'white', opacity: 0.6}}
-            /> */}
           </TouchableOpacity>
         </View>
       </View>
@@ -133,6 +131,7 @@ const Status = ({route, navigation}) => {
             marginBottom: 5,
           }}
         />
+
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Image
             style={[{height: 30, width: 30}]}

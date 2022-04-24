@@ -8,10 +8,12 @@ export default function post({imageUrl, contentText, profileName}) {
   const likeToggled = () => {
     setLike(!like);
   };
+
   return (
     <View style={style.postBox}>
       <View style={style.postHeader}>
         <View style={{flexDirection: 'row', width: 300, alignItems: 'center'}}>
+          {/* feed Header */}
           <View style={style.profileImageBox}>
             <Image style={style.profilePicImage} source={imageUrl} />
           </View>
@@ -21,10 +23,12 @@ export default function post({imageUrl, contentText, profileName}) {
           <FontAwesomeIcon icon="ellipsis-v" size={20} color="white" />
         </View>
       </View>
+      {/* main feed */}
       <View style={style.postImageBox}>
         <Image style={style.postImage} source={imageUrl} />
       </View>
       <View style={style.postIcons}>
+        {/* list of icons */}
         <View style={style.iconsLeft}>
           <TouchableOpacity>
             <FontAwesomeIcon
@@ -41,6 +45,7 @@ export default function post({imageUrl, contentText, profileName}) {
           <FontAwesomeIcon icon="bookmark" size={25} color="white" />
         </View>
       </View>
+
       <View style={style.textContent}>
         <Text style={{fontSize: 18, color: 'white'}}>
           {like ? 778 : 777} Likes

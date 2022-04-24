@@ -5,7 +5,6 @@ import staticPosts from '../StaticDatas/Datas';
 
 export default function SearchScreen() {
   const [search, setSearch] = useState('');
-
   const [filteredDataSource, setFilteredDataSource] = useState([]);
   const [masterDataSource, setMasterDataSource] = useState(staticPosts);
 
@@ -93,12 +92,4 @@ const styles = StyleSheet.create({
     padding: 10,
     color: 'white',
   },
-  // textInputStyle: {
-  //   height: 40,
-  //   borderWidth: 1,
-  //   paddingLeft: 20,
-  //   margin: 5,
-  //   borderColor: '#009688',
-  //   backgroundColor: '#FFFFFF',
-  // },
 });
