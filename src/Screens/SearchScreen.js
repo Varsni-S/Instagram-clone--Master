@@ -54,7 +54,7 @@ export default function SearchScreen() {
   return (
     <View style={{flex: 1, backgroundColor: 'black'}}>
       {/* <View style={styles.container}> */}
-      <FontAwesomeIcon />
+
       <TextInput
         style={styles.textInputStyle}
         onChangeText={text => searchFilterFunction(text)}
