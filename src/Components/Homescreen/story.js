@@ -13,12 +13,7 @@ const Story = () => {
       image: require('../../assests/users/dhoni.jpg'),
       story: require('../../assests/users/dhoni.jpg'),
     },
-    {
-      id: 0,
-      name: 'viratkholi',
-      image: require('../../assests/users/virat.png'),
-      story: require('../../assests/users/virat.png'),
-    },
+
     {
       id: 0,
       name: 'Anirudh',
@@ -44,6 +39,12 @@ const Story = () => {
       name: 'yuvan',
       image: require('../../assests/users/yuvan.jpg'),
       story: require('../../assests/users/yuvan.jpg'),
+    },
+    {
+      id: 0,
+      name: 'viratkholi',
+      image: require('../../assests/users/virat.png'),
+      story: require('../../assests/users/virat.png'),
     },
   ];
 
@@ -78,7 +79,7 @@ const Story = () => {
                   }}>
                   <Image
                     style={[{height: 25, width: 25}]}
-                    source={config.images.addIcon}
+                    // source={config.images.addIcon}
                   />
                 </View>
               ) : null}
@@ -109,7 +110,6 @@ const Story = () => {
                   color: 'white',
                   textAlign: 'center',
                   fontSize: 14,
-                  opacity: data.id == 0 ? 1 : 0.5,
                 }}>
                 {data.name}
               </Text>
@@ -122,3 +122,4 @@ const Story = () => {
 };
 
 export default Story;
+// opacity: data.id == 0 ? 1 : 0.5,

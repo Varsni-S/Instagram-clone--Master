@@ -33,16 +33,16 @@ export default function post({imageUrl, contentText, profileName}) {
           <TouchableOpacity>
             <FontAwesomeIcon
               icon="heart"
-              size={25}
+              size={20}
               color={like ? 'red' : 'white'}
               onPress={likeToggled}
             />
           </TouchableOpacity>
-          <FontAwesomeIcon icon="comment" size={25} color="white" />
-          <FontAwesomeIcon icon="paper-plane" size={25} color="white" />
+          <FontAwesomeIcon icon="comment" size={20} color="white" />
+          <FontAwesomeIcon icon="paper-plane" size={20} color="white" />
         </View>
         <View style={style.iconsRight}>
-          <FontAwesomeIcon icon="bookmark" size={25} color="white" />
+          <FontAwesomeIcon icon="bookmark" size={20} color="white" />
         </View>
       </View>
 

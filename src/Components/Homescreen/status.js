@@ -132,7 +132,7 @@ const Status = ({route, navigation}) => {
           }}
         />
 
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity>
           <Image
             style={[{height: 30, width: 30}]}
             source={config.images.messageIcon}
