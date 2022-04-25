@@ -38,7 +38,7 @@ export default function MyStack() {
         />
         <Stack.Screen
           name="MessagingScreen"
-          component={DrawerFunction}
+          component={MessagingScreen}
           options={{headerShown: false}}
         />
         <Stack.Screen
