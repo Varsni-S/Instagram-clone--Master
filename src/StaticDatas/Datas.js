@@ -21,7 +21,7 @@ const staticPosts = [
     imageUrl: {
       uri: 'https://cdn.pixabay.com/photo/2020/09/09/13/03/bike-riding-5557589__340.png',
     },
-    profileName: 'dharani',
+    profileName: 'Dharani',
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ const staticPosts = [
     imageUrl: {
       uri: 'https://cdn.pixabay.com/photo/2015/03/09/18/34/beach-666122__340.jpg',
     },
-    profileName: 'island',
+    profileName: 'Aishu',
   },
   {
     id: 5,

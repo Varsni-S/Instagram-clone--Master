@@ -49,7 +49,7 @@ export default function SearchScreen() {
   };
   const getItem = item => {
     // Function for click on an item
-    alert('Id : ' + item.id + ' Name : ' + item.profileName);
+    alert('Hello ' + item.profileName + '!!!');
   };
   return (
     <View style={{flex: 1, backgroundColor: 'black'}}>
