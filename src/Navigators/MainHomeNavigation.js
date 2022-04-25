@@ -12,6 +12,8 @@ import NewContentScreen from '../Screens/NewContentScreen';
 import MessagingScreen from '../Screens/MessagingScreen';
 import HomeScreen from '../Screens/HomeScreen';
 import Status from '../Components/Homescreen/status';
+import ReelsScreen from '../Screens/ReelsScreen';
+import ProfileScreen from '../Screens/ProfileScreen';
 
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
@@ -45,6 +47,16 @@ export default function MyStack() {
           options={{headerShown: false}}
         />
         <Stack.Screen name="NewContentScreen" component={NewContentScreen} />
+        <Stack.Screen
+          name="ReelsScreen"
+          component={ReelsScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ProfileScreen"
+          component={ProfileScreen}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </>
   );

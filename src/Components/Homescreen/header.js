@@ -61,11 +61,18 @@ export default function header({icon1, icon2, heading}) {
             }}>
             <Text style={style.bottomSheetText}>Post </Text>
           </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={style.bottomSheetText}>Story </Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('ReelsScreen'), refRBSheet.current.close();
+            }}>
             <Text style={style.bottomSheetText}>Reels </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('ProfileScreen'), refRBSheet.current.close();
+            }}>
+            <Text style={style.bottomSheetText}>Profile</Text>
           </TouchableOpacity>
           <TouchableOpacity>
             <Text style={style.bottomSheetText}>Live </Text>
