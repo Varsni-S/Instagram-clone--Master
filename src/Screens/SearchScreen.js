@@ -7,6 +7,7 @@ export default function SearchScreen() {
   const [search, setSearch] = useState('');
   const [filteredDataSource, setFilteredDataSource] = useState([]);
   const [masterDataSource, setMasterDataSource] = useState(staticPosts);
+  const [error, setError] = useState('');
 
   const searchFilterFunction = text => {
     if (text) {
@@ -17,11 +18,15 @@ export default function SearchScreen() {
         const textData = text.toUpperCase();
         return itemData.indexOf(textData) > -1;
       });
-      console.log(newData);
+      console.log(newData, 'filter');
+      console.log(newData.length);
+      newData.length <= 0 ? setError('User Not Found!') : setError('');
       setFilteredDataSource(newData);
+
       setSearch(text);
     } else {
-      //setFilteredDataSource(masterDataSource);
+      setFilteredDataSource('');
+      setError('');
       setSearch(text);
     }
   };
@@ -69,6 +74,18 @@ export default function SearchScreen() {
         renderItem={ItemView}
         ItemSeparatorComponent={ItemSeparatorView}
       />
+      {error.length > 0 ? (
+        <Text
+          style={{
+            color: 'white',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginLeft: 130,
+            marginBottom: 200,
+          }}>
+          {error}
+        </Text>
+      ) : null}
     </View>
   );
 }
