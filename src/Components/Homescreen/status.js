@@ -10,14 +10,73 @@ import {
 import config from '../../config/icon';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 
+const storyInfo = [
+  {
+    id: 1,
+    index: 0,
+    name: 'Your Story',
+    image: require('../../assests/users/dhoni.jpg'),
+    story: require('../../assests/users/dhoni.jpg'),
+  },
+
+  {
+    id: 0,
+    index: 1,
+    name: 'Anirudh',
+    image: require('../../assests/users/ani.jpeg'),
+    story: require('../../assests/users/ani.jpeg'),
+  },
+  {
+    id: 0,
+    index: 2,
+    name: 'neymar',
+    image: require('../../assests/users/neymar.png'),
+    story: require('../../assests/users/neymar.png'),
+  },
+
+  {
+    id: 0,
+    index: 3,
+    name: 'Ratan',
+    image: require('../../assests/users/ratan.jpg'),
+    story: require('../../assests/users/ratan.jpg'),
+  },
+
+  {
+    id: 0,
+    index: 4,
+    name: 'yuvan',
+    image: require('../../assests/users/yuvan.jpg'),
+    story: require('../../assests/users/yuvan.jpg'),
+  },
+  {
+    id: 0,
+    index: 5,
+    name: 'viratkholi',
+    image: require('../../assests/users/virat.png'),
+    story: require('../../assests/users/virat.png'),
+  },
+];
+
 const Status = ({route, navigation}) => {
-  const {name} = route.params;
-  const {image} = route.params;
+  //var {name} = route.params;
+  const [name, setName] = useState(route.params.name);
+  const [image, setImage] = useState(route.params.image);
+  //var {image} = route.params;
+  let ind = route.params.index;
+  console.log(storyInfo[3], ind, 'oooo');
+  //const[ind,setInd]=useState(route.params.index)
   let progres = new Animated.Value(-300);
 
   useEffect(() => {
     let timer = setTimeout(() => {
-      navigation.goBack();
+      // navigation.goBack();
+      storyInfo[ind + 1]
+        ? setName(storyInfo[ind + 1].name)
+        : navigation.goBack();
+      storyInfo[ind + 1]
+        ? setImage(storyInfo[ind + 1].image)
+        : navigation.goBack();
     }, 3000);
 
     Animated.timing(progres, {
@@ -26,7 +85,7 @@ const Status = ({route, navigation}) => {
     }).start();
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [image, name]);
 
   return (
     <View
