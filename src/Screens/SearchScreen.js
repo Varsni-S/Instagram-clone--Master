@@ -82,6 +82,7 @@ export default function SearchScreen() {
             alignItems: 'center',
             marginLeft: 130,
             marginBottom: 200,
+            fontSize: 18,
           }}>
           {error}
         </Text>

@@ -5,10 +5,13 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export default function post({imageUrl, contentText, profileName}) {
   const [like, setLike] = useState(false);
+  const [bookmark, setBookMark] = useState(false);
   const likeToggled = () => {
     setLike(!like);
   };
-
+  const bookMarkToggled = () => {
+    setBookMark(!bookmark);
+  };
   return (
     <View style={style.postBox}>
       <View style={style.postHeader}>
@@ -42,7 +45,14 @@ export default function post({imageUrl, contentText, profileName}) {
           <FontAwesomeIcon icon="paper-plane" size={20} color="white" />
         </View>
         <View style={style.iconsRight}>
-          <FontAwesomeIcon icon="bookmark" size={20} color="white" />
+          <TouchableOpacity>
+            <FontAwesomeIcon
+              icon="bookmark"
+              size={20}
+              color={bookmark ? 'red' : 'white'}
+              onPress={bookMarkToggled}
+            />
+          </TouchableOpacity>
         </View>
       </View>
 

@@ -9,6 +9,7 @@ const Story = () => {
   const storyInfo = [
     {
       id: 1,
+      index: 0,
       name: 'Your Story',
       image: require('../../assests/users/dhoni.jpg'),
       story: require('../../assests/users/dhoni.jpg'),
@@ -16,12 +17,14 @@ const Story = () => {
 
     {
       id: 0,
+      index: 1,
       name: 'Anirudh',
       image: require('../../assests/users/ani.jpeg'),
       story: require('../../assests/users/ani.jpeg'),
     },
     {
       id: 0,
+      index: 2,
       name: 'neymar',
       image: require('../../assests/users/neymar.png'),
       story: require('../../assests/users/neymar.png'),
@@ -29,6 +32,7 @@ const Story = () => {
     ,
     {
       id: 0,
+      index: 3,
       name: 'Ratan',
       image: require('../../assests/users/ratan.jpg'),
       story: require('../../assests/users/ratan.jpg'),
@@ -36,12 +40,14 @@ const Story = () => {
     ,
     {
       id: 0,
+      index: 4,
       name: 'yuvan',
       image: require('../../assests/users/yuvan.jpg'),
       story: require('../../assests/users/yuvan.jpg'),
     },
     {
       id: 0,
+      index: 5,
       name: 'viratkholi',
       image: require('../../assests/users/virat.png'),
       story: require('../../assests/users/virat.png'),
@@ -61,6 +67,7 @@ const Story = () => {
               navigation.push('Status', {
                 name: data.name,
                 image: data.story,
+                index: data.index,
               })
             }>
             <View

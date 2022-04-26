@@ -46,7 +46,11 @@ export default function MyStack() {
           component={Status}
           options={{headerShown: false}}
         />
-        <Stack.Screen name="NewContentScreen" component={NewContentScreen} />
+        <Stack.Screen
+          name="NewContentScreen"
+          component={NewContentScreen}
+          options={{headerShown: false}}
+        />
         <Stack.Screen
           name="ReelsScreen"
           component={ReelsScreen}
