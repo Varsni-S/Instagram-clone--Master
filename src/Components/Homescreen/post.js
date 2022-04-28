@@ -1,19 +1,28 @@
 import {View, Text, Image, StyleSheet} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
-
+import RBSheet from 'react-native-raw-bottom-sheet';
 export default function post({imageUrl, contentText, profileName}) {
+  const refRBSheet = useRef();
   const navigation = useNavigation();
+
   const [like, setLike] = useState(false);
   const [bookmark, setBookMark] = useState(false);
+
   const likeToggled = () => {
     setLike(!like);
   };
+
   const bookMarkToggled = () => {
     setBookMark(!bookmark);
   };
+
+  const moreFunction = () => {
+    refRBSheet.current.open();
+  };
+
   return (
     <View style={style.postBox}>
       <View style={style.postHeader}>
@@ -25,7 +34,61 @@ export default function post({imageUrl, contentText, profileName}) {
           <Text style={style.profileUserName}>{profileName}</Text>
         </View>
         <View>
-          <FontAwesomeIcon icon="ellipsis-v" size={20} color="white" />
+          <TouchableOpacity>
+            <FontAwesomeIcon
+              icon="ellipsis-v"
+              size={20}
+              color="white"
+              onPress={moreFunction}
+            />
+          </TouchableOpacity>
+          {/* bottom sheet */}
+          <RBSheet
+            ref={refRBSheet}
+            closeOnDragDown={true}
+            height={200}
+            openDuration={200}
+            closeDuration={150}
+            closeOnPressMask={true}
+            customStyles={{
+              wrapper: {
+                backgroundColor: 'black',
+                opacity: 0.9,
+              },
+              container: {
+                backgroundColor: 'black',
+                borderTopStartRadius: 20,
+                borderTopEndRadius: 20,
+              },
+              draggableIcon: {
+                backgroundColor: 'white',
+              },
+            }}>
+            <View style={style.bottomSheetContainer}>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('NotificationScreen'),
+                    refRBSheet.current.close();
+                }}>
+                <Text style={style.bottomSheetText}>Add to favorites </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('NewContentScreen'),
+                    refRBSheet.current.close();
+                }}>
+                <Text style={style.bottomSheetText}>Hide </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('ProfileScreen'),
+                    refRBSheet.current.close();
+                }}>
+                <Text style={style.bottomSheetText}>UnFollow</Text>
+              </TouchableOpacity>
+            </View>
+          </RBSheet>
         </View>
       </View>
       {/* main feed */}
@@ -149,5 +212,16 @@ const style = StyleSheet.create({
   },
   textContent: {
     paddingHorizontal: 10,
+  },
+  bottomSheetContainer: {
+    // backgroundColor: 'yellow',
+    height: 200,
+    paddingVertical: 20,
+  },
+  bottomSheetText: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 20,
+    paddingVertical: 10,
   },
 });
