@@ -43,7 +43,17 @@ export default function post({imageUrl, contentText, profileName}) {
               onPress={likeToggled}
             />
           </TouchableOpacity>
-          <FontAwesomeIcon icon="comment" size={20} color="white" />
+          <TouchableOpacity>
+            <FontAwesomeIcon
+              icon="comment"
+              size={20}
+              color="white"
+              onPress={() => {
+                navigation.navigate('Comments');
+              }}
+            />
+          </TouchableOpacity>
+
           <TouchableOpacity>
             <FontAwesomeIcon
               icon="paper-plane"

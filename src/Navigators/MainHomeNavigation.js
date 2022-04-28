@@ -14,7 +14,7 @@ import HomeScreen from '../Screens/HomeScreen';
 import Status from '../Components/Homescreen/status';
 import ReelsScreen from '../Screens/ReelsScreen';
 import ProfileScreen from '../Screens/ProfileScreen';
-
+import Comments from '../Components/Homescreen/Comments';
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
 ]);
@@ -39,7 +39,16 @@ export default function MyStack() {
         <Stack.Screen
           name="MessagingScreen"
           component={MessagingScreen}
-          options={{headerShown: false}}
+          options={{
+            headerStyle: {
+              backgroundColor: 'black',
+            },
+            headerTitleStyle: {
+              color: 'white',
+            },
+            headerTitle: 'Message',
+          }}
+          //options={{headerShown: false}}
         />
         <Stack.Screen
           name="Status"
@@ -49,7 +58,16 @@ export default function MyStack() {
         <Stack.Screen
           name="NewContentScreen"
           component={NewContentScreen}
-          options={{headerShown: false}}
+          options={{
+            headerStyle: {
+              backgroundColor: 'black',
+            },
+            headerTitleStyle: {
+              color: 'white',
+            },
+            headerTitle: 'New Post',
+          }}
+          // options={{headerShown: false}}
         />
         <Stack.Screen
           name="ReelsScreen"
@@ -60,6 +78,18 @@ export default function MyStack() {
           name="ProfileScreen"
           component={ProfileScreen}
           options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Comments"
+          component={Comments}
+          options={{
+            headerStyle: {
+              backgroundColor: 'black',
+            },
+            headerTitleStyle: {
+              color: 'white',
+            },
+          }}
         />
       </Stack.Navigator>
     </>

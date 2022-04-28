@@ -70,13 +70,14 @@ const Status = ({route, navigation}) => {
 
   useEffect(() => {
     let timer = setTimeout(() => {
-      // navigation.goBack();
       storyInfo[ind + 1]
         ? setName(storyInfo[ind + 1].name)
         : navigation.goBack();
       storyInfo[ind + 1]
         ? setImage(storyInfo[ind + 1].image)
         : navigation.goBack();
+
+      //navigation.goBack();
     }, 3000);
 
     Animated.timing(progres, {
