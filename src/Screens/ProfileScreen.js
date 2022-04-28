@@ -14,7 +14,12 @@ export default function ProfileScreen() {
   return (
     <View style={{flex: 1, backgroundColor: 'black'}}>
       <Header heading="User Profile" icon1="plus-square" icon2="bars" />
-      <View style={{justifyContent: 'center', alignItems: 'center'}}>
+      <View
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: 100,
+        }}>
         <Button title="Log Out" onPress={signOut} />
       </View>
     </View>

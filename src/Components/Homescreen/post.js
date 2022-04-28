@@ -2,8 +2,10 @@ import {View, Text, Image, StyleSheet} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {useNavigation} from '@react-navigation/native';
 
 export default function post({imageUrl, contentText, profileName}) {
+  const navigation = useNavigation();
   const [like, setLike] = useState(false);
   const [bookmark, setBookMark] = useState(false);
   const likeToggled = () => {
@@ -42,7 +44,16 @@ export default function post({imageUrl, contentText, profileName}) {
             />
           </TouchableOpacity>
           <FontAwesomeIcon icon="comment" size={20} color="white" />
-          <FontAwesomeIcon icon="paper-plane" size={20} color="white" />
+          <TouchableOpacity>
+            <FontAwesomeIcon
+              icon="paper-plane"
+              size={20}
+              color="white"
+              onPress={() => {
+                navigation.navigate('MessagingScreen');
+              }}
+            />
+          </TouchableOpacity>
         </View>
         <View style={style.iconsRight}>
           <TouchableOpacity>
