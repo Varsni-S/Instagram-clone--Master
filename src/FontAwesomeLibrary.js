@@ -16,6 +16,7 @@ import {
   faPaperPlane,
   faBookmark,
   faTimes,
+  faVideoCamera,
 } from '@fortawesome/free-solid-svg-icons';
 import {library} from '@fortawesome/fontawesome-svg-core';
 library.add(
@@ -36,4 +37,5 @@ library.add(
   faBookmark,
   faPaperPlane,
   faTimes,
+  faVideoCamera,
 );
