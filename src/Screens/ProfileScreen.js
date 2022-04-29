@@ -32,6 +32,7 @@ export default function ProfileScreen() {
               marginHorizontal: 5,
               justifyContent: 'center',
               alignItems: 'center',
+              // backgroundColor: 'grey',
             }}>
             <FontAwesomeIcon icon={faPlus} color="white" size={30} />
           </View>
