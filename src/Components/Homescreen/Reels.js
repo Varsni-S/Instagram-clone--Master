@@ -40,7 +40,8 @@ export default function Reels() {
     },
     {
       id: 4,
-      video: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
+      video:
+        'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
       title: 'Aishu',
       imageUrl: {
         uri: 'https://cdn.pixabay.com/photo/2015/03/09/18/34/beach-666122__340.jpg',

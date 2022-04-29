@@ -1,14 +1,12 @@
 import {View, Text, Dimensions, Image} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
-// import Video from 'react-native-video';
+
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {
   faHeart,
-  faHeartCircleBolt,
   faMusic,
   faPlayCircle,
-  faVolumeMute,
 } from '@fortawesome/free-solid-svg-icons';
 import {useNavigation} from '@react-navigation/native';
 import Video from 'react-native-video';
@@ -50,32 +48,6 @@ export default function SingleReel({item, index, currentIndex}) {
         // justifyContent: 'center',
         // alignItems: 'center',
       }}>
-      {/* <TouchableOpacity
-        //activeOpacity={0.9}
-        onPress={() => setMute(!mute)}
-        // style={
-        //   {
-        //     // width: '100%',
-        //     // height: '100%',
-        //     // position: 'absolute',
-        //   }
-        // }
-      > */}
-      {/* <Video
-          videoRef={videoRef}
-          // onBuffer={onBuffer}
-          // onError={onError}
-          // repeat={true}
-          resizeMode="cover"
-          // paused={currentIndex == index ? false : true}
-          source={item.video}
-          //  muted={mute}
-          style={{
-            width: '100%',
-            height: '100%',
-            position: 'absolute',
-          }}
-        /> */}
       {index == currentIndex && (
         <Video
           style={{
@@ -83,12 +55,8 @@ export default function SingleReel({item, index, currentIndex}) {
             width: windowWidth,
             height: windowHeight,
             position: 'absolute',
-            //  backgroundColor: 'red',
           }}
-          // videoRef={videoRef}
-          //paused={pause ? false : true}
           paused={pause}
-          // paused={() => (pause ? true : false)}
           onBuffer={onBuffer}
           onError={onError}
           repeat={true}
@@ -97,14 +65,9 @@ export default function SingleReel({item, index, currentIndex}) {
           source={{uri: item.video}}
         />
       )}
-      {/* </TouchableOpacity> */}
+
       <View
         style={{
-          // position: 'absolute',
-          // width: windowWidth,
-          // zIndex: 1,
-          // bottom: 0, //edited
-          // padding: 10,
           justifyContent: 'center',
           alignItems: 'center',
         }}>
@@ -123,26 +86,20 @@ export default function SingleReel({item, index, currentIndex}) {
               fontSize: mute ? 20 : 0,
               color: 'white',
               position: 'absolute',
-              // backgroundColor: 'rgba(52,52,52,0.6)',
+
               borderRadius: 100,
               padding: mute ? 20 : 0,
-              // height: 100,
             }}
           />
         </TouchableOpacity>
       </View>
-      {/* <Text
-        style={{
-          color: 'white',
-        }}>
-        SingleReel
-      </Text> */}
+
       <View
         style={{
           position: 'absolute',
           width: windowWidth,
           zIndex: 1,
-          bottom: 0, //edited
+          bottom: 0,
           padding: 10,
         }}>
         <View>

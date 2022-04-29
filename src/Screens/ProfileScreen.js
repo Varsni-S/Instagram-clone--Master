@@ -12,8 +12,45 @@ import auth from '@react-native-firebase/auth';
 import {ScrollView} from 'react-native-gesture-handler';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import TopTabNav from '../Navigators/TopTabNav';
-
+import {useNavigation} from '@react-navigation/native';
+import {faPlus} from '@fortawesome/free-solid-svg-icons';
 export default function ProfileScreen() {
+  // storry circle
+  let circuls = [];
+  let numberofcircels = 10;
+  for (let index = 0; index < numberofcircels; index++) {
+    circuls.push(
+      <View key={index}>
+        {index === 0 ? (
+          <View
+            style={{
+              width: 60,
+              height: 60,
+              borderRadius: 100,
+              borderWidth: 1,
+              opacity: 0.7,
+              marginHorizontal: 5,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <FontAwesomeIcon icon={faPlus} color="white" size={30} />
+          </View>
+        ) : (
+          <View
+            style={{
+              width: 60,
+              height: 60,
+              borderRadius: 100,
+              backgroundColor: 'grey',
+              opacity: 0.1,
+              marginHorizontal: 5,
+            }}></View>
+        )}
+      </View>,
+    );
+  }
+
+  const navigation = useNavigation();
   const signOut = () => {
     try {
       auth().signOut();
@@ -103,35 +140,47 @@ export default function ProfileScreen() {
             color: 'white',
             marginLeft: 15,
           }}>
-          Varsni{' '}
+          Varsu11{' '}
         </Text>
+
         {/* edit user */}
         <View style={{flexDirection: 'row'}}>
           <View style={styles.container}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('EditProfileScreen')}>
               <Text style={styles.text}>Edit Profile</Text>
             </TouchableOpacity>
           </View>
 
-          <View style={styles.container}>
+          {/* <View style={styles.container}>
             <TouchableOpacity style={styles.icon}>
               <FontAwesomeIcon icon="user" size={20} color="white" />
             </TouchableOpacity>
-          </View>
-          {/* story */}
-          <Text
-            style={{
-              color: 'white',
-              marginTop: 75,
-              marginLeft: -370,
-              fontSize: 15,
-              marginBottom: 10,
-            }}>
-            {' '}
-            Story Highlight{' '}
-          </Text>
+          </View> */}
         </View>
+        {/* story */}
+        <Text
+          style={{
+            color: 'white',
 
+            marginLeft: 7,
+            fontSize: 15,
+
+            padding: 10,
+            letterSpacing: 1,
+          }}>
+          {' '}
+          Story Highlight{' '}
+        </Text>
+        <ScrollView
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          style={{
+            paddingVertical: 5,
+            paddingHorizontal: 10,
+          }}>
+          {circuls}
+        </ScrollView>
         {/* toptab Navigation */}
         <TopTabNav />
       </ScrollView>
@@ -159,9 +208,9 @@ const styles = StyleSheet.create({
     color: 'white',
     borderColor: 'white',
     backgroundColor: 'black',
-    width: 320,
+    width: 370,
     marginLeft: 8,
-    borderRadius: 8,
+    borderRadius: 6,
     textAlign: 'center',
   },
   icon: {

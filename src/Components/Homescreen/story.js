@@ -11,7 +11,8 @@ const Story = () => {
       id: 1,
       index: 0,
       name: 'Your Story',
-      image: require('../../assests/users/dhoni.jpg'),
+
+      image: require('../../assests/users/profilePic.jpeg'),
       story: require('../../assests/users/dhoni.jpg'),
     },
 

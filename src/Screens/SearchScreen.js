@@ -1,4 +1,3 @@
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import React, {useState} from 'react';
 import {Text, View, TextInput, StyleSheet, FlatList} from 'react-native';
 import staticPosts from '../StaticDatas/Datas';
@@ -81,7 +80,7 @@ export default function SearchScreen() {
             justifyContent: 'center',
             alignItems: 'center',
             marginLeft: 130,
-            marginBottom: 200,
+            marginBottom: 500,
             fontSize: 18,
           }}>
           {error}
