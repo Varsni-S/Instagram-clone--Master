@@ -6,7 +6,7 @@ export default function Reels() {
   const videoData = [
     {
       id: 1,
-      video: require('../../assests/videos/video1.mp4'),
+      video: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
       title: 'Varsni',
       imageUrl: {
         uri: 'https://cdn.pixabay.com/photo/2016/04/07/06/53/bmw-1313343__340.jpg',
@@ -17,7 +17,7 @@ export default function Reels() {
     },
     {
       id: 2,
-      video: require('../../assests/videos/video2.mp4'),
+      video: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
       imageUrl: {
         uri: 'https://cdn.pixabay.com/photo/2017/06/01/08/30/rolls-royce-2362821__340.jpg',
       },
@@ -28,7 +28,7 @@ export default function Reels() {
     },
     {
       id: 3,
-      video: require('../../assests/videos/video3.mp4'),
+      video: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
       title: 'tanika',
       imageUrl: {
         uri: 'https://cdn.pixabay.com/photo/2020/09/09/13/03/bike-riding-5557589__340.png',
@@ -39,7 +39,7 @@ export default function Reels() {
     },
     {
       id: 4,
-      video: require('../../assests/videos/video4.mp4'),
+      video: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
       title: 'Aishu',
       imageUrl: {
         uri: 'https://cdn.pixabay.com/photo/2015/03/09/18/34/beach-666122__340.jpg',

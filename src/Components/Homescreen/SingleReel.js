@@ -1,6 +1,6 @@
 import {View, Text, Dimensions, Image} from 'react-native';
 import React, {useRef, useState} from 'react';
-import Video from 'react-native-video';
+// import Video from 'react-native-video';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {
@@ -12,12 +12,13 @@ import {
 import {useNavigation} from '@react-navigation/native';
 
 export default function SingleReel({item, index, currentIndex}) {
+  console.log(item.video, index, currentIndex);
   const navigation = useNavigation();
 
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
 
-  const videoRef = useRef(null);
+  const videoRef = useRef(item.video);
 
   const onBuffer = buffer => {
     console.log('buffring', buffer);
@@ -51,17 +52,26 @@ export default function SingleReel({item, index, currentIndex}) {
         }}>
         {/* <Video
           videoRef={videoRef}
-          onBuffer={onBuffer}
-          onError={onError}
-          repeat={true}
+          // onBuffer={onBuffer}
+          // onError={onError}
+          // repeat={true}
           resizeMode="cover"
-          paused={currentIndex == index ? false : true}
+          // paused={currentIndex == index ? false : true}
           source={item.video}
-          muted={mute}
+          //  muted={mute}
           style={{
             width: '100%',
             height: '100%',
             position: 'absolute',
+          }}
+        /> */}
+        {/* <Video
+          style={styles.backgroundVideo}
+          controls={true}
+          muted={false}
+          source={{
+            uri: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+            //uri: videoGotFromRedux.videoUrl,
           }}
         /> */}
       </TouchableOpacity>
