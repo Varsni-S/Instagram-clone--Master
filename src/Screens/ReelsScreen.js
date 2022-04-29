@@ -16,8 +16,8 @@ export default function ReelsScreen() {
       style={{
         backgroundColor: 'black',
         width: windowWidth,
-        height: windowHeight,
-        position: 'relative',
+        height: windowHeight - 70,
+        //position: 'relative',
       }}>
       <View
         style={{

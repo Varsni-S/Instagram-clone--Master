@@ -25,7 +25,7 @@ export default function MainScreen() {
             size = focused ? 30 : 20;
             color = 'white';
           } else if (route.name === 'Reels') {
-            iconName = 'dove';
+            iconName = 'video';
             size = focused ? 30 : 20;
             color = focused ? 'white' : 'white';
           } else if (route.name === 'Notification') {

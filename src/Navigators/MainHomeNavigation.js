@@ -15,6 +15,7 @@ import Status from '../Components/Homescreen/status';
 import ReelsScreen from '../Screens/ReelsScreen';
 import ProfileScreen from '../Screens/ProfileScreen';
 import Comments from '../Components/Homescreen/Comments';
+import TopTabNav from '../Navigators/TopTabNav';
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
 ]);
@@ -53,6 +54,11 @@ export default function MyStack() {
         <Stack.Screen
           name="Status"
           component={Status}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="TopTab"
+          component={TopTabNav}
           options={{headerShown: false}}
         />
         <Stack.Screen

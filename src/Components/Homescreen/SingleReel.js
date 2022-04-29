@@ -1,5 +1,5 @@
 import {View, Text, Dimensions, Image} from 'react-native';
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 // import Video from 'react-native-video';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
@@ -7,18 +7,24 @@ import {
   faHeart,
   faHeartCircleBolt,
   faMusic,
+  faPlayCircle,
   faVolumeMute,
 } from '@fortawesome/free-solid-svg-icons';
 import {useNavigation} from '@react-navigation/native';
-
+import Video from 'react-native-video';
 export default function SingleReel({item, index, currentIndex}) {
-  console.log(item.video, index, currentIndex);
+  console.log(item.video, index, currentIndex, item);
   const navigation = useNavigation();
 
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
+  const [pause, setPause] = useState(false);
 
-  const videoRef = useRef(item.video);
+  useEffect(() => {
+    setPause(false);
+  }, [currentIndex]);
+
+  // const videoRef = useRef();
 
   const onBuffer = buffer => {
     console.log('buffring', buffer);
@@ -33,24 +39,29 @@ export default function SingleReel({item, index, currentIndex}) {
   const likeToggled = () => {
     setLike(!like);
   };
+  console.log(windowHeight, windowWidth);
   return (
     <View
       style={{
-        width: windowWidth,
-        height: windowHeight,
-        position: 'relative',
-        justifyContent: 'center',
-        alignItems: 'center',
+        width: '100%',
+        height: windowHeight - 120,
+        // position: 'absolute',
+
+        // justifyContent: 'center',
+        // alignItems: 'center',
       }}>
-      <TouchableOpacity
-        activeOpacity={0.9}
+      {/* <TouchableOpacity
+        //activeOpacity={0.9}
         onPress={() => setMute(!mute)}
-        style={{
-          width: '100%',
-          height: '100%',
-          position: 'absolute',
-        }}>
-        {/* <Video
+        // style={
+        //   {
+        //     // width: '100%',
+        //     // height: '100%',
+        //     // position: 'absolute',
+        //   }
+        // }
+      > */}
+      {/* <Video
           videoRef={videoRef}
           // onBuffer={onBuffer}
           // onError={onError}
@@ -65,27 +76,61 @@ export default function SingleReel({item, index, currentIndex}) {
             position: 'absolute',
           }}
         /> */}
-        {/* <Video
-          style={styles.backgroundVideo}
-          controls={true}
-          muted={false}
-          source={{
-            uri: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-            //uri: videoGotFromRedux.videoUrl,
+      {index == currentIndex && (
+        <Video
+          style={{
+            flex: 1,
+            width: windowWidth,
+            height: windowHeight,
+            position: 'absolute',
+            //  backgroundColor: 'red',
           }}
-        /> */}
-      </TouchableOpacity>
-      <FontAwesomeIcon
-        icon={faVolumeMute}
+          // videoRef={videoRef}
+          //paused={pause ? false : true}
+          paused={pause}
+          // paused={() => (pause ? true : false)}
+          onBuffer={onBuffer}
+          onError={onError}
+          repeat={true}
+          muted={mute}
+          resizeMode="cover"
+          source={{uri: item.video}}
+        />
+      )}
+      {/* </TouchableOpacity> */}
+      <View
         style={{
-          fontSize: mute ? 20 : 0,
-          color: 'white',
-          position: 'absolute',
-          backgroundColor: 'rgba(52,52,52,0.6)',
-          borderRadius: 100,
-          padding: mute ? 20 : 0,
-        }}
-      />
+          // position: 'absolute',
+          // width: windowWidth,
+          // zIndex: 1,
+          // bottom: 0, //edited
+          // padding: 10,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <TouchableOpacity
+          style={{
+            height: '100%',
+            width: 90,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+          onPress={() => setPause(!pause)}>
+          <FontAwesomeIcon
+            icon={faPlayCircle}
+            size={30}
+            style={{
+              fontSize: mute ? 20 : 0,
+              color: 'white',
+              position: 'absolute',
+              // backgroundColor: 'rgba(52,52,52,0.6)',
+              borderRadius: 100,
+              padding: mute ? 20 : 0,
+              // height: 100,
+            }}
+          />
+        </TouchableOpacity>
+      </View>
       {/* <Text
         style={{
           color: 'white',

@@ -1,6 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
-import {SwipeListView} from 'react-native-swipe-list-view';
+import {SwiperFlatList} from 'react-native-swiper-flatlist';
 import SingleReel from './SingleReel';
 export default function Reels() {
   const videoData = [
@@ -17,7 +17,8 @@ export default function Reels() {
     },
     {
       id: 2,
-      video: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',
+      video:
+        'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
       imageUrl: {
         uri: 'https://cdn.pixabay.com/photo/2017/06/01/08/30/rolls-royce-2362821__340.jpg',
       },
@@ -56,12 +57,17 @@ export default function Reels() {
     setCurrentIndex(index);
   };
   return (
-    <SwipeListView
+    <SwiperFlatList
       vertical={true}
       onChangeIndex={handleChangeIndexValue}
       data={videoData}
       renderItem={({item, index}) => (
-        <SingleReel item={item} index={index} currentIndex={currentIndex} />
+        <SingleReel
+          key={index}
+          item={item}
+          index={index}
+          currentIndex={currentIndex}
+        />
       )}
       keyExtractor={(item, index) => index}
     />
