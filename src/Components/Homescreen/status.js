@@ -62,10 +62,10 @@ const Status = ({route, navigation}) => {
   //var {name} = route.params;
   const [name, setName] = useState(route.params.name);
   const [image, setImage] = useState(route.params.image);
-  //var {image} = route.params;
+
   let ind = route.params.index;
   console.log(storyInfo[3], ind, 'oooo');
-  //const[ind,setInd]=useState(route.params.index)
+
   let progres = new Animated.Value(-300);
 
   useEffect(() => {
