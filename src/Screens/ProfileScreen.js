@@ -14,7 +14,12 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import TopTabNav from '../Navigators/TopTabNav';
 import {useNavigation} from '@react-navigation/native';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
+
+import {useSelector, useDispatch} from 'react-redux';
+
 export default function ProfileScreen() {
+  const {name, accountname} = useSelector(state => state.mainReducer);
+
   // storry circle
   let circuls = [];
   let numberofcircels = 10;
@@ -52,6 +57,8 @@ export default function ProfileScreen() {
   }
 
   const navigation = useNavigation();
+
+  //Logout
   const signOut = () => {
     try {
       auth().signOut();
@@ -141,9 +148,15 @@ export default function ProfileScreen() {
             color: 'white',
             marginLeft: 15,
           }}>
-          Varsu11{' '}
+          {name}
         </Text>
-
+        <Text
+          style={{
+            color: 'white',
+            marginLeft: 15,
+          }}>
+          {accountname}
+        </Text>
         {/* edit user */}
         <View style={{flexDirection: 'row'}}>
           <View style={styles.container}>

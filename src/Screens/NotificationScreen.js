@@ -39,6 +39,7 @@ export default function NotificationScreen() {
           {FriendsProfileData.slice(0, 3).map((data, index) => {
             return (
               <TouchableOpacity
+                key={index}
                 onPress={() =>
                   navigation.push('FriendProfile', {
                     name: data.name,

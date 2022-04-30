@@ -6,15 +6,31 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faCheck, faTimes} from '@fortawesome/free-solid-svg-icons';
+import {useSelector, useDispatch} from 'react-redux';
+import {setName, setAccountName} from '../redux/action';
+import {set} from 'react-native-reanimated';
 
 const EditProfileScreen = ({route, navigation}) => {
-  //const {name, accountName} = route.params;
+  const dispatch = useDispatch();
+
+  const [userName, setUserName] = useState('');
+
+  const [userAccountName, setUserAccountName] = useState('');
+  const {name, accountname} = useSelector(state => state.mainReducer);
+
   const TostMessage = () => {
     ToastAndroid.show('Edited Sucessfully !', ToastAndroid.SHORT);
   };
+  const submit = () => {
+    dispatch(setName(userName)), dispatch(setAccountName(userAccountName));
+
+    navigation.goBack();
+    TostMessage();
+  };
+  console.log('edit', name);
   return (
     <View
       style={{
@@ -37,11 +53,7 @@ const EditProfileScreen = ({route, navigation}) => {
           {' '}
           Edit Profile
         </Text>
-        <TouchableOpacity
-          onPress={() => {
-            TostMessage();
-            navigation.goBack();
-          }}>
+        <TouchableOpacity onPress={submit}>
           <FontAwesomeIcon
             icon={faCheck}
             size={25}
@@ -77,7 +89,8 @@ const EditProfileScreen = ({route, navigation}) => {
           </Text>
           <TextInput
             placeholder="name"
-            defaultValue={'Varsu'}
+            onChangeText={value => setUserName(value)}
+            value={userName}
             style={{
               fontSize: 16,
               borderBottomWidth: 1,
@@ -96,7 +109,8 @@ const EditProfileScreen = ({route, navigation}) => {
           </Text>
           <TextInput
             placeholder="accountname"
-            defaultValue={'Varsni S'}
+            onChangeText={value => setUserAccountName(value)}
+            value={userAccountName}
             style={{
               fontSize: 16,
               borderBottomWidth: 1,
