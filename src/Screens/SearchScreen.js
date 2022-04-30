@@ -80,7 +80,8 @@ export default function SearchScreen() {
             justifyContent: 'center',
             alignItems: 'center',
             marginLeft: 130,
-            marginBottom: 500,
+            position: 'absolute',
+            marginTop: 100,
             fontSize: 18,
           }}>
           {error}
