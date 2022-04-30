@@ -17,6 +17,7 @@ import ProfileScreen from '../Screens/ProfileScreen';
 import Comments from '../Components/Homescreen/Comments';
 import TopTabNav from '../Navigators/TopTabNav';
 import EditProfileScreen from '../Screens/EditProfileScreen';
+import FriendProfile from '../Screens/FriendProfile';
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
 ]);
@@ -102,15 +103,11 @@ export default function MyStack() {
           name="EditProfileScreen"
           component={EditProfileScreen}
           options={{headerShown: false}}
-          // options={{
-          //   headerStyle: {
-          //     backgroundColor: 'black',
-          //   },
-          //   headerTitleStyle: {
-          //     color: 'white',
-          //   },
-          //   headerTitle: 'Edit Profile',
-          // }}
+        />
+        <Stack.Screen
+          name="FriendProfile"
+          component={FriendProfile}
+          options={{headerShown: false}}
         />
       </Stack.Navigator>
     </>

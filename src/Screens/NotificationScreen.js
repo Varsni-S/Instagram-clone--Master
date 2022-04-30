@@ -38,15 +38,24 @@ export default function NotificationScreen() {
         <View style={{flexDirection: 'row', paddingVertical: 10}}>
           {FriendsProfileData.slice(0, 3).map((data, index) => {
             return (
-              <Text style={{fontWeight: 'bold', color: 'white'}}>
-                {data.name} ,
-              </Text>
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.push('FriendProfile', {
+                    name: data.name,
+                    profileImage: data.profileImage,
+                    follow: data.follow,
+                    post: data.posts,
+                    followers: data.followers,
+                    following: data.following,
+                  })
+                }>
+                <Text style={{fontWeight: 'bold', color: 'white'}}>
+                  {data.name} ,
+                </Text>
+              </TouchableOpacity>
             );
           })}
-          <Text style={{fontWeight: 'bold', color: 'white'}}>
-            {' '}
-            Started following you
-          </Text>
+          <Text style={{color: 'white'}}> Started following you</Text>
         </View>
         {/* earlier List */}
         <Text style={{fontWeight: 'bold', color: 'white', fontSize: 16}}>

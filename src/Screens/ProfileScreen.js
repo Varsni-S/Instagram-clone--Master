@@ -152,26 +152,28 @@ export default function ProfileScreen() {
               <Text style={styles.text}>Edit Profile</Text>
             </TouchableOpacity>
           </View>
-
-          {/* <View style={styles.container}>
-            <TouchableOpacity style={styles.icon}>
-              <FontAwesomeIcon icon="user" size={20} color="white" />
-            </TouchableOpacity>
-          </View> */}
         </View>
         {/* story */}
         <Text
           style={{
             color: 'white',
-
-            marginLeft: 7,
-            fontSize: 15,
-
-            padding: 10,
+            marginTop: 5,
+            fontSize: 17,
+            padding: 5,
             letterSpacing: 1,
           }}>
           {' '}
           Story Highlight{' '}
+        </Text>
+        <Text
+          style={{
+            color: 'white',
+            padding: 5,
+            fontSize: 14,
+            letterSpacing: 1,
+          }}>
+          {' '}
+          Keep your favourite stories on your profile{' '}
         </Text>
         <ScrollView
           horizontal={true}
