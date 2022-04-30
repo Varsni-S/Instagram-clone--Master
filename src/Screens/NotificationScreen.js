@@ -3,6 +3,8 @@ import {Text, View, ScrollView, Image} from 'react-native';
 import {FriendsProfileData} from '../StaticDatas/FriendsProfileData';
 import {useNavigation} from '@react-navigation/native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faTimes} from '@fortawesome/free-solid-svg-icons';
 
 export default function NotificationScreen() {
   const navigation = useNavigation();
@@ -115,62 +117,128 @@ export default function NotificationScreen() {
           Suggestions for you
         </Text>
         {FriendsProfileData.slice(5, 12).map((data, index) => {
-          {
-            /* const [follow, setFollow] = useState(data.follow);
-          const [close, setClose] = useState(false); */
-          }
+          const [follows, setFollows] = useState(data.follow);
+          const [close, setClose] = useState(false);
+
           return (
             <View key={index}>
-              <View
-                style={{
-                  paddingVertical: 10,
-                  flexDirection: 'row',
-                  width: '100%',
-                  justifyContent: 'space-between',
-                }}>
-                <View>
-                  <TouchableOpacity
+              {close ? null : (
+                <View
+                  style={{
+                    paddingVertical: 10,
+                    flexDirection: 'row',
+                    width: '100%',
+                    justifyContent: 'space-between',
+                  }}>
+                  <View>
+                    <TouchableOpacity
+                      style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        maxWidth: '84%',
+                      }}>
+                      <Image
+                        source={data.profileImage}
+                        style={{
+                          width: 45,
+                          height: 45,
+                          borderRadius: 100,
+                          marginRight: 10,
+                        }}
+                      />
+                      <View style={{width: '100%'}}>
+                        <Text
+                          style={{
+                            fontSize: 14,
+                            fontWeight: 'bold',
+                            color: 'white',
+                          }}>
+                          {data.name}
+                        </Text>
+                        <Text
+                          style={{fontSize: 12, opacity: 0.5, color: 'white'}}>
+                          {data.accountName}
+                        </Text>
+                        <Text
+                          style={{fontSize: 12, opacity: 0.5, color: 'white'}}>
+                          Sugggested for you
+                        </Text>
+                      </View>
+                    </TouchableOpacity>
+                  </View>
+
+                  {/* suggestion follow icons */}
+                  <View
                     style={{
                       flexDirection: 'row',
                       alignItems: 'center',
-                      maxWidth: '84%',
+                      marginLeft: -55,
                     }}>
-                    <Image
-                      source={data.profileImage}
-                      style={{
-                        width: 45,
-                        height: 45,
-                        borderRadius: 100,
-                        marginRight: 10,
-                      }}
-                    />
-                    <View style={{width: '100%'}}>
-                      <Text
+                    {follows ? (
+                      <TouchableOpacity
+                        onPress={() => setFollows(!follows)}
                         style={{
-                          fontSize: 14,
-                          fontWeight: 'bold',
-                          color: 'white',
+                          width: follows ? 90 : 68,
                         }}>
-                        {data.name}
-                      </Text>
-                      <Text
-                        style={{fontSize: 12, opacity: 0.5, color: 'white'}}>
-                        {data.accountName}
-                      </Text>
-                      <Text
-                        style={{fontSize: 12, opacity: 0.5, color: 'white'}}>
-                        Sugggested for you
-                      </Text>
-                    </View>
-                  </TouchableOpacity>
-                </View>
+                        <View
+                          style={{
+                            width: '90%',
+                            height: 30,
 
-                <View
-                  style={{flexDirection: 'row', alignItems: 'center'}}></View>
-              </View>
+                            borderRadius: 5,
+                            backgroundColor: follows ? null : '#3493D9',
+                            borderWidth: follows ? 1 : 0,
+                            borderColor: '#DEDEDE',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                          }}>
+                          <Text style={{color: follows ? 'white' : 'white'}}>
+                            {follows ? 'Following' : 'Follow'}
+                          </Text>
+                        </View>
+                      </TouchableOpacity>
+                    ) : (
+                      <>
+                        <TouchableOpacity
+                          onPress={() => setFollows(!follows)}
+                          style={{
+                            width: follows ? 90 : 68,
+                          }}>
+                          <View
+                            style={{
+                              width: '100%',
+                              height: 30,
+                              borderRadius: 5,
+                              backgroundColor: follows ? null : '#3493D9',
+                              borderWidth: follows ? 1 : 0,
+                              borderColor: '#DEDEDE',
+                              justifyContent: 'center',
+                              alignItems: 'center',
+                            }}>
+                            <Text style={{color: follows ? 'white' : 'white'}}>
+                              {follows ? 'Following' : 'Follow'}
+                            </Text>
+                          </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                          onPress={() => setClose(true)}
+                          style={{paddingHorizontal: 10}}>
+                          <FontAwesomeIcon
+                            icon={faTimes}
+                            style={{fontSize: 14, color: 'white', opacity: 0.8}}
+                          />
+                        </TouchableOpacity>
+                      </>
+                    )}
+                  </View>
+                </View>
+              )}
             </View>
           );
         })}
+        <View style={{padding: 20}}>
+          <Text style={{color: '#3493D9'}}>See all Suggetions</Text>
+        </View>
       </ScrollView>
     </View>
   );

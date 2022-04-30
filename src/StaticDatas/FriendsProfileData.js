@@ -46,8 +46,8 @@ export const FriendsProfileData = [
     follow: false,
   },
   {
-    name: '_don_',
-    accountName: 'Don',
+    name: '_cleverMind_',
+    accountName: 'Don_kingmarker',
     profileImage: require('../assests/users/smile.jpeg'),
     posts: 111,
     followers: 11223,
@@ -103,7 +103,7 @@ export const FriendsProfileData = [
     name: 'tanika45',
     accountName: 'Tanikaa',
     imageUrl: {
-      profileImage: require('../assests/users/butterfly.jpg'),
+      profileImage: require('../assests/users/profilePic.jpeg'),
       posts: 56,
       followers: 6542,
       following: 43,
