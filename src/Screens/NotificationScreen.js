@@ -74,6 +74,16 @@ export default function NotificationScreen() {
                   width: '100%',
                 }}>
                 <TouchableOpacity
+                  onPress={() =>
+                    navigation.push('FriendProfile', {
+                      name: data.name,
+                      profileImage: data.profileImage,
+                      follow: follow,
+                      post: data.posts,
+                      followers: data.followers,
+                      following: data.following,
+                    })
+                  }
                   style={{
                     flexDirection: 'row',
                     justifyContent: 'space-between',
@@ -141,6 +151,16 @@ export default function NotificationScreen() {
                   }}>
                   <View>
                     <TouchableOpacity
+                      onPress={() =>
+                        navigation.push('FriendProfile', {
+                          name: data.name,
+                          profileImage: data.profileImage,
+                          follow: follows,
+                          post: data.posts,
+                          followers: data.followers,
+                          following: data.following,
+                        })
+                      }
                       style={{
                         flexDirection: 'row',
                         alignItems: 'center',

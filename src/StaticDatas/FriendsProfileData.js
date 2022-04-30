@@ -1,7 +1,7 @@
 export const FriendsProfileData = [
   {
     name: 'Kavitha',
-    accountName: 'Varsni_11',
+    accountName: 'kavi_11',
     profileImage: require('../assests/users/profilePic.jpeg'),
     posts: 56,
     followers: 6542,
@@ -100,14 +100,12 @@ export const FriendsProfileData = [
     follow: false,
   },
   {
-    name: 'tanika45',
-    accountName: 'Tanikaa',
-    imageUrl: {
-      profileImage: require('../assests/users/profilePic.jpeg'),
-      posts: 56,
-      followers: 6542,
-      following: 43,
-      follow: false,
-    },
+    name: 'tanika',
+    accountName: 'Tanika765',
+    profileImage: require('../assests/users/kitty.jpeg'),
+    posts: '1.2k',
+    followers: '1.2M',
+    following: 12,
+    follow: false,
   },
 ];
