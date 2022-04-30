@@ -6,6 +6,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {
   faHeart,
   faMusic,
+  faPause,
   faPlayCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import {useNavigation} from '@react-navigation/native';
@@ -60,7 +61,7 @@ export default function SingleReel({item, index, currentIndex}) {
           onBuffer={onBuffer}
           onError={onError}
           repeat={true}
-          muted={mute}
+          // muted={mute}
           resizeMode="cover"
           source={{uri: item.video}}
         />
@@ -80,7 +81,7 @@ export default function SingleReel({item, index, currentIndex}) {
           }}
           onPress={() => setPause(!pause)}>
           <FontAwesomeIcon
-            icon={faPlayCircle}
+            icon={pause ? faPlayCircle : faPause}
             size={30}
             style={{
               fontSize: mute ? 20 : 0,
