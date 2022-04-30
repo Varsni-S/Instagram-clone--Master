@@ -75,17 +75,18 @@ export default function post({imageUrl, contentText, profileName}) {
 
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate('NewContentScreen'),
-                    refRBSheet.current.close();
-                }}>
-                <Text style={style.bottomSheetText}>Hide </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={() => {
                   navigation.navigate('ProfileScreen'),
                     refRBSheet.current.close();
                 }}>
                 <Text style={style.bottomSheetText}>UnFollow</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('NewContentScreen'),
+                    refRBSheet.current.close();
+                }}>
+                <Text style={style.bottomSheetText}>Hide </Text>
               </TouchableOpacity>
             </View>
           </RBSheet>

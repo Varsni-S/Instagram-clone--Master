@@ -44,10 +44,6 @@ export default function SingleReel({item, index, currentIndex}) {
       style={{
         width: '100%',
         height: windowHeight - 120,
-        // position: 'absolute',
-
-        // justifyContent: 'center',
-        // alignItems: 'center',
       }}>
       {index == currentIndex && (
         <Video

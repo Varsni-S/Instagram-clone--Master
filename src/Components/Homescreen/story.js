@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, Text, ScrollView, TouchableOpacity, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import config from '../../config/icon';
 
 const Story = () => {
   const navigation = useNavigation();
@@ -11,47 +10,46 @@ const Story = () => {
       id: 1,
       index: 0,
       name: 'Your Story',
-
       image: require('../../assests/users/profilePic.jpeg'),
-      story: require('../../assests/users/dhoni.jpg'),
+      story: require('../../assests/users/profilePic.jpeg'),
     },
 
     {
       id: 0,
       index: 1,
       name: 'Anirudh',
-      image: require('../../assests/users/ani.jpeg'),
-      story: require('../../assests/users/ani.jpeg'),
+      image: require('../../assests/users/butterfly.jpg'),
+      story: require('../../assests/users/butterfly.jpg'),
     },
     {
       id: 0,
       index: 2,
       name: 'neymar',
-      image: require('../../assests/users/neymar.png'),
-      story: require('../../assests/users/neymar.png'),
+      image: require('../../assests/users/whitegirl.jpg'),
+      story: require('../../assests/users/whitegirl.jpg'),
     },
-    ,
+
     {
       id: 0,
       index: 3,
       name: 'Ratan',
-      image: require('../../assests/users/ratan.jpg'),
-      story: require('../../assests/users/ratan.jpg'),
+      image: require('../../assests/users/teddy.jpg'),
+      story: require('../../assests/users/teddy.jpg'),
     },
-    ,
+
     {
       id: 0,
       index: 4,
       name: 'yuvan',
-      image: require('../../assests/users/yuvan.jpg'),
-      story: require('../../assests/users/yuvan.jpg'),
+      image: require('../../assests/users/girl.jpeg'),
+      story: require('../../assests/users/girl.jpeg'),
     },
     {
       id: 0,
       index: 5,
       name: 'viratkholi',
-      image: require('../../assests/users/virat.png'),
-      story: require('../../assests/users/virat.png'),
+      image: require('../../assests/users/kitty.jpeg'),
+      story: require('../../assests/users/kitty.jpeg'),
     },
   ];
 
