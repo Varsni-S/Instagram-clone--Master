@@ -4,8 +4,9 @@ import Stories from 'react-native-stories-media';
 
 const data = [
   {
-    username: 'Guilherme',
+    username: 'Varsni',
     title: 'Title story',
+    //image: require('../../assests/users/boy.jpg'),
     profile:
       'https://avatars2.githubusercontent.com/u/26286830?s=460&u=5d586a3783a6edeb226c557240c0ba47294a4229&v=4',
     stories: [
@@ -22,7 +23,7 @@ const data = [
     ],
   },
   {
-    username: 'Bruno',
+    username: 'Ani_20',
     profile: 'https://avatars2.githubusercontent.com/u/45196619?s=460&v=4',
     title: 'Travel',
     stories: [
@@ -63,7 +64,7 @@ const data = [
     ],
   },
   {
-    username: 'Steve Jobs',
+    username: 'Dharani',
     profile:
       'https://s3.amazonaws.com/media.eremedia.com/uploads/2012/05/15181015/stevejobs.jpg',
     title: 'Tech',
@@ -100,7 +101,7 @@ const data = [
     ],
   },
   {
-    username: 'Jacob',
+    username: 'Jeevitha',
     profile:
       'https://images.unsplash.com/profile-1531581190171-0cf831d86212?dpr=2&auto=format&fit=crop&w=150&h=150&q=60&crop=faces&bg=fff',
     title: 'News',
@@ -138,8 +139,8 @@ const data = [
 ];
 export default function NewStory() {
   return (
-    <View style={{flex: 1, paddingVertical: 20}}>
-      <Text style={{color: 'white'}}>NewStory</Text>
+    <View style={{flex: 1}}>
+      {/* <Text style={{color: 'white'}}>NewStory</Text> */}
       <Stories data={data} />
     </View>
   );

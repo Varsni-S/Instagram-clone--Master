@@ -17,14 +17,14 @@ const Story = () => {
     {
       id: 0,
       index: 1,
-      name: 'Anirudh',
+      name: 'Dharnani',
       image: require('../../assests/users/butterfly.jpg'),
       story: require('../../assests/users/butterfly.jpg'),
     },
     {
       id: 0,
       index: 2,
-      name: 'neymar',
+      name: 'Jeevi',
       image: require('../../assests/users/whitegirl.jpg'),
       story: require('../../assests/users/whitegirl.jpg'),
     },
@@ -32,7 +32,7 @@ const Story = () => {
     {
       id: 0,
       index: 3,
-      name: 'Ratan',
+      name: 'Tanika',
       image: require('../../assests/users/teddy.jpg'),
       story: require('../../assests/users/teddy.jpg'),
     },
@@ -40,14 +40,14 @@ const Story = () => {
     {
       id: 0,
       index: 4,
-      name: 'yuvan',
+      name: 'lucky20',
       image: require('../../assests/users/girl.jpeg'),
       story: require('../../assests/users/girl.jpeg'),
     },
     {
       id: 0,
       index: 5,
-      name: 'viratkholi',
+      name: 'Aishu',
       image: require('../../assests/users/kitty.jpeg'),
       story: require('../../assests/users/kitty.jpeg'),
     },

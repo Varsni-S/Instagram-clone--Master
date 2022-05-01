@@ -41,7 +41,4 @@ const style = StyleSheet.create({
     flex: 1,
     backgroundColor: 'black',
   },
-  body: {
-    height: 140,
-  },
 });
