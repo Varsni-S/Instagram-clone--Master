@@ -118,7 +118,7 @@ const SearchContent = props => {
                   justifyContent: 'space-between',
                 }}>
                 <TouchableOpacity
-                  onPressIn={() => props.data(imageData[4])}
+                  onPressIn={() => props.data(data.images[4])}
                   onPressOut={() => props.data(null)}
                   style={{marginLeft: 2, width: '90%'}}>
                   <Image
