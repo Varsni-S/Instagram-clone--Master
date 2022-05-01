@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faHeart} from '@fortawesome/free-solid-svg-icons';
+import {faHeart, faTimes} from '@fortawesome/free-solid-svg-icons';
 const storyInfo = [
   {
     id: 1,
@@ -163,7 +163,7 @@ const Status = ({route, navigation}) => {
             {name}
           </Text>
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <FontAwesomeIcon icon="ellipsis-v" size={15} color="white" />
+            <FontAwesomeIcon icon={faTimes} size={15} color="white" />
           </TouchableOpacity>
         </View>
       </View>

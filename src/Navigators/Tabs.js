@@ -14,6 +14,7 @@ export default function MainScreen() {
     <Tab.Navigator
       screenOptions={({route}) => ({
         tabBarShowLabel: false,
+        tabBarHideOnKeyboard: true,
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
           if (route.name === 'Home') {
