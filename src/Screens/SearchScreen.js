@@ -110,7 +110,7 @@ export default function SearchScreen() {
             alignItems: 'center',
             marginLeft: 130,
             position: 'absolute',
-            marginTop: 20,
+            marginTop: 50,
             fontSize: 18,
           }}>
           {error}

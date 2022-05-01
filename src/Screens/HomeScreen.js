@@ -16,9 +16,12 @@ export default function HomeScreen() {
           horizontal={true}
           showsHorizontalScrollIndicator={false}
           style={style.body}>
-          {/* <Story /> */}
-          <NewStory />
+          <Story />
         </ScrollView>
+        {/* <ScrollView>
+          <NewStory />
+        </ScrollView> */}
+
         {/* Post */}
         {StaticDatas.map((content, index) => (
           <Post

@@ -46,6 +46,7 @@ const SearchContent = props => {
             {/* id =0 */}
             {data.id === 0 ? (
               <View
+                key={index}
                 style={{
                   flexDirection: 'row',
                   flexWrap: 'wrap',
@@ -132,7 +133,7 @@ const SearchContent = props => {
                     flexDirection: 'row',
                     flexWrap: 'wrap',
                     marginLeft: -23,
-                    //  justifyContent: 'space-between',
+
                     width: '66.5%',
                   }}>
                   {data.images.slice(0, 2).map((imageData, imgIndex) => {

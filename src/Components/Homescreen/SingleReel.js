@@ -11,34 +11,35 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import {useNavigation} from '@react-navigation/native';
 import Video from 'react-native-video';
+
 export default function SingleReel({item, index, currentIndex}) {
   console.log(item.video, index, currentIndex, item);
+
   const navigation = useNavigation();
 
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
+
   const [pause, setPause] = useState(false);
+  const [like, setLike] = useState(false);
+  const [mute, setMute] = useState(false);
 
   useEffect(() => {
     setPause(false);
   }, [currentIndex]);
 
-  // const videoRef = useRef();
-
   const onBuffer = buffer => {
     console.log('buffring', buffer);
   };
+
   const onError = error => {
     console.log('error', error);
   };
 
-  const [mute, setMute] = useState(false);
-  const [like, setLike] = useState(false);
-
   const likeToggled = () => {
     setLike(!like);
   };
-  console.log(windowHeight, windowWidth);
+
   return (
     <View
       style={{
@@ -57,7 +58,6 @@ export default function SingleReel({item, index, currentIndex}) {
           onBuffer={onBuffer}
           onError={onError}
           repeat={true}
-          // muted={mute}
           resizeMode="cover"
           source={{uri: item.video}}
         />
@@ -83,7 +83,6 @@ export default function SingleReel({item, index, currentIndex}) {
               fontSize: mute ? 20 : 0,
               color: 'white',
               position: 'absolute',
-
               borderRadius: 100,
               padding: mute ? 20 : 0,
             }}
@@ -206,3 +205,6 @@ export default function SingleReel({item, index, currentIndex}) {
     </View>
   );
 }
+
+//    muted={mute}
+//const [mute, setMute] = useState(false);

@@ -3,7 +3,7 @@ import {SET_ACCOUNT_NAME} from './action';
 
 const initialState = {
   name: 'Varsni',
-  accountname: '02varsu11',
+  accountname: 'varsu11',
 };
 
 function mainReducer(state = initialState, action) {
