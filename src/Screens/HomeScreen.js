@@ -1,6 +1,7 @@
 import React from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
 import Header from '../Components/Homescreen/header';
+import NewStory from '../Components/Homescreen/NewStory';
 import Post from '../Components/Homescreen/post';
 import Story from '../Components/Homescreen/story';
 import StaticDatas from '../StaticDatas/Datas';
@@ -15,7 +16,8 @@ export default function HomeScreen() {
           horizontal={true}
           showsHorizontalScrollIndicator={false}
           style={style.body}>
-          <Story />
+          {/* <Story /> */}
+          <NewStory />
         </ScrollView>
         {/* Post */}
         {StaticDatas.map((content, index) => (

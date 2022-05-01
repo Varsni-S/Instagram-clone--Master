@@ -25,7 +25,7 @@ const staticPosts = [
   },
   {
     id: 4,
-    contentText: '',
+    contentText: 'hello',
     imageUrl: {
       uri: 'https://cdn.pixabay.com/photo/2015/03/09/18/34/beach-666122__340.jpg',
     },
@@ -33,7 +33,7 @@ const staticPosts = [
   },
   {
     id: 5,
-    contentText: '',
+    contentText: 'good',
     imageUrl: {
       uri: 'https://cdn.pixabay.com/photo/2020/02/07/19/05/spaceship-4828098__340.jpg',
     },

@@ -118,21 +118,23 @@ export default function SearchScreen() {
       ) : null}
 
       {/* content to search */}
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <SearchContent data={getData} />
-        <TouchableOpacity
-          style={{
-            margin: 25,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
-          <FontAwesomeIcon
-            icon={faPlusCircle}
-            size={40}
-            style={{opacity: 0.5, color: 'white'}}
-          />
-        </TouchableOpacity>
-      </ScrollView>
+      {search.length === 0 ? (
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <SearchContent data={getData} />
+          <TouchableOpacity
+            style={{
+              margin: 25,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <FontAwesomeIcon
+              icon={faPlusCircle}
+              size={40}
+              style={{opacity: 0.5, color: 'white'}}
+            />
+          </TouchableOpacity>
+        </ScrollView>
+      ) : null}
       {image ? (
         <View
           style={{
