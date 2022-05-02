@@ -12,15 +12,15 @@ export default function HomeScreen() {
       <Header heading="Instagram" icon1="plus-square" icon2="comment-dots" />
       <ScrollView style={{height: '100%'}} showsVerticalScrollIndicator={false}>
         {/* Story */}
-        <ScrollView
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-          style={style.body}>
-          <Story />
-        </ScrollView>
-        {/* <ScrollView>
+        {/* <ScrollView
+        //   horizontal={true}
+        //   showsHorizontalScrollIndicator={false}
+        //   style={style.body}>
+        //   <Story />
+        // </ScrollView> */}
+        <ScrollView>
           <NewStory />
-        </ScrollView> */}
+        </ScrollView>
 
         {/* Post */}
         {StaticDatas.map((content, index) => (

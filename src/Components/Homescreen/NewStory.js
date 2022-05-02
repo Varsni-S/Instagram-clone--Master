@@ -64,6 +64,44 @@ const data = [
     ],
   },
   {
+    username: 'priya',
+    title: 'Title story',
+    //image: require('../../assests/users/boy.jpg'),
+    profile:
+      'https://avatars2.githubusercontent.com/u/26286830?s=460&u=5d586a3783a6edeb226c557240c0ba47294a4229&v=4',
+    stories: [
+      {
+        id: 8,
+        url: 'https://images.unsplash.com/photo-1532579853048-ec5f8f15f88d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+        //  image: require('../../assests/users/boy.jpg'),
+        type: 'image',
+        duration: 2,
+        isReadMore: true,
+        url_readmore: 'https://github.com/iguilhermeluis',
+        created: '2021-01-07T03:24:00',
+      },
+    ],
+  },
+  {
+    username: 'kavi',
+    title: 'Title story',
+    //image: require('../../assests/users/boy.jpg'),
+    profile:
+      'https://avatars2.githubusercontent.com/u/26286830?s=460&u=5d586a3783a6edeb226c557240c0ba47294a4229&v=4',
+    stories: [
+      {
+        id: 7,
+        url: 'https://images.unsplash.com/photo-1532579853048-ec5f8f15f88d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+        //  image: require('../../assests/users/boy.jpg'),
+        type: 'image',
+        duration: 2,
+        isReadMore: true,
+        url_readmore: 'https://github.com/iguilhermeluis',
+        created: '2021-01-07T03:24:00',
+      },
+    ],
+  },
+  {
     username: 'Dharani',
     profile:
       'https://s3.amazonaws.com/media.eremedia.com/uploads/2012/05/15181015/stevejobs.jpg',
@@ -141,7 +179,7 @@ export default function NewStory() {
   return (
     <View style={{flex: 1}}>
       {/* <Text style={{color: 'white'}}>NewStory</Text> */}
-      <Stories data={data} />
+      <Stories data={data} useNativeDriver={true} />
     </View>
   );
 }

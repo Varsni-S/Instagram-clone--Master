@@ -13,7 +13,7 @@ export default function header({icon1, icon2, heading}) {
   return (
     <>
       <View style={style.header}>
-        <Text style={{fontSize: 25, color: 'white'}}>{heading}</Text>
+        <Text style={{fontSize: 22, color: 'white'}}>{heading}</Text>
         <View style={style.headerRight}>
           <TouchableOpacity onPress={newContentFunction}>
             <FontAwesomeIcon
@@ -92,7 +92,7 @@ const style = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: 'black',
     borderBottomWidth: 1,
-    borderBottomColor: 'white',
+    //borderBottomColor: 'white',
   },
   headerRight: {
     width: 70,
