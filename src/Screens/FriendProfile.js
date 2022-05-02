@@ -15,6 +15,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 export default function FriendProfile({route, navigation}) {
   const {name, profileImage, follow, post, followers, following} = route.params;
 
+  const [followAdded, setFollowAdded] = useState(false);
   return (
     <View
       style={{
@@ -57,6 +58,8 @@ export default function FriendProfile({route, navigation}) {
         followers={followers}
         following={following}
       />
+
+      {/* suggestion list */}
       <ProfileButtons id={1} />
       <Text
         style={{

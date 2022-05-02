@@ -17,7 +17,7 @@ export default function TopTabNav() {
             width: 130,
             height: 150,
             marginVertical: 0.5,
-            backgroundColor: 'grey',
+            backgroundColor: 'white',
             opacity: 0.1,
           }}></View>
       </View>,

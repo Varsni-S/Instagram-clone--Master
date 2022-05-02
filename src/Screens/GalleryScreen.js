@@ -1,4 +1,11 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  PermissionsAndroid,
+  Platform,
+  Dimensions,
+} from 'react-native';
 import React from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
@@ -7,7 +14,23 @@ import {
   faCaretDown,
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
-//import CameraRoll from '@react-native-community/cameraroll';
+// import CameraRoll from '@react-native-community/cameraroll';
+
+// const width = Dimensions.get('window').width;
+// const height = Dimensions.get('window').height;
+
+// async function hasAndroidPermission() {
+//   const permission = PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE;
+
+//   const hasPermission = await PermissionsAndroid.check(permission);
+//   if (hasPermission) {
+//     return true;
+//   }
+
+//   const status = await PermissionsAndroid.request(permission);
+//   return status === 'granted';
+// }
+
 export default function GalleryScreen() {
   return (
     <View style={styles.container}>
