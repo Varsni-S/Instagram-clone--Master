@@ -5,15 +5,14 @@ import Stories from 'react-native-stories-media';
 const data = [
   {
     username: 'Varsni',
-    title: 'Title story',
-    //image: require('../../assests/users/boy.jpg'),
+    title: 'Your Story',
     profile:
-      'https://avatars2.githubusercontent.com/u/26286830?s=460&u=5d586a3783a6edeb226c557240c0ba47294a4229&v=4',
+      'https://images.unsplash.com/photo-1532579853048-ec5f8f15f88d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+    //'https://avatars2.githubusercontent.com/u/26286830?s=460&u=5d586a3783a6edeb226c557240c0ba47294a4229&v=4',
     stories: [
       {
         id: 1,
         url: 'https://images.unsplash.com/photo-1532579853048-ec5f8f15f88d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-        //  image: require('../../assests/users/boy.jpg'),
         type: 'image',
         duration: 2,
         isReadMore: true,
@@ -23,9 +22,9 @@ const data = [
     ],
   },
   {
-    username: 'Ani_20',
+    username: 'Jeevitha',
     profile: 'https://avatars2.githubusercontent.com/u/45196619?s=460&v=4',
-    title: 'Travel',
+    title: 'Jeevitha',
     stories: [
       {
         id: 0,
@@ -64,48 +63,10 @@ const data = [
     ],
   },
   {
-    username: 'priya',
-    title: 'Title story',
-    //image: require('../../assests/users/boy.jpg'),
+    username: 'tanika',
     profile:
-      'https://avatars2.githubusercontent.com/u/26286830?s=460&u=5d586a3783a6edeb226c557240c0ba47294a4229&v=4',
-    stories: [
-      {
-        id: 8,
-        url: 'https://images.unsplash.com/photo-1532579853048-ec5f8f15f88d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-        //  image: require('../../assests/users/boy.jpg'),
-        type: 'image',
-        duration: 2,
-        isReadMore: true,
-        url_readmore: 'https://github.com/iguilhermeluis',
-        created: '2021-01-07T03:24:00',
-      },
-    ],
-  },
-  {
-    username: 'kavi',
-    title: 'Title story',
-    //image: require('../../assests/users/boy.jpg'),
-    profile:
-      'https://avatars2.githubusercontent.com/u/26286830?s=460&u=5d586a3783a6edeb226c557240c0ba47294a4229&v=4',
-    stories: [
-      {
-        id: 7,
-        url: 'https://images.unsplash.com/photo-1532579853048-ec5f8f15f88d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
-        //  image: require('../../assests/users/boy.jpg'),
-        type: 'image',
-        duration: 2,
-        isReadMore: true,
-        url_readmore: 'https://github.com/iguilhermeluis',
-        created: '2021-01-07T03:24:00',
-      },
-    ],
-  },
-  {
-    username: 'Dharani',
-    profile:
-      'https://s3.amazonaws.com/media.eremedia.com/uploads/2012/05/15181015/stevejobs.jpg',
-    title: 'Tech',
+      'https://images.unsplash.com/photo-1515578706925-0dc1a7bfc8cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60',
+    title: 'Tanika',
     stories: [
       {
         id: 1,
@@ -139,10 +100,27 @@ const data = [
     ],
   },
   {
-    username: 'Jeevitha',
+    username: 'barkDog',
+    title: 'BarkDog',
+    profile:
+      'https://images.unsplash.com/photo-1512101176959-c557f3516787?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+    stories: [
+      {
+        id: 9,
+        url: 'https://images.unsplash.com/photo-1532579853048-ec5f8f15f88d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+        type: 'image',
+        duration: 2,
+        isReadMore: true,
+        url_readmore: 'https://github.com/iguilhermeluis',
+        created: '2021-01-07T03:24:00',
+      },
+    ],
+  },
+  {
+    username: 'cleverMind',
     profile:
       'https://images.unsplash.com/profile-1531581190171-0cf831d86212?dpr=2&auto=format&fit=crop&w=150&h=150&q=60&crop=faces&bg=fff',
-    title: 'News',
+    title: 'CleverMind',
     stories: [
       {
         id: 4,
@@ -174,7 +152,46 @@ const data = [
       },
     ],
   },
+  {
+    username: 'Kanika',
+    profile:
+      'https://images.unsplash.com/photo-1496287437689-3c24997cca99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+    // 'https://s3.amazonaws.com/media.eremedia.com/uploads/2012/05/15181015/stevejobs.jpg',
+    title: 'Kanika',
+    stories: [
+      {
+        id: 7,
+        url: 'https://images.unsplash.com/photo-1515578706925-0dc1a7bfc8cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60',
+        type: 'image',
+        duration: 2,
+        isReadMore: true,
+        url_readmore: 'https://github.com/iguilhermeluis',
+        created: '2021-01-07T03:24:00',
+      },
+      {
+        id: 8,
+        url: 'https://images.unsplash.com/photo-1496287437689-3c24997cca99?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+        type: 'image',
+        duration: 2,
+
+        isReadMore: true,
+        url_readmore: 'https://github.com/iguilhermeluis',
+        created: '2021-01-07T03:24:00',
+      },
+      {
+        id: 9,
+        url: 'https://images.unsplash.com/photo-1514870262631-55de0332faf6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60',
+        type: 'image',
+        duration: 2,
+
+        isReadMore: true,
+        url_readmore: 'https://github.com/iguilhermeluis',
+        created: '2021-01-07T03:24:00',
+      },
+    ],
+  },
 ];
+
 export default function NewStory() {
   return (
     <View style={{flex: 1}}>
