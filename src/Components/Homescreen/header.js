@@ -56,8 +56,7 @@ export default function header({icon1, icon2, heading}) {
         <View style={style.bottomSheetContainer}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('NewContentScreen'),
-                refRBSheet.current.close();
+              navigation.navigate('GalleryScreen'), refRBSheet.current.close();
             }}>
             <Text style={style.bottomSheetText}>Post </Text>
           </TouchableOpacity>

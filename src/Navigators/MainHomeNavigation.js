@@ -18,6 +18,7 @@ import Comments from '../Components/Homescreen/Comments';
 import TopTabNav from '../Navigators/TopTabNav';
 import EditProfileScreen from '../Screens/EditProfileScreen';
 import FriendProfile from '../Screens/FriendProfile';
+import GalleryScreen from '../Screens/GalleryScreen';
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
 ]);
@@ -107,6 +108,11 @@ export default function MyStack() {
         <Stack.Screen
           name="FriendProfile"
           component={FriendProfile}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="GalleryScreen"
+          component={GalleryScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>
