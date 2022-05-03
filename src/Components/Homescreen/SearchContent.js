@@ -59,9 +59,9 @@ const SearchContent = props => {
                   return (
                     <TouchableOpacity
                       key={imgIndex}
-                      onPress={() => navigation.push('SearchFeed')}
                       onPressIn={() => props.data(imageData)}
                       onPressOut={() => props.data(null)}
+                      onPress={() => navigation.push('SearchFeed')}
                       style={{paddingBottom: 5}}>
                       <Image
                         source={imageData}

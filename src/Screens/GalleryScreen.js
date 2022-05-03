@@ -7,13 +7,14 @@ import {
   Dimensions,
 } from 'react-native';
 import React from 'react';
-import {ScrollView} from 'react-native-gesture-handler';
+import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {
   faArrowLeft,
   faCaretDown,
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
+import {useNavigation} from '@react-navigation/native';
 // import CameraRoll from '@react-native-community/cameraroll';
 
 // const width = Dimensions.get('window').width;
@@ -32,13 +33,17 @@ import {
 // }
 
 export default function GalleryScreen() {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <View style={styles.headerWrapper}>
         <View style={styles.headerLeftWrapper}>
-          <View>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.goBack();
+            }}>
             <FontAwesomeIcon icon={faTimes} color="white" size={22} />
-          </View>
+          </TouchableOpacity>
           <View style={styles.headerTitleWrapper}>
             <Text style={styles.headerTitle}>
               Gallery{' '}
@@ -64,7 +69,13 @@ export default function GalleryScreen() {
           <Text style={styles.pickedFooterTitle}>GALLERY</Text>
         </View>
         <View style={styles.footerSection}>
-          <Text style={styles.footerTitle}>PHOTOS</Text>
+          <Text
+            style={styles.footerTitle}
+            onPress={() => {
+              navigation.navigate('PhotoCapture');
+            }}>
+            PHOTOS
+          </Text>
         </View>
         <View style={styles.footerSection}>
           <Text style={styles.footerTitle}>VIDEOS</Text>
