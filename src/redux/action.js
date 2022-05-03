@@ -1,5 +1,6 @@
 export const SET_NAME = 'SET_NAME';
 export const SET_ACCOUNT_NAME = 'SET_ACCOUNT_NAME';
+export const SET_BIO = 'SET_BIO';
 
 export const setName = name => ({
   type: SET_NAME,
@@ -9,4 +10,9 @@ export const setName = name => ({
 export const setAccountName = accountname => ({
   type: SET_ACCOUNT_NAME,
   payload: accountname,
+});
+
+export const setBio = bio => ({
+  type: SET_BIO,
+  payload: bio,
 });

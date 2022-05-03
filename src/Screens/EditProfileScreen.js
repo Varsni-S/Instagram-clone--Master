@@ -10,8 +10,7 @@ import React, {useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faCheck, faTimes} from '@fortawesome/free-solid-svg-icons';
 import {useSelector, useDispatch} from 'react-redux';
-import {setName, setAccountName} from '../redux/action';
-import {set} from 'react-native-reanimated';
+import {setName, setAccountName, setBio} from '../redux/action';
 
 const EditProfileScreen = ({route, navigation}) => {
   const dispatch = useDispatch();
@@ -19,13 +18,18 @@ const EditProfileScreen = ({route, navigation}) => {
   const [userName, setUserName] = useState('');
 
   const [userAccountName, setUserAccountName] = useState('');
+
+  const [userBio, setUserBio] = useState('');
+
   const {name, accountname} = useSelector(state => state.mainReducer);
 
   const TostMessage = () => {
     ToastAndroid.show('Edited Sucessfully !', ToastAndroid.SHORT);
   };
   const submit = () => {
-    dispatch(setName(userName)), dispatch(setAccountName(userAccountName));
+    dispatch(setName(userName)),
+      dispatch(setAccountName(userAccountName)),
+      dispatch(setBio(userBio));
 
     navigation.goBack();
     TostMessage();
@@ -80,15 +84,9 @@ const EditProfileScreen = ({route, navigation}) => {
       {/* input fields */}
       <View style={{padding: 10}}>
         <View>
-          <Text
-            style={{
-              opacity: 0.5,
-              color: 'white',
-            }}>
-            Name
-          </Text>
           <TextInput
-            placeholder="name"
+            placeholder="Name"
+            placeholderTextColor={'grey'}
             onChangeText={value => setUserName(value)}
             value={userName}
             style={{
@@ -100,15 +98,9 @@ const EditProfileScreen = ({route, navigation}) => {
           />
         </View>
         <View style={{paddingVertical: 10}}>
-          <Text
-            style={{
-              opacity: 0.5,
-              color: 'white',
-            }}>
-            Username
-          </Text>
           <TextInput
-            placeholder="accountname"
+            placeholder="Account Name"
+            placeholderTextColor={'grey'}
             onChangeText={value => setUserAccountName(value)}
             value={userAccountName}
             style={{
@@ -121,9 +113,12 @@ const EditProfileScreen = ({route, navigation}) => {
         </View>
         <View style={{paddingVertical: 10}}>
           <TextInput
-            placeholder="Website"
-            placeholderTextColor={'grey'}
+            placeholder="Bio"
+            placeholderTextColor={'white'}
+            onChangeText={value => setUserBio(value)}
+            value={userBio}
             style={{
+              color: 'white',
               fontSize: 16,
               borderBottomWidth: 1,
               borderColor: '#CDCDCD',
@@ -132,7 +127,7 @@ const EditProfileScreen = ({route, navigation}) => {
         </View>
         <View style={{paddingVertical: 10}}>
           <TextInput
-            placeholder="Bio"
+            placeholder="Website"
             placeholderTextColor={'grey'}
             style={{
               fontSize: 16,

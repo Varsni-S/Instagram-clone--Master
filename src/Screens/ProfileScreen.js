@@ -18,7 +18,7 @@ import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {useSelector, useDispatch} from 'react-redux';
 
 export default function ProfileScreen() {
-  const {name, accountname} = useSelector(state => state.mainReducer);
+  const {name, accountname, bio} = useSelector(state => state.mainReducer);
 
   // storry circle
   let circuls = [];
@@ -147,6 +147,7 @@ export default function ProfileScreen() {
           style={{
             color: 'white',
             marginLeft: 15,
+            fontWeight: 'bold',
           }}>
           {name}
         </Text>
@@ -156,6 +157,14 @@ export default function ProfileScreen() {
             marginLeft: 15,
           }}>
           {accountname}
+        </Text>
+
+        <Text
+          style={{
+            color: 'white',
+            marginLeft: 15,
+          }}>
+          {bio}
         </Text>
         {/* edit user */}
         <View style={{flexDirection: 'row'}}>
