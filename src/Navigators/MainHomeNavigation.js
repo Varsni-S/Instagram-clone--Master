@@ -19,6 +19,7 @@ import TopTabNav from '../Navigators/TopTabNav';
 import EditProfileScreen from '../Screens/EditProfileScreen';
 import FriendProfile from '../Screens/FriendProfile';
 import GalleryScreen from '../Screens/GalleryScreen';
+import SearchFeed from '../Screens/SearchFeed';
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
 ]);
@@ -114,6 +115,19 @@ export default function MyStack() {
           name="GalleryScreen"
           component={GalleryScreen}
           options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="SearchFeed"
+          component={SearchFeed}
+          options={{
+            headerStyle: {
+              backgroundColor: 'black',
+            },
+            headerTitleStyle: {
+              color: 'white',
+            },
+            headerTitle: 'Search',
+          }}
         />
       </Stack.Navigator>
     </>

@@ -1,8 +1,10 @@
 import {View, Text, Image} from 'react-native';
 import React from 'react';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {useNavigation} from '@react-navigation/native';
 
 const SearchContent = props => {
+  const navigation = useNavigation();
   const searchData = [
     {
       id: 0,
@@ -57,6 +59,7 @@ const SearchContent = props => {
                   return (
                     <TouchableOpacity
                       key={imgIndex}
+                      onPress={() => navigation.push('SearchFeed')}
                       onPressIn={() => props.data(imageData)}
                       onPressOut={() => props.data(null)}
                       style={{paddingBottom: 5}}>
