@@ -1,17 +1,36 @@
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, Button, TouchableOpacity} from 'react-native';
 import React from 'react';
+import {RNCamera} from 'react-native-camera';
+import {useCamera} from 'react-native-camera-hooks';
+import RNFS from 'react-native-fs';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {
-  faArrowLeft,
-  faCaretDown,
-  faTimes,
-} from '@fortawesome/free-solid-svg-icons';
+import {faTimes} from '@fortawesome/free-solid-svg-icons';
 import {useNavigation} from '@react-navigation/native';
 
 export default function PhotoCapture() {
+  const [{cameraRef}, {takePictures}] = useCamera(null);
   const navigation = useNavigation();
+  const captureHandle = async () => {
+    try {
+      const data = await takePictures();
+      console.log(data.uri);
+      const filePath = data.uri;
+      const newFilePath = RNFS.ExternalDirectoryPath + '/MyTest.jpg';
+      RNFS.moveFile(filePath, newFilePath)
+        .then(() => {
+          console.log('Image Moved', filePath, '-- to --', newFilePath);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <View style={styles.container}>
+      {/* header */}
       <View style={styles.headerContanier}>
         <View style={styles.headerLeftWrapper}>
           <TouchableOpacity
@@ -21,19 +40,23 @@ export default function PhotoCapture() {
             <FontAwesomeIcon icon={faTimes} color="white" size={22} />
           </TouchableOpacity>
           <View style={styles.headerTitleWrapper}>
-            <Text style={styles.headerTitle}>
-              PHOTOS
-              <FontAwesomeIcon icon={faCaretDown} color="white" size={20} />
-            </Text>
+            <Text style={styles.headerTitle}>PHOTOS</Text>
           </View>
         </View>
       </View>
-      <View style={styles.previewWrapper}>
-        <Text style={{color: 'white'}}> Image Picker</Text>
-      </View>
-      <View style={styles.buttonWrapper}>
-        <Text style={{color: 'white'}}> Button Picker</Text>
-      </View>
+      {/* camera */}
+      <RNCamera
+        ref={cameraRef}
+        type={RNCamera.Constants.Type.back}
+        style={styles.preview}>
+        <Button
+          title="Capture"
+          color="#1eb900"
+          onPress={() => captureHandle()}
+        />
+      </RNCamera>
+
+      {/* footer */}
       <View style={styles.footerWrapper}>
         <View style={styles.footerSection}>
           <Text
@@ -54,7 +77,16 @@ export default function PhotoCapture() {
     </View>
   );
 }
-export const styles = StyleSheet.create({
+
+const styles = StyleSheet.create({
+  body: {
+    flex: 1,
+  },
+  preview: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
   container: {
     display: 'flex',
     flex: 1,
