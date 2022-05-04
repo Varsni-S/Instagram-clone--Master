@@ -8,12 +8,12 @@ import {faTimes} from '@fortawesome/free-solid-svg-icons';
 import {useNavigation} from '@react-navigation/native';
 
 export default function PhotoCapture() {
-  const [{cameraRef}, {takePictures}] = useCamera(null);
+  const [{cameraRef}, {takePicture}] = useCamera(null);
   const navigation = useNavigation();
   const captureHandle = async () => {
     try {
-      const data = await takePictures();
-      console.log(data.uri);
+      const data = await takePicture();
+      console.log(data.uri, 'hhh');
       const filePath = data.uri;
       const newFilePath = RNFS.ExternalDirectoryPath + '/MyTest.jpg';
       RNFS.moveFile(filePath, newFilePath)
