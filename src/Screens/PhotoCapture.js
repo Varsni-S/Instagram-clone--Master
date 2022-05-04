@@ -15,10 +15,14 @@ export default function PhotoCapture() {
       const data = await takePicture();
       console.log(data.uri, 'hhh');
       const filePath = data.uri;
-      const newFilePath = RNFS.ExternalDirectoryPath + '/MyTest.jpg';
+      const newFilePath =
+        RNFS.ExternalDirectoryPath + '/' + 'IMG' + Date.now() + '.jpg';
       RNFS.moveFile(filePath, newFilePath)
         .then(() => {
           console.log('Image Moved', filePath, '-- to --', newFilePath);
+          navigation.navigate('NewContentScreen', {
+            image1: {path: 'file:///' + newFilePath},
+          });
         })
         .catch(error => {
           console.log(error);
