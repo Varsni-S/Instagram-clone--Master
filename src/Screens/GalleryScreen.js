@@ -5,8 +5,9 @@ import {
   PermissionsAndroid,
   Platform,
   Dimensions,
+  Button,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {
@@ -15,10 +16,18 @@ import {
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 import {useNavigation} from '@react-navigation/native';
+import ImagePicker from 'react-native-image-crop-picker';
+
 // import CameraRoll from '@react-native-community/cameraroll';
 
 // const width = Dimensions.get('window').width;
 // const height = Dimensions.get('window').height;
+
+// const [images, setImages] = useState();
+// const [albums, setAlbums] = useState();
+// const [pickedImage, setPickedImage] = useState();
+// const [category, setCategory] = useState();
+// const [imgArr, setimgArr] = useState();
 
 // async function hasAndroidPermission() {
 //   const permission = PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE;
@@ -32,8 +41,50 @@ import {useNavigation} from '@react-navigation/native';
 //   return status === 'granted';
 // }
 
+// useEffect(() => {
+//   if (Platform.OS === 'android' && !hasAndroidPermission()) {
+//     return;
+//   }
+
+//   let params = {assetType: 'All'};
+//   CameraRoll.getAlbums(params)
+//     .then(images => {
+//       setImages(images);
+//       console.log(images);
+//     })
+//     .catch(err => {
+//       console.error(err);
+//     });
+// });
+
+// const displayImages = () => {
+//   return images.map((item, key) => {
+//     return (
+//       <View>
+//         <Text style={{color: 'white'}}>{key}</Text>
+//       </View>
+//     );
+//   });
+// };
+
 export default function GalleryScreen() {
   const navigation = useNavigation();
+
+  const showpic = () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+    })
+      .then(image => {
+        console.log(image, 'img');
+        navigation.navigate('NewContentScreen', {
+          image1: image,
+        });
+      })
+      .catch(err => console.log(err, 'error'));
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.headerWrapper}>
@@ -58,10 +109,16 @@ export default function GalleryScreen() {
         </View>
       </View>
       <View>
-        <Text style={{color: 'white'}}>Picker Image</Text>
+        <Button
+          title="pick image"
+          style={{color: 'white'}}
+          onPress={() => showpic()}
+        />
+        {/* Picker Image
+        </Text> */}
       </View>
       <ScrollView>
-        <Text style={{color: 'white'}}>Gallery Image</Text>
+        {/* <Text style={{color: 'white'}}>{displayImages()}</Text> */}
       </ScrollView>
 
       <View style={styles.footer}>
