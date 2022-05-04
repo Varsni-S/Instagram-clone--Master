@@ -23,7 +23,11 @@ export default function header({icon1, icon2, heading}) {
             />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigation.navigate('MessagingScreen')}>
+            onPress={() => {
+              icon2 != 'bars'
+                ? navigation.navigate('MessagingScreen')
+                : alert('edit');
+            }}>
             <FontAwesomeIcon
               icon={icon2 ? icon2 : ''}
               color="white"

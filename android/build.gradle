@@ -36,6 +36,9 @@ allprojects {
                 includeModule("com.yqritc", "android-scalablevideoview")
             }
         }
+          // ADD THIS
+      maven { url 'https://maven.google.com' }
+
         mavenCentral {
             // We don't want to fetch react-native from Maven Central as there are
             // older versions over there.

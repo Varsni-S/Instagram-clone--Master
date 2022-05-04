@@ -18,7 +18,9 @@ import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {useSelector, useDispatch} from 'react-redux';
 
 export default function ProfileScreen() {
-  const {name, accountname, bio} = useSelector(state => state.mainReducer);
+  const {name, accountname, bio, changeImage} = useSelector(
+    state => state.mainReducer,
+  );
 
   // storry circle
   let circuls = [];
@@ -73,7 +75,7 @@ export default function ProfileScreen() {
       <ScrollView>
         <View style={{flex: 1, marginTop: 10, flexDirection: 'row'}}>
           <Image
-            source={require('../assests/users/profilePic.jpeg')}
+            source={{uri: changeImage}}
             style={{
               width: 75,
               height: 75,

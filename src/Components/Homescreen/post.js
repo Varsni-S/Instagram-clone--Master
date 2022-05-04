@@ -4,6 +4,8 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
 import RBSheet from 'react-native-raw-bottom-sheet';
+import Share from 'react-native-share';
+
 export default function post({imageUrl, contentText, profileName}) {
   const refRBSheet = useRef();
   const navigation = useNavigation();
@@ -21,6 +23,18 @@ export default function post({imageUrl, contentText, profileName}) {
 
   const moreFunction = () => {
     refRBSheet.current.open();
+  };
+
+  const myCustomShare = async () => {
+    const shareOptions = {
+      message: 'Post is shared with Your Friends',
+    };
+    try {
+      const ShareResponse = await Share.open(shareOptions);
+      console.log(JSON.stringify(ShareResponse));
+    } catch (error) {
+      console.log('Error =>', error);
+    }
   };
 
   return (
@@ -78,15 +92,15 @@ export default function post({imageUrl, contentText, profileName}) {
                   navigation.navigate('ProfileScreen'),
                     refRBSheet.current.close();
                 }}>
-                <Text style={style.bottomSheetText}>UnFollow</Text>
+                <Text style={style.bottomSheetText}>Setting</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate('NewContentScreen'),
+                  navigation.navigate('ProfileScreen'),
                     refRBSheet.current.close();
                 }}>
-                <Text style={style.bottomSheetText}>Hide </Text>
+                <Text style={style.bottomSheetText}>Profile </Text>
               </TouchableOpacity>
             </View>
           </RBSheet>
@@ -118,15 +132,9 @@ export default function post({imageUrl, contentText, profileName}) {
             />
           </TouchableOpacity>
 
-          <TouchableOpacity>
-            <FontAwesomeIcon
-              icon="paper-plane"
-              size={20}
-              color="white"
-              onPress={() => {
-                navigation.navigate('MessagingScreen');
-              }}
-            />
+          <TouchableOpacity onPress={myCustomShare}>
+            <FontAwesomeIcon icon="paper-plane" size={20} color="white" />
+            {/* navigation.navigate('MessagingScreen');} */}
           </TouchableOpacity>
         </View>
         <View style={style.iconsRight}>

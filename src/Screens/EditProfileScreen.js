@@ -5,14 +5,23 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
+  StyleSheet,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faCheck, faTimes} from '@fortawesome/free-solid-svg-icons';
 import {useSelector, useDispatch} from 'react-redux';
-import {setName, setAccountName, setBio} from '../redux/action';
+import {setName, setAccountName, setBio, setChangeImage} from '../redux/action';
+import RBSheet from 'react-native-raw-bottom-sheet';
+import ImagePicker from 'react-native-image-crop-picker';
 
 const EditProfileScreen = ({route, navigation}) => {
+  const refRBSheet = useRef();
+
+  const changeProfile = () => {
+    refRBSheet.current.open();
+  };
+
   const dispatch = useDispatch();
 
   const [userName, setUserName] = useState('');
@@ -21,18 +30,47 @@ const EditProfileScreen = ({route, navigation}) => {
 
   const [userBio, setUserBio] = useState('');
 
+  const [image, setImage] = useState(
+    'https://images.unsplash.com/photo-1624887009213-040347b804c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1087&q=80',
+  );
+
   const {name, accountname} = useSelector(state => state.mainReducer);
 
   const TostMessage = () => {
     ToastAndroid.show('Edited Sucessfully !', ToastAndroid.SHORT);
   };
+
   const submit = () => {
     dispatch(setName(userName)),
       dispatch(setAccountName(userAccountName)),
-      dispatch(setBio(userBio));
-
+      dispatch(setBio(userBio)),
+      dispatch(setChangeImage(image));
     navigation.goBack();
     TostMessage();
+  };
+
+  const takePhotoFromCamera = () => {
+    ImagePicker.openCamera({
+      width: 300,
+      height: 400,
+      cropping: true,
+      compressImageMaxWidth: 300,
+      compressImageMaxHeight: 300,
+    }).then(image => {
+      console.log(image);
+      setImage(image.path);
+    });
+  };
+
+  const chooseFromGallery = () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(image => {
+      console.log(image);
+      setImage(image.path);
+    });
   };
   console.log('edit', name);
   return (
@@ -69,17 +107,19 @@ const EditProfileScreen = ({route, navigation}) => {
       {/* profile */}
       <View style={{padding: 20, alignItems: 'center'}}>
         <Image
-          source={require('../assests/users/profilePic.jpeg')}
+          source={{uri: image}}
           style={{width: 80, height: 80, borderRadius: 100}}
         />
-        <Text
-          style={{
-            color: '#3493D9',
-            fontSize: 20,
-            marginTop: 8,
-          }}>
-          Change Profile Photo
-        </Text>
+        <TouchableOpacity onPress={changeProfile}>
+          <Text
+            style={{
+              color: '#3493D9',
+              fontSize: 20,
+              marginTop: 8,
+            }}>
+            Change Profile Photo
+          </Text>
+        </TouchableOpacity>
       </View>
       {/* input fields */}
       <View style={{padding: 10}}>
@@ -114,11 +154,11 @@ const EditProfileScreen = ({route, navigation}) => {
         <View style={{paddingVertical: 10}}>
           <TextInput
             placeholder="Bio"
-            placeholderTextColor={'white'}
+            placeholderTextColor={'grey'}
             onChangeText={value => setUserBio(value)}
             value={userBio}
             style={{
-              color: 'white',
+              color: 'grey',
               fontSize: 16,
               borderBottomWidth: 1,
               borderColor: '#CDCDCD',
@@ -145,6 +185,7 @@ const EditProfileScreen = ({route, navigation}) => {
             color: '#3493D9',
             borderTopWidth: 1,
             borderBottomWidth: 1,
+            fontSize: 18,
             // borderColor: '#EFEFEF',
           }}>
           Switch to Professional account
@@ -156,12 +197,85 @@ const EditProfileScreen = ({route, navigation}) => {
             color: '#3493D9',
             borderTopWidth: 1,
             borderBottomWidth: 1,
+            fontSize: 18,
             // borderColor: '#EFEFEF',
           }}>
           Persnol information setting
         </Text>
       </View>
+      <RBSheet
+        ref={refRBSheet}
+        closeOnDragDown={true}
+        height={200}
+        openDuration={200}
+        closeDuration={150}
+        closeOnPressMask={true}
+        customStyles={{
+          wrapper: {
+            backgroundColor: 'black',
+            opacity: 0.9,
+          },
+          container: {
+            backgroundColor: 'black',
+            borderTopStartRadius: 20,
+            borderTopEndRadius: 20,
+          },
+          draggableIcon: {
+            backgroundColor: 'white',
+          },
+        }}>
+        <View style={style.bottomSheetContainer}>
+          <TouchableOpacity
+            onPress={() => {
+              takePhotoFromCamera(), refRBSheet.current.close();
+            }}>
+            <Text style={style.bottomSheetText}>Take Photo</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              chooseFromGallery(), refRBSheet.current.close();
+            }}>
+            <Text style={style.bottomSheetText}> Choose From Gallery</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            {/* onPress={() => {
+              navigation.navigate('ProfileScreen'), refRBSheet.current.close();
+            }} */}
+            <Text style={style.bottomSheetText}>Cancel</Text>
+          </TouchableOpacity>
+        </View>
+      </RBSheet>
     </View>
   );
 };
 export default EditProfileScreen;
+
+const style = StyleSheet.create({
+  header: {
+    flexDirection: 'row',
+    height: 60,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 10,
+    backgroundColor: 'black',
+    borderBottomWidth: 1,
+    //borderBottomColor: 'white',
+  },
+  headerRight: {
+    width: 70,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  bottomSheetContainer: {
+    // backgroundColor: 'yellow',
+    height: 200,
+    paddingVertical: 20,
+  },
+  bottomSheetText: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 20,
+    paddingVertical: 10,
+  },
+});
