@@ -158,7 +158,7 @@ const EditProfileScreen = ({route, navigation}) => {
             onChangeText={value => setUserBio(value)}
             value={userBio}
             style={{
-              color: 'grey',
+              color: 'white',
               fontSize: 16,
               borderBottomWidth: 1,
               borderColor: '#CDCDCD',

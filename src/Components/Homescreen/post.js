@@ -5,6 +5,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import Share from 'react-native-share';
+import RNFetchBlob from 'rn-fetch-blob';
 
 export default function post({imageUrl, contentText, profileName}) {
   const refRBSheet = useRef();
@@ -12,7 +13,7 @@ export default function post({imageUrl, contentText, profileName}) {
 
   const [like, setLike] = useState(false);
   const [bookmark, setBookMark] = useState(false);
-
+  const [imagePathState, setimagePathState] = useState();
   const likeToggled = () => {
     setLike(!like);
   };
@@ -34,20 +35,57 @@ export default function post({imageUrl, contentText, profileName}) {
     url,
     message,
   };
+  const img = 'https://mcdn.wallpapersafari.com/medium/28/67/5PchDg.jpg';
+  //'https://images.unsplash.com/photo-1536599018102-9f803c140fc1?auto=format&fit=crop&w=440&h=220&q=60';
 
-  const myCustomShare = async () => {
-    const shareOptions = {
-      // title: 'Hello',
-      // message: 'Post is shared with Your Friends',
-      // uri: 'https://images.unsplash.com/photo-1624887009213-040347b804c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1087&q=80',
-    };
-    try {
-      const ShareResponse = await Share.open(options);
-      console.log(JSON.stringify(ShareResponse));
-    } catch (error) {
-      console.log('Error =>', error);
-    }
+  const shareTheProductDetails = imagesPath => {
+    console.log(imagesPath, 'gggg');
+    //let {productDetails} = imagePathState;
+    let imagePath = null;
+    RNFetchBlob.config({
+      fileCache: true,
+    })
+      .fetch('GET', imagesPath)
+      // the image is now dowloaded to device's storage
+      .then(resp => {
+        // the image path you can use it directly with Image component
+        imagePath = resp.path();
+        return resp.readFile('base64');
+      })
+      .then(base64Data => {
+        // here's base64 encoded image
+        var imageUrl = 'data:image/png;base64,' + base64Data;
+        let shareImage = {
+          title: 'hello', //string
+          message: 'Description ' + 'Image shared' + ' http://beparr.com/', //string
+          url: imageUrl,
+          // urls: [imageUrl, imageUrl], // eg.'http://img.gemejo.com/product/8c/099/cf53b3a6008136ef0882197d5f5.jpg',
+        };
+        Share.open(shareImage)
+          .then(res => {
+            console.log(res, 'res');
+          })
+          .catch(err => {
+            err && console.log(err);
+          });
+        // remove the file from storage
+        return fs.unlink(imagePath);
+      });
   };
+
+  // const myCustomShare = async () => {
+  //   const shareOptions = {
+  //     // title: 'Hello',
+  //     // message: 'Post is shared with Your Friends',
+  //     // uri: 'https://images.unsplash.com/photo-1624887009213-040347b804c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1087&q=80',
+  //   };
+  //   try {
+  //     const ShareResponse = await Share.open(options);
+  //     console.log(JSON.stringify(ShareResponse));
+  //   } catch (error) {
+  //     console.log('Error =>', error);
+  //   }
+  // };
 
   return (
     <View style={style.postBox}>
@@ -144,7 +182,7 @@ export default function post({imageUrl, contentText, profileName}) {
             />
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={myCustomShare}>
+          <TouchableOpacity onPress={() => shareTheProductDetails(img)}>
             <FontAwesomeIcon icon="paper-plane" size={20} color="white" />
             {/* navigation.navigate('MessagingScreen');} */}
           </TouchableOpacity>
