@@ -25,12 +25,24 @@ export default function post({imageUrl, contentText, profileName}) {
     refRBSheet.current.open();
   };
 
+  const url = 'https://awesome.contents.com/';
+  const title = 'Awesome Contents';
+  const message = 'Please check this out.';
+
+  const options = {
+    title,
+    url,
+    message,
+  };
+
   const myCustomShare = async () => {
     const shareOptions = {
-      message: 'Post is shared with Your Friends',
+      // title: 'Hello',
+      // message: 'Post is shared with Your Friends',
+      // uri: 'https://images.unsplash.com/photo-1624887009213-040347b804c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1087&q=80',
     };
     try {
-      const ShareResponse = await Share.open(shareOptions);
+      const ShareResponse = await Share.open(options);
       console.log(JSON.stringify(ShareResponse));
     } catch (error) {
       console.log('Error =>', error);
