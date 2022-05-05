@@ -26,20 +26,20 @@ export default function post({imageUrl, contentText, profileName}) {
     refRBSheet.current.open();
   };
 
-  const url = 'https://awesome.contents.com/';
-  const title = 'Awesome Contents';
-  const message = 'Please check this out.';
+  // const url = 'https://awesome.contents.com/';
+  // const title = 'Awesome Contents';
+  // const message = 'Please check this out.';
 
-  const options = {
-    title,
-    url,
-    message,
-  };
+  // const options = {
+  //   title,
+  //   url,
+  //   message,
+  // };
   const img = 'https://mcdn.wallpapersafari.com/medium/28/67/5PchDg.jpg';
   //'https://images.unsplash.com/photo-1536599018102-9f803c140fc1?auto=format&fit=crop&w=440&h=220&q=60';
 
   const shareTheProductDetails = imagesPath => {
-    console.log(imagesPath, 'gggg');
+    console.log(imagesPath, 'image shared');
     //let {productDetails} = imagePathState;
     let imagePath = null;
     RNFetchBlob.config({
