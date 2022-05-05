@@ -10,16 +10,38 @@ import React, {useState} from 'react';
 import {TextInput} from 'react-native-gesture-handler';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faCheck} from '@fortawesome/free-solid-svg-icons';
+import {useNavigation} from '@react-navigation/native';
+import {useSelector, useDispatch} from 'react-redux';
+import {
+  setName,
+  setAccountName,
+  setBio,
+  setChangeImage,
+  addPost,
+} from '../redux/action';
 
 export default function NewContentScreen({route}) {
+  const {data: arrayData} = useSelector(state => state.mainReducer);
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
+  //.log(arrayData.length, 'aarrr');
   const productId = route.params.image1?.path;
-  console.log(route.params.image1, 'newPost');
-  console.log(productId);
+  const [data, setData] = useState({
+    id: arrayData.length + 1,
+    imageUrl: productId,
+    profileName: 'Varsni',
+    time: 'now',
+    likes: '0 Likes',
+  });
+  console.log(arrayData.length, 'data', productId);
+
+  //dddconsole.log(route.params.image1, 'newPost');
+  // console.log(productId);
 
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
-  console.log('img' + productId);
+  // console.log('img' + productId);
   return (
     <View style={{backgroundColor: 'black', flex: 1}}>
       <View style={{flexDirection: 'row'}}>
@@ -33,8 +55,15 @@ export default function NewContentScreen({route}) {
           placeholder="Write Caption"
           placeholderTextColor={'white'}
           style={{marginLeft: 10, color: 'white'}}
+          onChangeText={e =>
+            setData(previousState => ({...previousState, contentText: e}))
+          }
         />
-        <TouchableOpacity style={{marginLeft: 200}}>
+        <TouchableOpacity
+          style={{marginLeft: 200}}
+          onPress={() =>
+            dispatch(addPost(data), navigation.navigate('MainScreen'))
+          }>
           <FontAwesomeIcon
             icon={faCheck}
             size={25}
@@ -94,6 +123,8 @@ export default function NewContentScreen({route}) {
 const styles = StyleSheet.create({
   filterSelector: {
     width: 250,
-    height: 460,
+    height: 400,
+    marginBottom: 40,
+    //backgroundColor: 'red',
   },
 });

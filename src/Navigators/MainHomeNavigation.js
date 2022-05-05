@@ -21,6 +21,7 @@ import FriendProfile from '../Screens/FriendProfile';
 import GalleryScreen from '../Screens/GalleryScreen';
 import SearchFeed from '../Screens/SearchFeed';
 import PhotoCapture from '../Screens/PhotoCapture';
+import UploadedPost from '../Screens/UploadedPost';
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
 ]);
@@ -134,6 +135,11 @@ export default function MyStack() {
             },
             headerTitle: 'Search',
           }}
+        />
+        <Stack.Screen
+          name="UploadedPost"
+          component={UploadedPost}
+          options={{headerShown: false}}
         />
       </Stack.Navigator>
     </>

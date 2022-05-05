@@ -4,9 +4,12 @@ import Header from '../Components/Homescreen/header';
 import NewStory from '../Components/Homescreen/NewStory';
 import Post from '../Components/Homescreen/post';
 import Story from '../Components/Homescreen/story';
-import StaticDatas from '../StaticDatas/Datas';
+import {useSelector, useDispatch} from 'react-redux';
+//import StaticDatas from '../StaticDatas/Datas';
 
 export default function HomeScreen() {
+  const {data: StaticDatas} = useSelector(state => state.mainReducer);
+  console.log(StaticDatas, 'dataaaa');
   return (
     <View style={style.container}>
       <Header heading="Instagram" icon1="plus-square" icon2="comment-dots" />

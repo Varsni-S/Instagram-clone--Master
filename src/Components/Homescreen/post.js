@@ -8,6 +8,7 @@ import Share from 'react-native-share';
 import RNFetchBlob from 'rn-fetch-blob';
 
 export default function post({imageUrl, contentText, profileName}) {
+  console.log(imageUrl, 'imgyrl');
   const refRBSheet = useRef();
   const navigation = useNavigation();
 
@@ -39,7 +40,7 @@ export default function post({imageUrl, contentText, profileName}) {
   //'https://images.unsplash.com/photo-1536599018102-9f803c140fc1?auto=format&fit=crop&w=440&h=220&q=60';
 
   const shareTheProductDetails = imagesPath => {
-    console.log(imagesPath, 'image shared');
+    console.log(imagesPath, 'image share');
     //let {productDetails} = imagePathState;
     let imagePath = null;
     RNFetchBlob.config({
@@ -93,7 +94,7 @@ export default function post({imageUrl, contentText, profileName}) {
         <View style={{flexDirection: 'row', width: 300, alignItems: 'center'}}>
           {/* feed Header */}
           <View style={style.profileImageBox}>
-            <Image style={style.profilePicImage} source={imageUrl} />
+            <Image style={style.profilePicImage} source={{uri: imageUrl}} />
           </View>
           <Text style={style.profileUserName}>{profileName}</Text>
         </View>
@@ -158,7 +159,7 @@ export default function post({imageUrl, contentText, profileName}) {
       </View>
       {/* main feed */}
       <View style={style.postImageBox}>
-        <Image style={style.postImage} source={imageUrl} />
+        <Image style={style.postImage} source={{uri: imageUrl}} />
       </View>
       <View style={style.postIcons}>
         {/* list of icons */}
