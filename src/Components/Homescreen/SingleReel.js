@@ -1,6 +1,5 @@
 import {View, Text, Dimensions, Image} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
-
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {
@@ -46,6 +45,7 @@ export default function SingleReel({item, index, currentIndex}) {
         width: '100%',
         height: windowHeight - 120,
       }}>
+      {/* Reels video  */}
       {index == currentIndex && (
         <Video
           style={{
@@ -62,7 +62,7 @@ export default function SingleReel({item, index, currentIndex}) {
           source={{uri: item.video}}
         />
       )}
-
+      {/* reels details */}
       <View
         style={{
           justifyContent: 'center',
@@ -136,6 +136,7 @@ export default function SingleReel({item, index, currentIndex}) {
         </View>
       </View>
 
+      {/* like comment share */}
       <View
         style={{
           position: 'absolute',
@@ -205,6 +206,3 @@ export default function SingleReel({item, index, currentIndex}) {
     </View>
   );
 }
-
-//    muted={mute}
-//const [mute, setMute] = useState(false);

@@ -12,20 +12,18 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faCheck} from '@fortawesome/free-solid-svg-icons';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector, useDispatch} from 'react-redux';
-import {
-  setName,
-  setAccountName,
-  setBio,
-  setChangeImage,
-  addPost,
-} from '../redux/action';
+import {addPost} from '../redux/action';
 
-export default function NewContentScreen({route}) {
+export default function NewPostScreen({route}) {
   const {data: arrayData} = useSelector(state => state.mainReducer);
+
   const navigation = useNavigation();
+
   const dispatch = useDispatch();
+
   //.log(arrayData.length, 'aarrr');
   const productId = route.params.image1?.path;
+
   const [data, setData] = useState({
     id: arrayData.length + 1,
     imageUrl: productId,
@@ -33,13 +31,15 @@ export default function NewContentScreen({route}) {
     time: 'now',
     likes: '0 Likes',
   });
-  console.log(arrayData.length, 'data', productId);
+  // console.log(arrayData.length, 'data', productId);
 
   //dddconsole.log(route.params.image1, 'newPost');
   // console.log(productId);
 
   const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  const [isEnabled2, setIsEnabled2] = useState(false);
+  const toggleSwitch = () => setIsEnabled2(previousState => !previousState);
+  const toggleSwitch2 = () => setIsEnabled(previousState => !previousState);
 
   // console.log('img' + productId);
   return (
@@ -92,8 +92,8 @@ export default function NewContentScreen({route}) {
           {' '}
           Also Post To
         </Text>
-        <View style={{flexDirection: 'row'}}>
-          <Text style={{color: 'white', fontSize: 15, marginRight: 240}}>
+        <View style={{flexDirection: 'row', padding: 10}}>
+          <Text style={{color: 'white', fontSize: 15, marginRight: 220}}>
             FaceBook
           </Text>
           <Switch
@@ -104,16 +104,16 @@ export default function NewContentScreen({route}) {
             value={isEnabled}
           />
         </View>
-        <View style={{flexDirection: 'row'}}>
-          <Text style={{color: 'white', fontSize: 15, marginRight: 260}}>
+        <View style={{flexDirection: 'row', padding: 10}}>
+          <Text style={{color: 'white', fontSize: 15, marginRight: 240}}>
             Twitter
           </Text>
           <Switch
             trackColor={{false: '#767577', true: '#81b0ff'}}
-            thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+            thumbColor={isEnabled2 ? '#f5dd4b' : '#f4f3f4'}
             ios_backgroundColor="#3e3e3e"
-            onValueChange={toggleSwitch}
-            value={isEnabled}
+            onValueChange={toggleSwitch2}
+            value={isEnabled2}
           />
         </View>
       </View>

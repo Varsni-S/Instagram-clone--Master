@@ -13,6 +13,7 @@ export const ProfileBody = ({
   following,
 }) => {
   return (
+    //account details
     <View>
       {accountName ? null : (
         <View
@@ -70,6 +71,7 @@ export const ProfileBody = ({
 };
 
 // profile Button
+//follow and message button
 
 export const ProfileButtons = ({id}) => {
   const [follow, setFollow] = useState(follow);

@@ -5,6 +5,7 @@ import {useNavigation} from '@react-navigation/native';
 
 const SearchContent = props => {
   const navigation = useNavigation();
+
   const searchData = [
     {
       id: 0,
@@ -32,7 +33,6 @@ const SearchContent = props => {
       id: 2,
       images: [
         require('../../assests/search/p11.jpg'),
-
         require('../../assests/search/p15.jpg'),
         require('../../assests/search/p14.jpg'),
         require('../../assests/search/p13.jpg'),
@@ -40,6 +40,7 @@ const SearchContent = props => {
       ],
     },
   ];
+
   return (
     <View>
       {searchData.map((data, index) => {
@@ -53,7 +54,6 @@ const SearchContent = props => {
                   flexDirection: 'row',
                   flexWrap: 'wrap',
                   justifyContent: 'space-between',
-                  //   width:'100%'
                 }}>
                 {data.images.map((imageData, imgIndex) => {
                   return (
@@ -136,7 +136,6 @@ const SearchContent = props => {
                     flexDirection: 'row',
                     flexWrap: 'wrap',
                     marginLeft: -23,
-
                     width: '66.5%',
                   }}>
                   {data.images.slice(0, 2).map((imageData, imgIndex) => {

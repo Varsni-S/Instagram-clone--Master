@@ -20,7 +20,7 @@ export default function PhotoCapture() {
       RNFS.moveFile(filePath, newFilePath)
         .then(() => {
           console.log('Image Moved', filePath, '-- to --', newFilePath);
-          navigation.navigate('NewContentScreen', {
+          navigation.navigate('NewPostScreen', {
             image1: {path: 'file:///' + newFilePath},
           });
         })

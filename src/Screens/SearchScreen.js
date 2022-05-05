@@ -33,6 +33,7 @@ export default function SearchScreen() {
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
 
+  // search
   const searchFilterFunction = text => {
     if (text) {
       const newData = masterDataSource.filter(function (item) {
@@ -117,7 +118,7 @@ export default function SearchScreen() {
         </Text>
       ) : null}
 
-      {/* content to search */}
+      {/* name to search */}
       {search.length === 0 ? (
         <ScrollView showsVerticalScrollIndicator={false}>
           <SearchContent data={getData} />

@@ -2,7 +2,6 @@ const staticPosts = [
   {
     id: 1,
     contentText: 'Good Vibes !',
-
     imageUrl: 'https://mcdn.wallpapersafari.com/medium/28/67/5PchDg.jpg',
     profileName: 'Varsni',
     time: '3h',

@@ -50,7 +50,7 @@ export default function SearchFeed() {
   return (
     <View style={{backgroundColor: 'black'}}>
       <ScrollView style={{height: '100%'}} showsVerticalScrollIndicator={false}>
-        {searchData.map((content, index) => (
+        {staticPosts.map((content, index) => (
           <Post
             key={index}
             imageUrl={content.images}

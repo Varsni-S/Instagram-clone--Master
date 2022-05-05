@@ -25,6 +25,7 @@ export default function Comments() {
 
   return (
     <View style={{flex: 1, backgroundColor: 'black'}}>
+      {/* default comments */}
       <ScrollView>
         {staticPosts.map((content, index) => (
           <View>
@@ -54,21 +55,10 @@ export default function Comments() {
                 {content.likes}
               </Text>
             </View>
-            {/* <View>
-              <TouchableOpacity style={{marginLeft: 340}} onPress={likeToggled}>
-                <FontAwesomeIcon
-                  icon={faHeart}
-                  size={22}
-                  color={like ? 'red' : 'white'}
-                  //  style={{marginBottom: -20}}
-                />
-              </TouchableOpacity>
-            </View> */}
           </View>
         ))}
       </ScrollView>
 
-      {/*  */}
       {/* add comments */}
       <View style={{flexDirection: 'row'}}>
         <TextInput

@@ -5,8 +5,10 @@ import {useNavigation} from '@react-navigation/native';
 import RBSheet from 'react-native-raw-bottom-sheet';
 
 export default function header({icon1, icon2, heading}) {
-  const refRBSheet = useRef();
   const navigation = useNavigation();
+
+  const refRBSheet = useRef();
+
   const newContentFunction = () => {
     refRBSheet.current.open();
   };
@@ -69,7 +71,7 @@ export default function header({icon1, icon2, heading}) {
             onPress={() => {
               navigation.navigate('ReelsScreen'), refRBSheet.current.close();
             }}>
-            <Text style={style.bottomSheetText}>Reels </Text>
+            <Text style={style.bottomSheetText}>Reels</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {

@@ -8,40 +8,31 @@ import Share from 'react-native-share';
 import RNFetchBlob from 'rn-fetch-blob';
 
 export default function post({imageUrl, contentText, profileName}) {
-  console.log(imageUrl, 'imgyrl');
+  //console.log(imageUrl, 'img');
   const refRBSheet = useRef();
   const navigation = useNavigation();
 
   const [like, setLike] = useState(false);
   const [bookmark, setBookMark] = useState(false);
-  const [imagePathState, setimagePathState] = useState();
+
+  //like dislike
   const likeToggled = () => {
     setLike(!like);
   };
-
+  //bookmark
   const bookMarkToggled = () => {
     setBookMark(!bookmark);
   };
-
+  //open bottomSheet
   const moreFunction = () => {
     refRBSheet.current.open();
   };
 
-  // const url = 'https://awesome.contents.com/';
-  // const title = 'Awesome Contents';
-  // const message = 'Please check this out.';
-
-  // const options = {
-  //   title,
-  //   url,
-  //   message,
-  // };
+  //sharing image
   const img = 'https://mcdn.wallpapersafari.com/medium/28/67/5PchDg.jpg';
-  //'https://images.unsplash.com/photo-1536599018102-9f803c140fc1?auto=format&fit=crop&w=440&h=220&q=60';
 
   const shareTheProductDetails = imagesPath => {
-    console.log(imagesPath, 'image share');
-    //let {productDetails} = imagePathState;
+    // console.log(imagesPath, 'image share');
     let imagePath = null;
     RNFetchBlob.config({
       fileCache: true,
@@ -60,7 +51,6 @@ export default function post({imageUrl, contentText, profileName}) {
           title: 'hello', //string
           message: 'Description ' + 'Image shared' + ' http://beparr.com/', //string
           url: imageUrl,
-          // urls: [imageUrl, imageUrl], // eg.'http://img.gemejo.com/product/8c/099/cf53b3a6008136ef0882197d5f5.jpg',
         };
         Share.open(shareImage)
           .then(res => {
@@ -73,20 +63,6 @@ export default function post({imageUrl, contentText, profileName}) {
         return fs.unlink(imagePath);
       });
   };
-
-  // const myCustomShare = async () => {
-  //   const shareOptions = {
-  //     // title: 'Hello',
-  //     // message: 'Post is shared with Your Friends',
-  //     // uri: 'https://images.unsplash.com/photo-1624887009213-040347b804c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1087&q=80',
-  //   };
-  //   try {
-  //     const ShareResponse = await Share.open(options);
-  //     console.log(JSON.stringify(ShareResponse));
-  //   } catch (error) {
-  //     console.log('Error =>', error);
-  //   }
-  // };
 
   return (
     <View style={style.postBox}>
@@ -107,6 +83,7 @@ export default function post({imageUrl, contentText, profileName}) {
               onPress={moreFunction}
             />
           </TouchableOpacity>
+
           {/* bottom sheet */}
           <RBSheet
             ref={refRBSheet}
@@ -135,9 +112,8 @@ export default function post({imageUrl, contentText, profileName}) {
                   navigation.navigate('NotificationScreen'),
                     refRBSheet.current.close();
                 }}>
-                <Text style={style.bottomSheetText}>Add to favorites </Text>
+                <Text style={style.bottomSheetText}>Favorites</Text>
               </TouchableOpacity>
-
               <TouchableOpacity
                 onPress={() => {
                   navigation.navigate('ProfileScreen'),
@@ -145,7 +121,6 @@ export default function post({imageUrl, contentText, profileName}) {
                 }}>
                 <Text style={style.bottomSheetText}>Setting</Text>
               </TouchableOpacity>
-
               <TouchableOpacity
                 onPress={() => {
                   navigation.navigate('ProfileScreen'),
@@ -157,7 +132,8 @@ export default function post({imageUrl, contentText, profileName}) {
           </RBSheet>
         </View>
       </View>
-      {/* main feed */}
+
+      {/* main post screen*/}
       <View style={style.postImageBox}>
         <Image style={style.postImage} source={{uri: imageUrl}} />
       </View>

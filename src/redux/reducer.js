@@ -4,6 +4,7 @@ import {SET_BIO} from './action';
 import {SET_CHANGEIMAGE} from './action';
 import {ADD_POST} from './action';
 import data from '../StaticDatas/Datas';
+
 const initialState = {
   name: 'Varsni',
   data: data,
@@ -12,7 +13,9 @@ const initialState = {
   changeImage:
     'https://images.unsplash.com/photo-1624887009213-040347b804c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1087&q=80',
 };
-console.log(initialState.data, 'jjj');
+
+//console.log(initialState.data, 'jjj');
+
 function mainReducer(state = initialState, action) {
   switch (action.type) {
     case SET_NAME:
@@ -25,7 +28,7 @@ function mainReducer(state = initialState, action) {
       return {...state, changeImage: action.payload};
     case ADD_POST:
       let arrayData = [...data, action.payload];
-      console.log(arrayData, 'aaaa');
+      //   console.log(arrayData, 'aaaa');
       return {...state, data: [...state.data, action.payload]};
     default:
       return state;

@@ -78,7 +78,7 @@ export default function GalleryScreen() {
     })
       .then(image => {
         console.log(image, 'img');
-        navigation.navigate('NewContentScreen', {
+        navigation.navigate('NewPostScreen', {
           image1: image,
         });
       })

@@ -8,7 +8,7 @@ const Drawer = createDrawerNavigator();
 
 // For Warning : React-native-gesture-Handler (using an OLD Api)
 import {LogBox} from 'react-native';
-import NewContentScreen from '../Screens/NewContentScreen';
+import NewPostScreen from '../Screens/NewPostScreen';
 import MessagingScreen from '../Screens/MessagingScreen';
 import HomeScreen from '../Screens/HomeScreen';
 import Status from '../Components/Homescreen/status';
@@ -21,7 +21,7 @@ import FriendProfile from '../Screens/FriendProfile';
 import GalleryScreen from '../Screens/GalleryScreen';
 import SearchFeed from '../Screens/SearchFeed';
 import PhotoCapture from '../Screens/PhotoCapture';
-import UploadedPost from '../Screens/UploadedPost';
+
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
 ]);
@@ -68,8 +68,8 @@ export default function MyStack() {
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="NewContentScreen"
-          component={NewContentScreen}
+          name="NewPostScreen"
+          component={NewPostScreen}
           options={{
             headerStyle: {
               backgroundColor: 'black',
@@ -135,11 +135,6 @@ export default function MyStack() {
             },
             headerTitle: 'Search',
           }}
-        />
-        <Stack.Screen
-          name="UploadedPost"
-          component={UploadedPost}
-          options={{headerShown: false}}
         />
       </Stack.Navigator>
     </>

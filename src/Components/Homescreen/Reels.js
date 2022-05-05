@@ -2,6 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import {SwiperFlatList} from 'react-native-swiper-flatlist';
 import SingleReel from './SingleReel';
+
 export default function Reels() {
   const videoData = [
     {
@@ -58,6 +59,7 @@ export default function Reels() {
   const handleChangeIndexValue = ({index}) => {
     setCurrentIndex(index);
   };
+
   return (
     <SwiperFlatList
       vertical={true}
