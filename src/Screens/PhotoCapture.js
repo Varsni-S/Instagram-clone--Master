@@ -10,6 +10,7 @@ import {useNavigation} from '@react-navigation/native';
 export default function PhotoCapture() {
   const [{cameraRef}, {takePicture}] = useCamera(null);
   const navigation = useNavigation();
+
   const captureHandle = async () => {
     try {
       const data = await takePicture();
@@ -48,6 +49,7 @@ export default function PhotoCapture() {
           </View>
         </View>
       </View>
+
       {/* camera */}
       <RNCamera
         ref={cameraRef}

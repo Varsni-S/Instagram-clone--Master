@@ -21,7 +21,6 @@ export default function NewPostScreen({route}) {
 
   const dispatch = useDispatch();
 
-  //.log(arrayData.length, 'aarrr');
   const productId = route.params.image1?.path;
 
   const [data, setData] = useState({
@@ -31,19 +30,21 @@ export default function NewPostScreen({route}) {
     time: 'now',
     likes: '0 Likes',
   });
-  // console.log(arrayData.length, 'data', productId);
 
-  //dddconsole.log(route.params.image1, 'newPost');
+  //console.log(arrayData.length, 'aarrr');
+  // console.log(arrayData.length, 'data', productId);
+  //console.log(route.params.image1, 'newPost');
   // console.log(productId);
+  // console.log('img' + productId);
 
   const [isEnabled, setIsEnabled] = useState(false);
   const [isEnabled2, setIsEnabled2] = useState(false);
   const toggleSwitch = () => setIsEnabled2(previousState => !previousState);
   const toggleSwitch2 = () => setIsEnabled(previousState => !previousState);
 
-  // console.log('img' + productId);
   return (
     <View style={{backgroundColor: 'black', flex: 1}}>
+      {/* header */}
       <View style={{flexDirection: 'row'}}>
         <Image
           source={{
@@ -71,6 +72,8 @@ export default function NewPostScreen({route}) {
           />
         </TouchableOpacity>
       </View>
+
+      {/* uploading image */}
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
         <Image
           style={styles.filterSelector}
@@ -80,6 +83,8 @@ export default function NewPostScreen({route}) {
           resizeMode={'contain'}
         />
       </View>
+
+      {/* footer */}
       <View style={{marginLeft: 25}}>
         <Text
           style={{
@@ -120,11 +125,11 @@ export default function NewPostScreen({route}) {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   filterSelector: {
     width: 250,
     height: 400,
     marginBottom: 40,
-    //backgroundColor: 'red',
   },
 });

@@ -6,7 +6,7 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
 
-export default function NotificationScreen() {
+export default function ActivityScreen() {
   const navigation = useNavigation();
 
   return (
@@ -34,6 +34,7 @@ export default function NotificationScreen() {
         <Text style={{fontWeight: 'bold', color: 'white', fontSize: 16}}>
           This Week
         </Text>
+
         {/* started following list */}
         <View style={{flexDirection: 'row', paddingVertical: 10}}>
           {FriendsProfileData.slice(0, 3).map((data, index) => {
@@ -58,6 +59,7 @@ export default function NotificationScreen() {
           })}
           <Text style={{color: 'white'}}> Started following you</Text>
         </View>
+
         {/* earlier List */}
         <Text style={{fontWeight: 'bold', color: 'white', fontSize: 16}}>
           Earlier
@@ -132,14 +134,12 @@ export default function NotificationScreen() {
         })}
 
         {/* suggestions */}
-
         <Text style={{fontWeight: 'bold', paddingVertical: 10, color: 'white'}}>
           Suggestions for you
         </Text>
         {FriendsProfileData.slice(5, 12).map((data, index) => {
           const [follows, setFollows] = useState(data.follow);
           const [close, setClose] = useState(false);
-
           return (
             <View key={index}>
               {close ? null : (

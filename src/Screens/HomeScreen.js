@@ -5,22 +5,17 @@ import NewStory from '../Components/Homescreen/NewStory';
 import Post from '../Components/Homescreen/post';
 import Story from '../Components/Homescreen/story';
 import {useSelector, useDispatch} from 'react-redux';
-//import StaticDatas from '../StaticDatas/Datas';
 
 export default function HomeScreen() {
   const {data: StaticDatas} = useSelector(state => state.mainReducer);
-  console.log(StaticDatas, 'dataaaa');
+
+  // console.log(StaticDatas, 'dataaaa');
+
   return (
     <View style={style.container}>
       <Header heading="Instagram" icon1="plus-square" icon2="comment-dots" />
       <ScrollView style={{height: '100%'}} showsVerticalScrollIndicator={false}>
         {/* Story */}
-        {/* <ScrollView
-        //   horizontal={true}
-        //   showsHorizontalScrollIndicator={false}
-        //   style={style.body}>
-        //   <Story />
-        // </ScrollView> */}
         <ScrollView>
           <NewStory />
         </ScrollView>
@@ -45,3 +40,12 @@ const style = StyleSheet.create({
     backgroundColor: 'black',
   },
 });
+
+{
+  /* <ScrollView
+        //   horizontal={true}
+        //   showsHorizontalScrollIndicator={false}
+        //   style={style.body}>
+        //   <Story />
+        // </ScrollView> */
+}

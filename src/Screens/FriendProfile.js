@@ -12,10 +12,10 @@ import {
   ProfileButtons,
 } from '../Components/Homescreen/ProfileBody';
 import {ScrollView} from 'react-native-gesture-handler';
+
 export default function FriendProfile({route, navigation}) {
   const {name, profileImage, follow, post, followers, following} = route.params;
 
-  const [followAdded, setFollowAdded] = useState(false);
   return (
     <View
       style={{
@@ -24,6 +24,7 @@ export default function FriendProfile({route, navigation}) {
         backgroundColor: 'black',
         padding: 10,
       }}>
+      {/* header */}
       <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <FontAwesomeIcon icon={faArrowLeft} size={20} color="white" />
@@ -50,6 +51,7 @@ export default function FriendProfile({route, navigation}) {
           />
         </View>
       </View>
+
       {/* Profile body */}
       <ProfileBody
         name={name}

@@ -1,9 +1,6 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import Header from '../Components/Homescreen/header';
-
 import {Dimensions} from 'react-native';
-
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faCamera} from '@fortawesome/free-solid-svg-icons';
 import Reels from '../Components/Homescreen/Reels';
@@ -11,14 +8,15 @@ import Reels from '../Components/Homescreen/Reels';
 export default function ReelsScreen() {
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
+
   return (
     <View
       style={{
         backgroundColor: 'black',
         width: windowWidth,
         height: windowHeight - 70,
-        //position: 'relative',
       }}>
+      {/* header */}
       <View
         style={{
           position: 'relative',
@@ -47,6 +45,7 @@ export default function ReelsScreen() {
           style={{marginLeft: 105, marginRight: -65}}
         />
       </View>
+      {/* main reels */}
       <Reels />
     </View>
   );

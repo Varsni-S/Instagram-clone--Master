@@ -47,7 +47,6 @@ export default function SearchScreen() {
       // console.log(newData.length);
       newData.length <= 0 ? setError('User Not Found!') : setError('');
       setFilteredDataSource(newData);
-
       setSearch(text);
     } else {
       setFilteredDataSource('');
@@ -65,6 +64,7 @@ export default function SearchScreen() {
       </Text>
     );
   };
+
   const ItemSeparatorView = () => {
     return (
       // Flat List Item Separator
@@ -77,6 +77,7 @@ export default function SearchScreen() {
       />
     );
   };
+
   const getItem = item => {
     // Function for click on an item
     alert('Hello ' + item.profileName + '!!!');
@@ -88,7 +89,6 @@ export default function SearchScreen() {
   return (
     <View style={{flex: 1, backgroundColor: 'black'}}>
       {/* search bar */}
-
       <TextInput
         style={styles.textInputStyle}
         onChangeText={text => searchFilterFunction(text)}

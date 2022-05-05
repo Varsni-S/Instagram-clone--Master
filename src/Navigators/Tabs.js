@@ -2,7 +2,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import SearchScreen from '../Screens/SearchScreen';
 import ReelsScreen from '../Screens/ReelsScreen';
-import NotificationScreen from '../Screens/NotificationScreen';
+import ActivityScreen from '../Screens/ActivityScreen';
 import ProfileScreen from '../Screens/ProfileScreen';
 import HomeScreen from '../Screens/HomeScreen';
 const Tab = createBottomTabNavigator();
@@ -48,7 +48,7 @@ export default function MainScreen() {
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Search" component={SearchScreen} />
       <Tab.Screen name="Reels" component={ReelsScreen} />
-      <Tab.Screen name="Notification" component={NotificationScreen} />
+      <Tab.Screen name="Notification" component={ActivityScreen} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );

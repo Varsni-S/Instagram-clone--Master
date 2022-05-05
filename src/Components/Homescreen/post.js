@@ -109,7 +109,7 @@ export default function post({imageUrl, contentText, profileName}) {
             <View style={style.bottomSheetContainer}>
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate('NotificationScreen'),
+                  navigation.navigate('ActivityScreen'),
                     refRBSheet.current.close();
                 }}>
                 <Text style={style.bottomSheetText}>Favorites</Text>

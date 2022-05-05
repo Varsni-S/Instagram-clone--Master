@@ -18,55 +18,6 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import ImagePicker from 'react-native-image-crop-picker';
 
-// import CameraRoll from '@react-native-community/cameraroll';
-
-// const width = Dimensions.get('window').width;
-// const height = Dimensions.get('window').height;
-
-// const [images, setImages] = useState();
-// const [albums, setAlbums] = useState();
-// const [pickedImage, setPickedImage] = useState();
-// const [category, setCategory] = useState();
-// const [imgArr, setimgArr] = useState();
-
-// async function hasAndroidPermission() {
-//   const permission = PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE;
-
-//   const hasPermission = await PermissionsAndroid.check(permission);
-//   if (hasPermission) {
-//     return true;
-//   }
-
-//   const status = await PermissionsAndroid.request(permission);
-//   return status === 'granted';
-// }
-
-// useEffect(() => {
-//   if (Platform.OS === 'android' && !hasAndroidPermission()) {
-//     return;
-//   }
-
-//   let params = {assetType: 'All'};
-//   CameraRoll.getAlbums(params)
-//     .then(images => {
-//       setImages(images);
-//       console.log(images);
-//     })
-//     .catch(err => {
-//       console.error(err);
-//     });
-// });
-
-// const displayImages = () => {
-//   return images.map((item, key) => {
-//     return (
-//       <View>
-//         <Text style={{color: 'white'}}>{key}</Text>
-//       </View>
-//     );
-//   });
-// };
-
 export default function GalleryScreen() {
   const navigation = useNavigation();
 
@@ -87,6 +38,7 @@ export default function GalleryScreen() {
 
   return (
     <View style={styles.container}>
+      {/* header */}
       <View style={styles.headerWrapper}>
         <View style={styles.headerLeftWrapper}>
           <TouchableOpacity
@@ -108,19 +60,13 @@ export default function GalleryScreen() {
           </View>
         </View>
       </View>
-      <View>
-        <Button
-          title="pick image"
-          style={{color: 'white'}}
-          onPress={() => showpic()}
-        />
-        {/* Picker Image
-        </Text> */}
-      </View>
-      <ScrollView>
-        {/* <Text style={{color: 'white'}}>{displayImages()}</Text> */}
-      </ScrollView>
 
+      {/* Picker Image */}
+      <View>
+        <Button style={{color: 'white'}} onPress={() => showpic()} />
+      </View>
+
+      {/* footer */}
       <View style={styles.footer}>
         <View style={styles.pickedFooterSection}>
           <Text style={styles.pickedFooterTitle}>GALLERY</Text>

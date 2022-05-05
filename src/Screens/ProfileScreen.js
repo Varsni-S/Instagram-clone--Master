@@ -22,7 +22,7 @@ export default function ProfileScreen() {
     state => state.mainReducer,
   );
 
-  // storry circle
+  // story circle
   let circuls = [];
   let numberofcircels = 10;
   for (let index = 0; index < numberofcircels; index++) {
@@ -39,7 +39,6 @@ export default function ProfileScreen() {
               marginHorizontal: 5,
               justifyContent: 'center',
               alignItems: 'center',
-              // backgroundColor: 'grey',
             }}>
             <FontAwesomeIcon icon={faPlus} color="white" size={30} />
           </View>
@@ -68,6 +67,7 @@ export default function ProfileScreen() {
       console.log(error);
     }
   };
+
   return (
     <View style={{flex: 1, backgroundColor: 'black'}}>
       <Header heading="Profile" icon1="plus-square" icon2="bars" />
@@ -82,6 +82,7 @@ export default function ProfileScreen() {
               borderRadius: 37.5,
             }}
           />
+
           {/* numeric count */}
           <View style={{flexDirection: 'row', marginTop: 20}}>
             <Text
@@ -112,13 +113,13 @@ export default function ProfileScreen() {
               120
             </Text>
           </View>
+
           {/* post followers following */}
           <View style={{flexDirection: 'row', marginTop: 55, marginLeft: -250}}>
             <Text
               style={{
                 color: 'white',
                 marginLeft: 20,
-                //marginRight: 2,
                 fontSize: 20,
                 fontWeight: 'bold',
               }}>
@@ -144,6 +145,7 @@ export default function ProfileScreen() {
             </Text>
           </View>
         </View>
+
         {/* user name bio */}
         <Text
           style={{
@@ -168,6 +170,7 @@ export default function ProfileScreen() {
           }}>
           {bio}
         </Text>
+
         {/* edit user */}
         <View style={{flexDirection: 'row'}}>
           <View style={styles.container}>
@@ -177,6 +180,7 @@ export default function ProfileScreen() {
             </TouchableOpacity>
           </View>
         </View>
+
         {/* story */}
         <Text
           style={{
@@ -208,6 +212,7 @@ export default function ProfileScreen() {
           }}>
           {circuls}
         </ScrollView>
+
         {/* toptab Navigation */}
         <TopTabNav />
       </ScrollView>

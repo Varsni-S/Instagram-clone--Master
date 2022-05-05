@@ -17,7 +17,6 @@ import ImagePicker from 'react-native-image-crop-picker';
 
 const EditProfileScreen = ({route, navigation}) => {
   const refRBSheet = useRef();
-
   const changeProfile = () => {
     refRBSheet.current.open();
   };
@@ -72,7 +71,9 @@ const EditProfileScreen = ({route, navigation}) => {
       setImage(image.path);
     });
   };
-  console.log('edit', name);
+
+  // console.log('edit', name);
+
   return (
     <View
       style={{
@@ -121,6 +122,7 @@ const EditProfileScreen = ({route, navigation}) => {
           </Text>
         </TouchableOpacity>
       </View>
+
       {/* input fields */}
       <View style={{padding: 10}}>
         <View>
@@ -186,7 +188,6 @@ const EditProfileScreen = ({route, navigation}) => {
             borderTopWidth: 1,
             borderBottomWidth: 1,
             fontSize: 18,
-            // borderColor: '#EFEFEF',
           }}>
           Switch to Professional account
         </Text>
@@ -198,11 +199,12 @@ const EditProfileScreen = ({route, navigation}) => {
             borderTopWidth: 1,
             borderBottomWidth: 1,
             fontSize: 18,
-            // borderColor: '#EFEFEF',
           }}>
           Persnol information setting
         </Text>
       </View>
+
+      {/* bottomSheet */}
       <RBSheet
         ref={refRBSheet}
         closeOnDragDown={true}
@@ -239,9 +241,6 @@ const EditProfileScreen = ({route, navigation}) => {
             <Text style={style.bottomSheetText}> Choose From Gallery</Text>
           </TouchableOpacity>
           <TouchableOpacity>
-            {/* onPress={() => {
-              navigation.navigate('ProfileScreen'), refRBSheet.current.close();
-            }} */}
             <Text style={style.bottomSheetText}>Cancel</Text>
           </TouchableOpacity>
         </View>
@@ -260,7 +259,6 @@ const style = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: 'black',
     borderBottomWidth: 1,
-    //borderBottomColor: 'white',
   },
   headerRight: {
     width: 70,
@@ -268,7 +266,6 @@ const style = StyleSheet.create({
     justifyContent: 'space-between',
   },
   bottomSheetContainer: {
-    // backgroundColor: 'yellow',
     height: 200,
     paddingVertical: 20,
   },
