@@ -73,6 +73,7 @@ export const ProfileBody = ({
 
 export const ProfileButtons = ({id}) => {
   const [follow, setFollow] = useState(follow);
+
   return (
     <>
       {id === 0 ? null : (
