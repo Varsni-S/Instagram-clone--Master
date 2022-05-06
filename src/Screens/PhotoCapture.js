@@ -40,7 +40,7 @@ export default function PhotoCapture() {
         <View style={styles.headerLeftWrapper}>
           <TouchableOpacity
             onPress={() => {
-              navigation.goBack();
+              navigation.navigate('MainScreen');
             }}>
             <FontAwesomeIcon icon={faTimes} color="white" size={22} />
           </TouchableOpacity>
@@ -74,7 +74,13 @@ export default function PhotoCapture() {
           </Text>
         </View>
         <View style={styles.pickedFooterSection}>
-          <Text style={styles.pickedFooterTitle}>PHOTOS</Text>
+          <Text
+            style={styles.pickedFooterTitle}
+            onPress={() => {
+              navigation.navigate('PhotoCapture');
+            }}>
+            PHOTOS
+          </Text>
         </View>
         <View style={styles.footerSection}>
           <Text style={styles.footerTitle}>VIDEOS</Text>

@@ -12,8 +12,6 @@ import {useNavigation} from '@react-navigation/native';
 import Video from 'react-native-video';
 
 export default function SingleReel({item, index, currentIndex}) {
-  console.log(item.video, index, currentIndex, item);
-
   const navigation = useNavigation();
 
   const windowWidth = Dimensions.get('window').width;

@@ -18,21 +18,20 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import ImagePicker from 'react-native-image-crop-picker';
 
-export default function GalleryScreen() {
+export default function VideoCapture() {
   const navigation = useNavigation();
 
-  const showpic = () => {
+  // pick video
+  const showVideo = () => {
     ImagePicker.openPicker({
-      width: 300,
-      height: 400,
-      cropping: true,
+      mediaType: 'video',
     })
-      .then(image => {
-        console.log(image, 'img');
+      .then(video => {
         navigation.navigate('NewPostScreen', {
-          image1: image,
+          video: video,
         });
       })
+
       .catch(err => console.log(err, 'error'));
   };
 
@@ -43,13 +42,13 @@ export default function GalleryScreen() {
         <View style={styles.headerLeftWrapper}>
           <TouchableOpacity
             onPress={() => {
-              navigation.goBack();
+              navigation.navigate('MainScreen');
             }}>
             <FontAwesomeIcon icon={faTimes} color="white" size={22} />
           </TouchableOpacity>
           <View style={styles.headerTitleWrapper}>
             <Text style={styles.headerTitle}>
-              Gallery{' '}
+              Videos{' '}
               <FontAwesomeIcon icon={faCaretDown} color="white" size={20} />
             </Text>
           </View>
@@ -61,19 +60,25 @@ export default function GalleryScreen() {
         </View>
       </View>
 
-      {/* Picker Image */}
+      {/* Picker Video */}
       <View>
         <Button
-          title="Pick Image "
           style={{color: 'white'}}
-          onPress={() => showpic()}
+          title="video"
+          onPress={() => showVideo()}
         />
       </View>
 
       {/* footer */}
       <View style={styles.footer}>
-        <View style={styles.pickedFooterSection}>
-          <Text style={styles.pickedFooterTitle}>GALLERY</Text>
+        <View style={styles.footerSection}>
+          <Text
+            style={styles.footerTitle}
+            onPress={() => {
+              navigation.navigate('GalleryScreen');
+            }}>
+            GALLERY
+          </Text>
         </View>
         <View style={styles.footerSection}>
           <Text
@@ -84,14 +89,8 @@ export default function GalleryScreen() {
             PHOTOS
           </Text>
         </View>
-        <View style={styles.footerSection}>
-          <Text
-            style={styles.footerTitle}
-            onPress={() => {
-              navigation.navigate('VideoCapture');
-            }}>
-            VIDEOS
-          </Text>
+        <View style={styles.pickedFooterSection}>
+          <Text style={styles.pickedFooterTitle}>VIDEOS</Text>
         </View>
       </View>
     </View>

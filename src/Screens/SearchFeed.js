@@ -54,7 +54,7 @@ export default function SearchFeed() {
         {staticPosts.map((content, index) => (
           <Post
             key={index}
-            imageUrl={content.images}
+            imageUrl={content.imageUrl}
             contentText={content.contentText}
             profileName={content.profileName}
           />

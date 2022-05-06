@@ -13,6 +13,7 @@ import {faCheck} from '@fortawesome/free-solid-svg-icons';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector, useDispatch} from 'react-redux';
 import {addPost} from '../redux/action';
+import Video from 'react-native-video';
 
 export default function NewPostScreen({route}) {
   const {data: arrayData} = useSelector(state => state.mainReducer);
@@ -22,6 +23,8 @@ export default function NewPostScreen({route}) {
   const dispatch = useDispatch();
 
   const productId = route.params.image1?.path;
+  const video = route.params.video?.path;
+  console.log(video, productId, 'props');
 
   const [data, setData] = useState({
     id: arrayData.length + 1,
@@ -36,6 +39,13 @@ export default function NewPostScreen({route}) {
   //console.log(route.params.image1, 'newPost');
   // console.log(productId);
   // console.log('img' + productId);
+  const onBuffer = buffer => {
+    console.log('buffring', buffer);
+  };
+
+  const onError = error => {
+    console.log('error', error);
+  };
 
   const [isEnabled, setIsEnabled] = useState(false);
   const [isEnabled2, setIsEnabled2] = useState(false);
@@ -75,13 +85,25 @@ export default function NewPostScreen({route}) {
 
       {/* uploading image */}
       <View style={{justifyContent: 'center', alignItems: 'center'}}>
-        <Image
-          style={styles.filterSelector}
-          source={{
-            uri: productId,
-          }}
-          resizeMode={'contain'}
-        />
+        {productId ? (
+          <Image
+            style={styles.filterSelector}
+            source={{
+              uri: productId,
+            }}
+            resizeMode={'contain'}
+          />
+        ) : (
+          // uploading video
+          <Video
+            style={{
+              width: 400,
+              height: 400,
+            }}
+            resizeMode="stretch"
+            source={{uri: video}}
+          />
+        )}
       </View>
 
       {/* footer */}
@@ -91,8 +113,8 @@ export default function NewPostScreen({route}) {
             color: 'white',
             fontSize: 20,
             fontWeight: 'bold',
-            marginBottom: 20,
-            marginTop: -20,
+            // marginBottom: 20,
+            //marginTop: -20,
           }}>
           {' '}
           Also Post To
@@ -130,6 +152,6 @@ const styles = StyleSheet.create({
   filterSelector: {
     width: 250,
     height: 400,
-    marginBottom: 40,
+    //marginBottom: 40,
   },
 });
