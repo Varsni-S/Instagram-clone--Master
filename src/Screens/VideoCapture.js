@@ -17,6 +17,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import {useNavigation} from '@react-navigation/native';
 import ImagePicker from 'react-native-image-crop-picker';
+import RNFS from 'react-native-fs';
 
 export default function VideoCapture() {
   const navigation = useNavigation();
@@ -35,6 +36,14 @@ export default function VideoCapture() {
       .catch(err => console.log(err, 'error'));
   };
 
+  //capture video
+  const videoCapture = () => {
+    ImagePicker.openCamera({
+      mediaType: 'video',
+    }).then(image => {
+      console.log(image);
+    });
+  };
   return (
     <View style={styles.container}>
       {/* header */}
@@ -64,10 +73,12 @@ export default function VideoCapture() {
       <View>
         <Button
           style={{color: 'white'}}
-          title="video"
+          title=" pick video"
           onPress={() => showVideo()}
         />
       </View>
+
+      {/* <Button title="Video capture" onPress={() => videoCapture()} /> */}
 
       {/* footer */}
       <View style={styles.footer}>

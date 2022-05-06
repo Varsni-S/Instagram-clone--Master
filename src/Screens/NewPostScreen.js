@@ -28,7 +28,7 @@ export default function NewPostScreen({route}) {
 
   const [data, setData] = useState({
     id: arrayData.length + 1,
-    imageUrl: productId,
+    imageUrl: productId ? productId : video,
     profileName: 'Varsni',
     time: 'now',
     likes: '0 Likes',

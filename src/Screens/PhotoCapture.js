@@ -6,7 +6,7 @@ import RNFS from 'react-native-fs';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
 import {useNavigation} from '@react-navigation/native';
-
+import ImagePicker from 'react-native-image-crop-picker';
 export default function PhotoCapture() {
   const [{cameraRef}, {takePicture}] = useCamera(null);
   const navigation = useNavigation();

@@ -1,19 +1,30 @@
 import {View, Text, Image, StyleSheet} from 'react-native';
 import React, {useEffect, useState, useRef} from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import Share from 'react-native-share';
 import RNFetchBlob from 'rn-fetch-blob';
+import Video from 'react-native-video';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {
+  faHeart,
+  faMusic,
+  faPause,
+  faPlayCircle,
+} from '@fortawesome/free-solid-svg-icons';
 
 export default function post({imageUrl, contentText, profileName}) {
-  //console.log(imageUrl, 'img');
   const refRBSheet = useRef();
   const navigation = useNavigation();
+  const ext = imageUrl.split('.').pop();
+  console.log(ext, 'img');
 
   const [like, setLike] = useState(false);
   const [bookmark, setBookMark] = useState(false);
+
+  const [pause, setPause] = useState(false);
 
   //like dislike
   const likeToggled = () => {
@@ -70,7 +81,7 @@ export default function post({imageUrl, contentText, profileName}) {
         <View style={{flexDirection: 'row', width: 300, alignItems: 'center'}}>
           {/* feed Header */}
           <View style={style.profileImageBox}>
-            <Image style={style.profilePicImage} source={{uri: imageUrl}} />
+            <Image style={style.profilePic} source={{uri: imageUrl}} />
           </View>
           <Text style={style.profileUserName}>{profileName}</Text>
         </View>
@@ -135,7 +146,20 @@ export default function post({imageUrl, contentText, profileName}) {
 
       {/* main post screen*/}
       <View style={style.postImageBox}>
-        <Image style={style.postImage} source={{uri: imageUrl}} />
+        {ext === 'jpg' || ext === 'png' ? (
+          <Image style={style.profilePicImage} source={{uri: imageUrl}} />
+        ) : (
+          <Video
+            style={{
+              flex: 1,
+              width: 400,
+              height: 200,
+            }}
+            resizeMode="stretch"
+            source={{uri: imageUrl}}
+            paused={pause}
+          />
+        )}
       </View>
       <View style={style.postIcons}>
         {/* list of icons */}
@@ -212,6 +236,12 @@ const style = StyleSheet.create({
     height: '75%',
   },
   profilePicImage: {
+    // borderRadius: 100,
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+  },
+  profilePic: {
     borderRadius: 100,
     width: '100%',
     height: '100%',
