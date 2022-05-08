@@ -35,10 +35,6 @@ export default function ApplyEffects({route}) {
       navigation.navigate('NewPostScreen', {image1: image});
     });
   };
-  // const effectOnPress = effect => {
-  //   effect = {effect: 'original'};
-  //   setEffect({effect: effect});
-  // };
 
   return (
     <View style={styles.container}>
@@ -70,8 +66,15 @@ export default function ApplyEffects({route}) {
 
       {/* Main Image */}
       <View style={styles.mainImageWrapper}>
-        {/* grayscale */}
-        {effect === 'grayscale' ? (
+        {effect === 'original' ? (
+          <Image
+            style={styles.mainImage}
+            source={{
+              uri: productId,
+            }}
+            resizeMode={'contain'}
+          />
+        ) : effect === 'grayscale' ? (
           <Grayscale>
             <Image
               style={styles.mainImage}
