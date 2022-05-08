@@ -37,7 +37,7 @@ export default function NewPostScreen({route}) {
   //console.log(arrayData.length, 'aarrr');
   // console.log(arrayData.length, 'data', productId);
   //console.log(route.params.image1, 'newPost');
-  // console.log(productId);
+  console.log(productId);
   // console.log('img' + productId);
   const onBuffer = buffer => {
     console.log('buffring', buffer);

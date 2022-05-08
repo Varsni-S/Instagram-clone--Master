@@ -6,14 +6,15 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import React from 'react';
+import React, {useRef} from 'react';
 import Header from '../Components/Homescreen/header';
 import auth from '@react-native-firebase/auth';
 import {ScrollView} from 'react-native-gesture-handler';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import TopTabNav from '../Navigators/TopTabNav';
 import {useNavigation} from '@react-navigation/native';
-import {faPlus} from '@fortawesome/free-solid-svg-icons';
+import {faBars, faPlus, faPlusSquare} from '@fortawesome/free-solid-svg-icons';
+import RBSheet from 'react-native-raw-bottom-sheet';
 
 import {useSelector, useDispatch} from 'react-redux';
 
@@ -58,6 +59,14 @@ export default function ProfileScreen() {
   }
 
   const navigation = useNavigation();
+
+  //bottom sheet
+
+  const refRBSheet = useRef();
+
+  const newContentFunction = () => {
+    refRBSheet.current.open();
+  };
 
   //Logout
   const signOut = () => {
@@ -217,6 +226,8 @@ export default function ProfileScreen() {
         <TopTabNav />
       </ScrollView>
 
+      {/* bottom sheet */}
+
       {/* Logout */}
       <View
         style={{
@@ -255,4 +266,30 @@ const styles = StyleSheet.create({
     marginLeft: 12,
     borderRadius: 8,
   },
+
+  bottomSheetContainer: {
+    // backgroundColor: 'yellow',
+    height: 200,
+    paddingVertical: 20,
+  },
+  bottomSheetText: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: 20,
+    paddingVertical: 10,
+  },
 });
+
+{
+  /* <View style={{flexDirection: 'row', padding: 10}}>
+        <Text style={{color: 'white', fontSize: 18}}> Profile</Text>
+        <TouchableOpacity
+          onPress={newContentFunction}
+          style={{marginLeft: 250, marginRight: 20}}>
+          <FontAwesomeIcon icon={faPlusSquare} color="white" size={20} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <FontAwesomeIcon icon={faBars} color="white" size={20} />
+        </TouchableOpacity>
+      </View> */
+}

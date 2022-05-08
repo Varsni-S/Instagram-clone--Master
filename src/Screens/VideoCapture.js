@@ -17,7 +17,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import {useNavigation} from '@react-navigation/native';
 import ImagePicker from 'react-native-image-crop-picker';
-import RNFS from 'react-native-fs';
 
 export default function VideoCapture() {
   const navigation = useNavigation();

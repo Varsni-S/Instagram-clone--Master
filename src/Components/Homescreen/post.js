@@ -5,21 +5,18 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import Share from 'react-native-share';
-import RNFetchBlob from 'rn-fetch-blob';
+//import RNFetchBlob from 'rn-fetch-blob';
 import Video from 'react-native-video';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {
-  faHeart,
-  faMusic,
-  faPause,
-  faPlayCircle,
-} from '@fortawesome/free-solid-svg-icons';
+import {NativeModules} from 'react-native';
+const RNFetchBlob = NativeModules.RNFetchBlob;
 
 export default function post({imageUrl, contentText, profileName}) {
   const refRBSheet = useRef();
   const navigation = useNavigation();
   const ext = imageUrl.split('.').pop();
-  console.log(ext, 'img');
+
+  // console.log(ext, 'img');
 
   const [like, setLike] = useState(false);
   const [bookmark, setBookMark] = useState(false);
@@ -30,10 +27,12 @@ export default function post({imageUrl, contentText, profileName}) {
   const likeToggled = () => {
     setLike(!like);
   };
+
   //bookmark
   const bookMarkToggled = () => {
     setBookMark(!bookmark);
   };
+
   //open bottomSheet
   const moreFunction = () => {
     refRBSheet.current.open();

@@ -13,6 +13,8 @@ target 'AppInstagram' do
   )
 
 
+  pod 'react-native-cameraroll', :path => '../node_modules/@react-native-community/cameraroll'
+
   target 'AppInstagramTests' do
     inherit! :complete
     # Pods for testing

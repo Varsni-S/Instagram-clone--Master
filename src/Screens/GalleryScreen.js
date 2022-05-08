@@ -3,9 +3,10 @@ import {
   Text,
   StyleSheet,
   PermissionsAndroid,
-  Platform,
   Dimensions,
   Button,
+  Platform,
+  Image,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
@@ -17,8 +18,49 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import {useNavigation} from '@react-navigation/native';
 import ImagePicker from 'react-native-image-crop-picker';
+import Swiper from 'react-native-swiper';
+import CameraRoll from '@react-native-community/cameraroll';
 
 export default function GalleryScreen() {
+  const [nodes, setNodes] = useState([]);
+  const [detailViewVisible, setDetailViewVisibility] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  useEffect(() => {
+    checkPermission().then(() => {
+      getPhotos();
+    });
+  }, []);
+
+  const checkPermission = async () => {
+    const hasPermission = await PermissionsAndroid.check(
+      PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+    );
+    //console.log(hasPermission);
+    if (hasPermission) {
+      return true;
+    }
+    const status = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+      {
+        title: 'Image gallery app permissions',
+        message: 'Image gallery needs your permission to access your photos',
+        buttonPositive: 'OK',
+      },
+    );
+    return status === 'granted';
+  };
+
+  //getPhotos
+  const getPhotos = async () => {
+    const photos = await CameraRoll.getPhotos({
+      first: 10,
+    });
+    console.log(photos, 'pic');
+    setNodes(photos.edges.map(edge => edge.node));
+    console.log(nodes, 'node');
+  };
+
   const navigation = useNavigation();
 
   const showpic = () => {
@@ -29,7 +71,8 @@ export default function GalleryScreen() {
     })
       .then(image => {
         console.log(image, 'img');
-        navigation.navigate('NewPostScreen', {
+        // navigation.navigate('NewPostScreen');
+        navigation.navigate('ApplyEffects', {
           image1: image,
         });
       })
@@ -61,7 +104,7 @@ export default function GalleryScreen() {
         </View>
       </View>
 
-      {/* Picker Image */}
+      {/* Pick Image */}
       <View>
         <Button
           title="Pick Image "
@@ -69,6 +112,80 @@ export default function GalleryScreen() {
           onPress={() => showpic()}
         />
       </View>
+
+      {/* Image Gallery */}
+
+      <ScrollView>
+        {detailViewVisible ? (
+          <Swiper loop={false} index={selectedIndex}>
+            {nodes.map((node, index) => (
+              <View
+                key={index}
+                style={{
+                  flex: 1,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: 'red',
+                }}>
+                <Image
+                  style={{
+                    width: '100%',
+                    flex: 1,
+                  }}
+                  resizeMode="contain"
+                  source={{
+                    uri: node.image.uri,
+                  }}
+                />
+                <View
+                  style={{
+                    position: 'absolute',
+                    bottom: 60,
+                  }}>
+                  <Button
+                    title="Close"
+                    onPress={() => {
+                      setDetailViewVisibility(false);
+                    }}
+                  />
+                </View>
+              </View>
+            ))}
+          </Swiper>
+        ) : (
+          <View
+            style={{
+              flex: 1,
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+            }}>
+            {nodes.map((node, index) => (
+              <TouchableOpacity
+                key={index}
+                style={{
+                  height: 100,
+                  minWidth: 100,
+                  flex: 1,
+                }}
+                onPress={() => {
+                  setDetailViewVisibility(true);
+                  setSelectedIndex(index);
+                }}>
+                <Image
+                  style={{
+                    height: 100,
+                    minWidth: 100,
+                    flex: 1,
+                  }}
+                  source={{
+                    uri: node.image.uri,
+                  }}
+                />
+              </TouchableOpacity>
+            ))}
+          </View>
+        )}
+      </ScrollView>
 
       {/* footer */}
       <View style={styles.footer}>

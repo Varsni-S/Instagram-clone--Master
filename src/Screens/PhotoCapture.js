@@ -7,6 +7,10 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
 import {useNavigation} from '@react-navigation/native';
 import ImagePicker from 'react-native-image-crop-picker';
+
+import {NativeModules} from 'react-native';
+const RNFetchBlob = NativeModules.RNFetchBlob;
+
 export default function PhotoCapture() {
   const [{cameraRef}, {takePicture}] = useCamera(null);
   const navigation = useNavigation();

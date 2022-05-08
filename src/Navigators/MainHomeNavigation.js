@@ -22,6 +22,7 @@ import GalleryScreen from '../Screens/GalleryScreen';
 import SearchFeed from '../Screens/SearchFeed';
 import PhotoCapture from '../Screens/PhotoCapture';
 import VideoCapture from '../Screens/VideoCapture';
+import ApplyEffects from '../Screens/ApplyEffects';
 
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
@@ -127,6 +128,11 @@ export default function MyStack() {
         <Stack.Screen
           name="VideoCapture"
           component={VideoCapture}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ApplyEffects"
+          component={ApplyEffects}
           options={{headerShown: false}}
         />
         <Stack.Screen
