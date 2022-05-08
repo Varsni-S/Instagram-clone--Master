@@ -70,9 +70,9 @@ export default function GalleryScreen() {
       cropping: true,
     })
       .then(image => {
-        console.log(image, 'img');
+        console.log(image, 'img picked');
         // navigation.navigate('NewPostScreen');
-        navigation.navigate('ApplyEffects', {
+        navigation.navigate('EditImage ' && 'ApplyFilter', {
           image1: image,
         });
       })
@@ -116,7 +116,7 @@ export default function GalleryScreen() {
       {/* Image Gallery */}
 
       <ScrollView>
-        {detailViewVisible ? (
+        {/* {detailViewVisible ? (
           <Swiper loop={false} index={selectedIndex}>
             {nodes.map((node, index) => (
               <View
@@ -126,6 +126,7 @@ export default function GalleryScreen() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   backgroundColor: 'red',
+                  maxHeight: '100%',
                 }}>
                 <Image
                   style={{
@@ -152,39 +153,40 @@ export default function GalleryScreen() {
               </View>
             ))}
           </Swiper>
-        ) : (
-          <View
-            style={{
-              flex: 1,
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-            }}>
-            {nodes.map((node, index) => (
-              <TouchableOpacity
-                key={index}
+        ) : ( */}
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            backgroundColor: 'yellow',
+          }}>
+          {nodes.map((node, index) => (
+            <View
+              key={index}
+              style={{
+                height: 100,
+                minWidth: 100,
+                // flex: 1,
+              }}
+              onPress={() => {
+                setDetailViewVisibility(true);
+                setSelectedIndex(index);
+              }}>
+              <Image
                 style={{
-                  height: 100,
-                  minWidth: 100,
+                  height: '70%',
+                  minWidth: '70%',
                   flex: 1,
                 }}
-                onPress={() => {
-                  setDetailViewVisibility(true);
-                  setSelectedIndex(index);
-                }}>
-                <Image
-                  style={{
-                    height: 100,
-                    minWidth: 100,
-                    flex: 1,
-                  }}
-                  source={{
-                    uri: node.image.uri,
-                  }}
-                />
-              </TouchableOpacity>
-            ))}
-          </View>
-        )}
+                source={{
+                  uri: node.image.uri,
+                }}
+              />
+            </View>
+          ))}
+        </View>
+        {/* )} */}
       </ScrollView>
 
       {/* footer */}
@@ -225,7 +227,7 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 580,
+    //marginTop: 580,
   },
   pickedFooterSection: {
     flex: 1,

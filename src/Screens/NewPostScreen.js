@@ -24,6 +24,7 @@ export default function NewPostScreen({route}) {
 
   const productId = route.params.image1?.path;
   const video = route.params.video?.path;
+
   console.log(video, productId, 'props');
 
   const [data, setData] = useState({
@@ -37,8 +38,9 @@ export default function NewPostScreen({route}) {
   //console.log(arrayData.length, 'aarrr');
   // console.log(arrayData.length, 'data', productId);
   //console.log(route.params.image1, 'newPost');
-  console.log(productId);
+  // console.log(productId);
   // console.log('img' + productId);
+
   const onBuffer = buffer => {
     console.log('buffring', buffer);
   };

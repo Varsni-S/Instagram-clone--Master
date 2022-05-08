@@ -21,19 +21,21 @@ import {
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-export default function ApplyEffects({route}) {
+export default function ApplyFilter({route}) {
   const productId = route.params.image1?.path;
 
   const navigation = useNavigation();
 
   const [effect, setEffect] = useState('');
+
   const imgref = useRef();
 
   const saveImg = image => {
-    imgref.current.capture().then(uri => {
-      console.log('filter added ', uri);
-      navigation.navigate('NewPostScreen', {image1: image});
-    });
+    console.log('filter added ');
+    navigation.navigate('NewPostScreen', {image1: image});
+    // imgref.current.capture().then(uri => {
+
+    // });
   };
 
   return (
@@ -66,15 +68,7 @@ export default function ApplyEffects({route}) {
 
       {/* Main Image */}
       <View style={styles.mainImageWrapper}>
-        {effect === 'original' ? (
-          <Image
-            style={styles.mainImage}
-            source={{
-              uri: productId,
-            }}
-            resizeMode={'contain'}
-          />
-        ) : effect === 'grayscale' ? (
+        {effect === 'grayscale' ? (
           <Grayscale>
             <Image
               style={styles.mainImage}
@@ -95,7 +89,7 @@ export default function ApplyEffects({route}) {
             />
           </Sepia>
         ) : effect === 'tint' ? (
-          <Tint>
+          <Tint amount={1.25}>
             <Image
               style={styles.mainImage}
               source={{
@@ -104,8 +98,13 @@ export default function ApplyEffects({route}) {
               resizeMode={'contain'}
             />
           </Tint>
-        ) : effect === 'saturate' ? (
-          <Saturate>
+        ) : effect === 'colorMatrix' ? (
+          <ColorMatrix
+            matrix={concatColorMatrices([
+              saturate(-0.9),
+              contrast(5.2),
+              invert(),
+            ])}>
             <Image
               style={styles.mainImage}
               source={{
@@ -113,15 +112,22 @@ export default function ApplyEffects({route}) {
               }}
               resizeMode={'contain'}
             />
-          </Saturate>
-        ) : null}
+          </ColorMatrix>
+        ) : (
+          <Image
+            style={styles.mainImage}
+            source={{
+              uri: productId,
+            }}
+            resizeMode={'contain'}
+          />
+        )}
       </View>
 
       {/* Effects */}
       <View style={styles.effectPreviewWrapper}>
         <ScrollView horizontal={true}>
           {/* original */}
-
           <TouchableOpacity
             style={styles.previewImageWRapper}
             onPress={() => setEffect('original')}>
@@ -171,7 +177,7 @@ export default function ApplyEffects({route}) {
             style={styles.previewImageWRapper}
             onPress={() => setEffect('tint')}>
             <Text style={styles.previewTitle}>Tint</Text>
-            <Tint>
+            <Tint amount={1.25}>
               <Image
                 source={{
                   uri: productId,
@@ -181,12 +187,32 @@ export default function ApplyEffects({route}) {
             </Tint>
           </TouchableOpacity>
 
-          {/* Saturate */}
+          {/* Color Matrix */}
           <TouchableOpacity
+            style={styles.previewImageWRapper}
+            onPress={() => setEffect('colorMatrix')}>
+            <Text style={styles.previewTitle}>Color Matrix</Text>
+            <ColorMatrix
+              matrix={concatColorMatrices([
+                saturate(-0.9),
+                contrast(5.2),
+                invert(),
+              ])}>
+              <Image
+                source={{
+                  uri: productId,
+                }}
+                style={styles.previewImage}
+              />
+            </ColorMatrix>
+          </TouchableOpacity>
+
+          {/* Saturate */}
+          {/* <TouchableOpacity
             style={styles.previewImageWRapper}
             onPress={() => setEffect('saturate')}>
             <Text style={styles.previewTitle}>Saturate</Text>
-            <Saturate>
+            <Saturate amount={(number = 1)}>
               <Image
                 source={{
                   uri: productId,
@@ -194,7 +220,7 @@ export default function ApplyEffects({route}) {
                 style={styles.previewImage}
               />
             </Saturate>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </ScrollView>
       </View>
 
@@ -204,7 +230,12 @@ export default function ApplyEffects({route}) {
           <Text style={styles.pickedFooterTitle}>FITER</Text>
         </View>
         <View style={styles.footerSection}>
-          <Text style={styles.footerTitle}>EDIT</Text>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('EditImage');
+            }}>
+            <Text style={styles.footerTitle}>EDIT</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
