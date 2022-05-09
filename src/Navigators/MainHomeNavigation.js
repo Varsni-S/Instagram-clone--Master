@@ -60,7 +60,6 @@ export default function MyStack() {
             },
             headerTitle: 'Message',
           }}
-          //options={{headerShown: false}}
         />
         <Stack.Screen
           name="Status"
