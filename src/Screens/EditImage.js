@@ -7,6 +7,9 @@ import {
   faAdjust,
   faMagic,
   faFilter,
+  faCaretUp,
+  faThermometerEmpty,
+  faTint,
 } from '@fortawesome/free-solid-svg-icons';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
@@ -16,7 +19,9 @@ const height = Dimensions.get('window').height;
 
 export default function EditImage({route}) {
   const productId = route.params.image1?.path;
+
   const navigation = useNavigation();
+  console.log(productId, route.params.image1, 'edit');
 
   return (
     <View style={styles.container}>
@@ -39,9 +44,6 @@ export default function EditImage({route}) {
           onPress={() => {
             saveImg();
           }}>
-          {/* onPress={image => {
-          navigation.navigate('NewPostScreen', {image1: image});
-        }} */}
           <Text style={styles.headerSubTitle}>Next</Text>
         </TouchableOpacity>
       </View>
@@ -59,10 +61,14 @@ export default function EditImage({route}) {
 
       {/* Editing tools */}
       <ScrollView style={styles.editingTool} horizontal={true}>
-        <View style={styles.toolSpace}>
+        <TouchableOpacity
+          style={styles.toolSpace}
+          onPress={() => {
+            navigation.navigate('ImageAdjust', {image1: {path: productId}});
+          }}>
           <Text style={styles.toolText}>Adjust </Text>
           <FontAwesomeIcon icon={faAdjust} color="white" size={40} />
-        </View>
+        </TouchableOpacity>
         <View style={styles.toolSpace}>
           <Text style={styles.toolText}>Brightness</Text>
           <FontAwesomeIcon icon={faSun} color="white" size={40} />
@@ -71,6 +77,18 @@ export default function EditImage({route}) {
           <Text style={styles.toolText}>Filter </Text>
           <FontAwesomeIcon icon={faFilter} color="white" size={40} />
         </View>
+        <View style={styles.toolSpace}>
+          <Text style={styles.toolText}>Saturation </Text>
+          <FontAwesomeIcon icon={faCaretUp} color="white" size={70} />
+        </View>
+        <View style={styles.toolSpace}>
+          <Text style={styles.toolText}>Warm </Text>
+          <FontAwesomeIcon icon={faThermometerEmpty} color="white" size={40} />
+        </View>
+        <View style={styles.toolSpace}>
+          <Text style={styles.toolText}>Filter </Text>
+          <FontAwesomeIcon icon={faTint} color="white" size={40} />
+        </View>
       </ScrollView>
 
       {/* footer */}
@@ -78,7 +96,9 @@ export default function EditImage({route}) {
         <View style={styles.footerSection}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('ApplyFilter');
+              navigation.navigate('ApplyFilter', {
+                image1: {path: productId},
+              });
             }}>
             <Text style={styles.footerTitle}>FILTER</Text>
           </TouchableOpacity>
@@ -148,7 +168,7 @@ const styles = StyleSheet.create({
 
   mainImage: {
     width: width,
-    height: height / 2,
+    height: 450,
   },
   previewImage: {
     width: width / 4,
@@ -167,8 +187,9 @@ const styles = StyleSheet.create({
   },
   editingTool: {
     flexDirection: 'row',
-    margin: 20,
-    padding: 35,
+    margin: 10,
+    padding: 15,
+    marginTop: 30,
   },
   toolText: {
     color: 'white',

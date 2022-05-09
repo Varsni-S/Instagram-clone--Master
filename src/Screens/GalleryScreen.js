@@ -11,11 +11,7 @@ import {
 import React, {useEffect, useState} from 'react';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {
-  faArrowLeft,
-  faCaretDown,
-  faTimes,
-} from '@fortawesome/free-solid-svg-icons';
+import {faCaretDown, faTimes} from '@fortawesome/free-solid-svg-icons';
 import {useNavigation} from '@react-navigation/native';
 import ImagePicker from 'react-native-image-crop-picker';
 import Swiper from 'react-native-swiper';
@@ -71,8 +67,7 @@ export default function GalleryScreen() {
     })
       .then(image => {
         console.log(image, 'img picked');
-        // navigation.navigate('NewPostScreen');
-        navigation.navigate('EditImage ' && 'ApplyFilter', {
+        navigation.navigate('ApplyFilter', {
           image1: image,
         });
       })
@@ -159,7 +154,7 @@ export default function GalleryScreen() {
             flex: 1,
             flexDirection: 'row',
             flexWrap: 'wrap',
-            backgroundColor: 'yellow',
+            backgroundColor: 'grey',
           }}>
           {nodes.map((node, index) => (
             <View

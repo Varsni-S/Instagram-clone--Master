@@ -1,5 +1,5 @@
 import {View, Text, StyleSheet, Button, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {RNCamera} from 'react-native-camera';
 import {useCamera} from 'react-native-camera-hooks';
 import RNFS from 'react-native-fs';
@@ -13,12 +13,14 @@ const RNFetchBlob = NativeModules.RNFetchBlob;
 
 export default function PhotoCapture() {
   const [{cameraRef}, {takePicture}] = useCamera(null);
+  //const [front, setFront] = useState;
+
   const navigation = useNavigation();
 
   const captureHandle = async () => {
     try {
       const data = await takePicture();
-      console.log(data.uri, 'hhh');
+      console.log(data.uri, 'take pic');
       const filePath = data.uri;
       const newFilePath =
         RNFS.ExternalDirectoryPath + '/' + 'IMG' + Date.now() + '.jpg';
@@ -55,6 +57,7 @@ export default function PhotoCapture() {
       </View>
 
       {/* camera */}
+      {}
       <RNCamera
         ref={cameraRef}
         type={RNCamera.Constants.Type.back}

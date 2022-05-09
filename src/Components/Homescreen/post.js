@@ -188,7 +188,10 @@ export default function post({imageUrl, contentText, profileName}) {
           </TouchableOpacity>
         </View>
         <View style={style.iconsRight}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Demo');
+            }}>
             <FontAwesomeIcon
               icon="bookmark"
               size={20}

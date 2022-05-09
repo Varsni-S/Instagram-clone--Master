@@ -24,6 +24,8 @@ import PhotoCapture from '../Screens/PhotoCapture';
 import VideoCapture from '../Screens/VideoCapture';
 import ApplyFilter from '../Screens/ApplyFilter';
 import EditImage from '../Screens/EditImage';
+import Demo from '../Screens/Demo';
+import ImageAdjust from '../Screens/ImageAdjust';
 
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
@@ -153,6 +155,16 @@ export default function MyStack() {
             },
             headerTitle: 'Search',
           }}
+        />
+        <Stack.Screen
+          name="Demo"
+          component={Demo}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ImageAdjust"
+          component={ImageAdjust}
+          options={{headerShown: false}}
         />
       </Stack.Navigator>
     </>

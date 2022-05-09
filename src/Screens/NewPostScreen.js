@@ -23,6 +23,8 @@ export default function NewPostScreen({route}) {
   const dispatch = useDispatch();
 
   const productId = route.params.image1?.path;
+
+  console.log(productId, route.params.image1, 'newPost');
   const video = route.params.video?.path;
 
   console.log(video, productId, 'props');

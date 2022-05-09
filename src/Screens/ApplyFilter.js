@@ -18,6 +18,7 @@ import {
   Saturate,
 } from 'react-native-color-matrix-image-filters';
 
+import RNViewShot from 'react-native-view-shot';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
@@ -31,11 +32,14 @@ export default function ApplyFilter({route}) {
   const imgref = useRef();
 
   const saveImg = image => {
-    console.log('filter added ');
-    navigation.navigate('NewPostScreen', {image1: image});
-    // imgref.current.capture().then(uri => {
-
-    // });
+    imgref.current.capture().then(uri => {
+      console.log('filter added ', uri);
+      navigation.navigate('NewPostScreen', {
+        image1: {path: uri},
+      });
+    });
+    // console.log('filter added ');
+    // navigation.navigate('NewPostScreen', {image1: image});
   };
 
   return (
@@ -59,9 +63,6 @@ export default function ApplyFilter({route}) {
           onPress={() => {
             saveImg();
           }}>
-          {/* onPress={image => {
-            navigation.navigate('NewPostScreen', {image1: image});
-          }} */}
           <Text style={styles.headerSubTitle}>Next</Text>
         </TouchableOpacity>
       </View>
@@ -69,42 +70,60 @@ export default function ApplyFilter({route}) {
       {/* Main Image */}
       <View style={styles.mainImageWrapper}>
         {effect === 'grayscale' ? (
-          <Grayscale>
-            <Image
-              style={styles.mainImage}
-              source={{
-                uri: productId,
-              }}
-              resizeMode={'contain'}
-            />
-          </Grayscale>
+          <RNViewShot ref={imgref} options={{format: 'jpg', quality: 1}}>
+            <Grayscale>
+              <Image
+                style={styles.mainImage}
+                source={{
+                  uri: productId,
+                }}
+                resizeMode={'contain'}
+              />
+            </Grayscale>
+          </RNViewShot>
         ) : effect === 'sepia' ? (
-          <Sepia>
-            <Image
-              style={styles.mainImage}
-              source={{
-                uri: productId,
-              }}
-              resizeMode={'contain'}
-            />
-          </Sepia>
+          <RNViewShot ref={imgref} options={{format: 'jpg', quality: 1}}>
+            <Sepia>
+              <Image
+                style={styles.mainImage}
+                source={{
+                  uri: productId,
+                }}
+                resizeMode={'contain'}
+              />
+            </Sepia>
+          </RNViewShot>
         ) : effect === 'tint' ? (
-          <Tint amount={1.25}>
-            <Image
-              style={styles.mainImage}
-              source={{
-                uri: productId,
-              }}
-              resizeMode={'contain'}
-            />
-          </Tint>
+          <RNViewShot ref={imgref} options={{format: 'jpg', quality: 1}}>
+            <Tint amount={1.25}>
+              <Image
+                style={styles.mainImage}
+                source={{
+                  uri: productId,
+                }}
+                resizeMode={'contain'}
+              />
+            </Tint>
+          </RNViewShot>
         ) : effect === 'colorMatrix' ? (
-          <ColorMatrix
-            matrix={concatColorMatrices([
-              saturate(-0.9),
-              contrast(5.2),
-              invert(),
-            ])}>
+          <RNViewShot ref={imgref} options={{format: 'jpg', quality: 1}}>
+            <ColorMatrix
+              matrix={concatColorMatrices([
+                saturate(-0.9),
+                contrast(5.2),
+                invert(),
+              ])}>
+              <Image
+                style={styles.mainImage}
+                source={{
+                  uri: productId,
+                }}
+                resizeMode={'contain'}
+              />
+            </ColorMatrix>
+          </RNViewShot>
+        ) : (
+          <RNViewShot ref={imgref} options={{format: 'jpg', quality: 1}}>
             <Image
               style={styles.mainImage}
               source={{
@@ -112,15 +131,7 @@ export default function ApplyFilter({route}) {
               }}
               resizeMode={'contain'}
             />
-          </ColorMatrix>
-        ) : (
-          <Image
-            style={styles.mainImage}
-            source={{
-              uri: productId,
-            }}
-            resizeMode={'contain'}
-          />
+          </RNViewShot>
         )}
       </View>
 
@@ -232,7 +243,9 @@ export default function ApplyFilter({route}) {
         <View style={styles.footerSection}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('EditImage');
+              navigation.navigate('EditImage', {
+                image1: {path: productId},
+              });
             }}>
             <Text style={styles.footerTitle}>EDIT</Text>
           </TouchableOpacity>
@@ -299,7 +312,7 @@ const styles = StyleSheet.create({
 
   mainImage: {
     width: width,
-    height: height / 2,
+    height: 430,
   },
   previewImage: {
     width: width / 4,
