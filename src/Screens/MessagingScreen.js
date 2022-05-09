@@ -1,12 +1,30 @@
-import {text} from '@fortawesome/fontawesome-svg-core';
 import React, {useRef} from 'react';
-import {View, Button, Text} from 'react-native';
-import Header from '../Components/Homescreen/header';
+import {View, Button, Text, TextInput, StyleSheet} from 'react-native';
 
-export default function Example() {
+export default function Message() {
   return (
     <View style={{flex: 1, backgroundColor: 'black'}}>
-      <Text style={{color: 'white'}}>Message</Text>
+      <TextInput
+        style={styles.textInputStyle}
+        //   onChangeText={text => searchFilterFunction(text)}
+        // value={search}
+        underlineColorAndroid="transparent"
+        placeholder="Search"
+        placeholderTextColor="white"
+      />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  textInputStyle: {
+    height: 40,
+    borderWidth: 1,
+    paddingLeft: 20,
+    margin: 5,
+    borderColor: 'grey',
+    backgroundColor: 'black',
+    borderRadius: 10,
+    color: 'white',
+  },
+});

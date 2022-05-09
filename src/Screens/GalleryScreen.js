@@ -16,6 +16,7 @@ import {useNavigation} from '@react-navigation/native';
 import ImagePicker from 'react-native-image-crop-picker';
 import Swiper from 'react-native-swiper';
 import CameraRoll from '@react-native-community/cameraroll';
+import SearchContent from '../Components/Homescreen/SearchContent';
 
 export default function GalleryScreen() {
   const [nodes, setNodes] = useState([]);
@@ -109,9 +110,13 @@ export default function GalleryScreen() {
       </View>
 
       {/* Image Gallery */}
-
       <ScrollView>
-        {/* {detailViewVisible ? (
+        <SearchContent />
+      </ScrollView>
+
+      {/* 
+      <ScrollView> */}
+      {/* {detailViewVisible ? (
           <Swiper loop={false} index={selectedIndex}>
             {nodes.map((node, index) => (
               <View
@@ -149,7 +154,7 @@ export default function GalleryScreen() {
             ))}
           </Swiper>
         ) : ( */}
-        <View
+      {/* <View
           style={{
             flex: 1,
             flexDirection: 'row',
@@ -182,7 +187,7 @@ export default function GalleryScreen() {
           ))}
         </View>
         {/* )} */}
-      </ScrollView>
+      {/* </ScrollView> */}
 
       {/* footer */}
       <View style={styles.footer}>

@@ -89,9 +89,13 @@ export default function PhotoCapture() {
             PHOTOS
           </Text>
         </View>
-        <View style={styles.footerSection}>
+        <TouchableOpacity
+          style={styles.footerSection}
+          onPress={() => {
+            navigation.navigate('VideoCapture');
+          }}>
           <Text style={styles.footerTitle}>VIDEOS</Text>
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );

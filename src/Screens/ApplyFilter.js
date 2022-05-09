@@ -38,8 +38,6 @@ export default function ApplyFilter({route}) {
         image1: {path: uri},
       });
     });
-    // console.log('filter added ');
-    // navigation.navigate('NewPostScreen', {image1: image});
   };
 
   return (

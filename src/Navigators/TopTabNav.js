@@ -2,6 +2,7 @@ import {View, Text, color, ScrollView} from 'react-native';
 import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import SearchContent from '../Components/Homescreen/SearchContent';
 
 export default function TopTabNav() {
   const Tab = createMaterialTopTabNavigator();
@@ -34,6 +35,7 @@ export default function TopTabNav() {
           height: '100%',
         }}>
         <Text style={{color: 'white'}}>Posts</Text>
+
         <View
           style={{
             width: '100%',

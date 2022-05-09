@@ -40,6 +40,16 @@ export default function ImageAdjust({route}) {
   const [type, setType] = useState();
 
   const imgref = useRef();
+
+  const saveImg = image => {
+    imgref.current.capture().then(uri => {
+      console.log('image adjust', uri);
+      navigation.navigate('NewPostScreen', {
+        image1: {path: uri},
+      });
+    });
+  };
+
   return (
     <View style={styles.container}>
       {/* header */}
@@ -59,9 +69,12 @@ export default function ImageAdjust({route}) {
           </View>
         </View>
         <View>
-          <View>
+          <TouchableOpacity
+            onPress={() => {
+              saveImg();
+            }}>
             <Text style={styles.headerSubTitle}>Save</Text>
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
 

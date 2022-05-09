@@ -23,6 +23,8 @@ export default function EditImage({route}) {
   const navigation = useNavigation();
   console.log(productId, route.params.image1, 'edit');
 
+  const imgref = useRef();
+
   return (
     <View style={styles.container}>
       {/* header */}
@@ -40,12 +42,9 @@ export default function EditImage({route}) {
           color="white"
           style={{marginLeft: 150}}
         />
-        <TouchableOpacity
-          onPress={() => {
-            saveImg();
-          }}>
+        {/* <TouchableOpacity>
           <Text style={styles.headerSubTitle}>Next</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
 
       {/* Main Image */}
@@ -69,25 +68,19 @@ export default function EditImage({route}) {
           <Text style={styles.toolText}>Adjust </Text>
           <FontAwesomeIcon icon={faAdjust} color="white" size={40} />
         </TouchableOpacity>
-        <View style={styles.toolSpace}>
-          <Text style={styles.toolText}>Brightness</Text>
-          <FontAwesomeIcon icon={faSun} color="white" size={40} />
-        </View>
-        <View style={styles.toolSpace}>
+
+        <TouchableOpacity
+          style={styles.toolSpace}
+          onPress={() => {
+            navigation.navigate('ApplyFilter', {image1: {path: productId}});
+          }}>
           <Text style={styles.toolText}>Filter </Text>
           <FontAwesomeIcon icon={faFilter} color="white" size={40} />
-        </View>
-        <View style={styles.toolSpace}>
-          <Text style={styles.toolText}>Saturation </Text>
-          <FontAwesomeIcon icon={faCaretUp} color="white" size={70} />
-        </View>
+        </TouchableOpacity>
+
         <View style={styles.toolSpace}>
           <Text style={styles.toolText}>Warm </Text>
           <FontAwesomeIcon icon={faThermometerEmpty} color="white" size={40} />
-        </View>
-        <View style={styles.toolSpace}>
-          <Text style={styles.toolText}>Filter </Text>
-          <FontAwesomeIcon icon={faTint} color="white" size={40} />
         </View>
       </ScrollView>
 
