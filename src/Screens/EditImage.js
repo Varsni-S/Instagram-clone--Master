@@ -78,10 +78,14 @@ export default function EditImage({route}) {
           <FontAwesomeIcon icon={faFilter} color="white" size={40} />
         </TouchableOpacity>
 
-        <View style={styles.toolSpace}>
+        <TouchableOpacity
+          style={styles.toolSpace}
+          onPress={() => {
+            navigation.navigate('ImageWarm', {image1: {path: productId}});
+          }}>
           <Text style={styles.toolText}>Warm </Text>
           <FontAwesomeIcon icon={faThermometerEmpty} color="white" size={40} />
-        </View>
+        </TouchableOpacity>
       </ScrollView>
 
       {/* footer */}

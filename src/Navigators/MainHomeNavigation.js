@@ -26,6 +26,8 @@ import ApplyFilter from '../Screens/ApplyFilter';
 import EditImage from '../Screens/EditImage';
 import Demo from '../Screens/Demo';
 import ImageAdjust from '../Screens/ImageAdjust';
+import ChatScreen from '../Screens/ChatScreen';
+import ImageWarm from '../Screens/ImageWarm';
 
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
@@ -133,6 +135,11 @@ export default function MyStack() {
           options={{headerShown: false}}
         />
         <Stack.Screen
+          name="ChatScreen"
+          component={ChatScreen}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
           name="ApplyFilter"
           component={ApplyFilter}
           options={{headerShown: false}}
@@ -163,6 +170,11 @@ export default function MyStack() {
         <Stack.Screen
           name="ImageAdjust"
           component={ImageAdjust}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ImageWarm"
+          component={ImageWarm}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

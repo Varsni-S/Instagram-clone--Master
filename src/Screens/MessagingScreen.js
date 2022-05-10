@@ -1,7 +1,10 @@
 import React, {useRef} from 'react';
 import {View, Button, Text, TextInput, StyleSheet} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 export default function Message() {
+  const navigation = useNavigation();
+
   return (
     <View style={{flex: 1, backgroundColor: 'black'}}>
       <TextInput
@@ -11,6 +14,12 @@ export default function Message() {
         underlineColorAndroid="transparent"
         placeholder="Search"
         placeholderTextColor="white"
+      />
+      <Button
+        title="Chat screen"
+        onPress={() => {
+          navigation.navigate('ChatScreen');
+        }}
       />
     </View>
   );

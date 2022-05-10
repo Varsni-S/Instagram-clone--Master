@@ -8,10 +8,10 @@ import {
 } from 'react-native';
 import React, {useState, useRef} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {useNavigation} from '@react-navigation/native';
 import {faCaretDown, faTimes} from '@fortawesome/free-solid-svg-icons';
 import RNViewShot from 'react-native-view-shot';
 import Slider from 'react-native-slider';
+import {useNavigation} from '@react-navigation/native';
 import {
   Grayscale,
   Sepia,
@@ -28,16 +28,15 @@ import {
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-export default function ImageAdjust({route}) {
-  const navigation = useNavigation();
-  //image path
+export default function ImageWarm({route}) {
   const productId = route.params.image1?.path;
   console.log(route.params.image1, 'adjust');
+  const navigation = useNavigation();
 
-  const [brightvalue, setBrightValue] = useState(0.5);
-  const [contrastvalue, setContrastValue] = useState(0.5);
   const [saturatvalue, setSaturatValue] = useState(0.5);
-  const [type, setType] = useState();
+  const [tintvalue, setTintValue] = useState(0.5);
+  const [warmthValue, setWarmthValue] = useState(0.5);
+  const [type, setType] = useState('');
 
   const imgref = useRef();
 
@@ -63,7 +62,7 @@ export default function ImageAdjust({route}) {
           </TouchableOpacity>
           <View style={styles.headerTitleWrapper}>
             <Text style={styles.headerTitle}>
-              Adjust{' '}
+              Warm{' '}
               <FontAwesomeIcon icon={faCaretDown} color="white" size={20} />
             </Text>
           </View>
@@ -80,9 +79,9 @@ export default function ImageAdjust({route}) {
 
       {/* Main Image */}
       <View style={styles.mainImageWrapper}>
-        {type === 'brightness' ? (
+        {type === 'tint' ? (
           <RNViewShot ref={imgref} options={{format: 'jpg', quality: 1}}>
-            <Brightness amount={brightvalue}>
+            <Tint amount={tintvalue}>
               <Image
                 style={styles.mainImage}
                 source={{
@@ -90,19 +89,7 @@ export default function ImageAdjust({route}) {
                 }}
                 resizeMode={'contain'}
               />
-            </Brightness>
-          </RNViewShot>
-        ) : type === 'contrast' ? (
-          <RNViewShot ref={imgref} options={{format: 'jpg', quality: 1}}>
-            <Contrast amount={contrastvalue}>
-              <Image
-                style={styles.mainImage}
-                source={{
-                  uri: productId,
-                }}
-                resizeMode={'contain'}
-              />
-            </Contrast>
+            </Tint>
           </RNViewShot>
         ) : type === 'saturation' ? (
           <RNViewShot ref={imgref} options={{format: 'jpg', quality: 1}}>
@@ -116,6 +103,18 @@ export default function ImageAdjust({route}) {
               />
             </Saturate>
           </RNViewShot>
+        ) : type === 'warmth' ? (
+          <RNViewShot ref={imgref} options={{format: 'jpg', quality: 1}}>
+            <Temperature amount={warmthValue}>
+              <Image
+                style={styles.mainImage}
+                source={{
+                  uri: productId,
+                }}
+                resizeMode={'contain'}
+              />
+            </Temperature>
+          </RNViewShot>
         ) : (
           <Image
             style={styles.mainImage}
@@ -127,28 +126,13 @@ export default function ImageAdjust({route}) {
         )}
       </View>
 
-      {/* Slider Adjust */}
-      {/* brightness */}
-
+      {/* Warm Slider */}
       <View style={styles.sliderMain}>
-        <Text style={styles.sliderText}> Brightness</Text>
+        <Text style={styles.sliderText}> Tint </Text>
         <Slider
           style={{width: '80%', height: 40}}
-          value={brightvalue}
-          onValueChange={value => (
-            setType('brightness'), setBrightValue(value)
-          )}
-        />
-      </View>
-
-      <View style={styles.sliderMain}>
-        <Text style={styles.sliderText}> Contrast</Text>
-        <Slider
-          style={{width: '80%', height: 40}}
-          value={contrastvalue}
-          onValueChange={value => (
-            setType('contrast'), setContrastValue(value)
-          )}
+          value={tintvalue}
+          onValueChange={value => (setType('tint'), setTintValue(value))}
         />
       </View>
 
@@ -160,6 +144,15 @@ export default function ImageAdjust({route}) {
           onValueChange={value => (
             setType('saturation'), setSaturatValue(value)
           )}
+        />
+      </View>
+
+      <View style={styles.sliderMain}>
+        <Text style={styles.sliderText}> Warm </Text>
+        <Slider
+          style={{width: '80%', height: 40}}
+          value={warmthValue}
+          onValueChange={value => (setType('warmth'), setWarmthValue(value))}
         />
       </View>
     </View>
