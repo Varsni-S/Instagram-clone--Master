@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
   },
   editingTool: {
     flexDirection: 'row',
-    margin: 10,
+    margin: 60,
     padding: 15,
     marginTop: 30,
   },

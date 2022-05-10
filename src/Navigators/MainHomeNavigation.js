@@ -1,4 +1,5 @@
 import React from 'react';
+import {View} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Tabs from './Tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
@@ -28,6 +29,8 @@ import Demo from '../Screens/Demo';
 import ImageAdjust from '../Screens/ImageAdjust';
 import ChatScreen from '../Screens/ChatScreen';
 import ImageWarm from '../Screens/ImageWarm';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faPlus, faVideoCamera} from '@fortawesome/free-solid-svg-icons';
 
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
@@ -61,6 +64,17 @@ export default function MyStack() {
               color: 'white',
             },
             headerTitle: 'Message',
+            headerRight: () => (
+              <View style={{flexDirection: 'row'}}>
+                <FontAwesomeIcon icon={faVideoCamera} size={22} color="white" />
+                <FontAwesomeIcon
+                  icon={faPlus}
+                  size={22}
+                  color="white"
+                  style={{marginLeft: 20, marginRight: 20}}
+                />
+              </View>
+            ),
           }}
         />
         <Stack.Screen
@@ -137,7 +151,11 @@ export default function MyStack() {
         <Stack.Screen
           name="ChatScreen"
           component={ChatScreen}
-          options={{headerShown: false}}
+          options={({route}) => ({
+            title: route.params.userName,
+            // headerStyle: {backgroundColor: 'black'},
+            // headerTitleStyle: {color: 'white'},
+          })}
         />
         <Stack.Screen
           name="ApplyFilter"
