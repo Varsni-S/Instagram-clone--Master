@@ -103,24 +103,29 @@ export default function ProfileScreen() {
               }}>
               20
             </Text>
-            <Text
-              style={{
-                color: 'white',
-                marginLeft: 58,
-                fontSize: 20,
-                fontWeight: 'bold',
-              }}>
-              250
-            </Text>
-            <Text
-              style={{
-                color: 'white',
-                marginLeft: 65,
-                fontSize: 20,
-                fontWeight: 'bold',
-              }}>
-              120
-            </Text>
+
+            <TouchableOpacity onPress={() => navigation.navigate('Followers')}>
+              <Text
+                style={{
+                  color: 'white',
+                  marginLeft: 58,
+                  fontSize: 20,
+                  fontWeight: 'bold',
+                }}>
+                250
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Following')}>
+              <Text
+                style={{
+                  color: 'white',
+                  marginLeft: 65,
+                  fontSize: 20,
+                  fontWeight: 'bold',
+                }}>
+                120
+              </Text>
+            </TouchableOpacity>
           </View>
 
           {/* post followers following */}

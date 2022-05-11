@@ -5,11 +5,11 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import Share from 'react-native-share';
-//import RNFetchBlob from 'rn-fetch-blob';
+import RNFetchBlob from 'rn-fetch-blob';
 import Video from 'react-native-video';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {NativeModules} from 'react-native';
-const RNFetchBlob = NativeModules.RNFetchBlob;
+//const RNFetchBlob = NativeModules.RNFetchBlob;
 
 export default function post({imageUrl, contentText, profileName}) {
   const refRBSheet = useRef();
@@ -42,15 +42,15 @@ export default function post({imageUrl, contentText, profileName}) {
   const img = 'https://mcdn.wallpapersafari.com/medium/28/67/5PchDg.jpg';
 
   const shareTheProductDetails = imagesPath => {
-    // console.log(imagesPath, 'image share');
+    console.log(imagesPath, 'image share');
     let imagePath = null;
     RNFetchBlob.config({
       fileCache: true,
     })
       .fetch('GET', imagesPath)
-      // the image is now dowloaded to device's storage
       .then(resp => {
-        // the image path you can use it directly with Image component
+        console.log(resp, 'resp');
+
         imagePath = resp.path();
         return resp.readFile('base64');
       })

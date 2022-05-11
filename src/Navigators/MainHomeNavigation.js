@@ -31,6 +31,8 @@ import ChatScreen from '../Screens/ChatScreen';
 import ImageWarm from '../Screens/ImageWarm';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faPlus, faVideoCamera} from '@fortawesome/free-solid-svg-icons';
+import Followers from '../Screens/Followers';
+import Following from '../Screens/Following';
 
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
@@ -193,6 +195,16 @@ export default function MyStack() {
         <Stack.Screen
           name="ImageWarm"
           component={ImageWarm}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Followers"
+          component={Followers}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Following"
+          component={Following}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

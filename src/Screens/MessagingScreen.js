@@ -2,6 +2,8 @@ import React, {useRef} from 'react';
 import {View, Button, Text, TextInput, StyleSheet, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faPhone} from '@fortawesome/free-solid-svg-icons';
 
 const MessagesData = [
   {
@@ -110,7 +112,8 @@ export default function Message() {
                 <View style={styles.textSection}>
                   <View style={styles.userInfoText}>
                     <Text style={styles.userName}>{item.userName}</Text>
-                    <Text style={styles.postTime}>{item.messageTime}</Text>
+                    <FontAwesomeIcon icon={faPhone} size={20} color="white" />
+                    {/* <Text style={styles.postTime}>{item.messageTime}</Text> */}
                   </View>
                   <Text style={styles.messageText}>{item.messageText}</Text>
                 </View>
@@ -188,5 +191,6 @@ const styles = StyleSheet.create({
   messageText: {
     fontSize: 14,
     color: 'grey',
+    width: '80%',
   },
 });
