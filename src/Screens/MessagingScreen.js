@@ -1,5 +1,13 @@
 import React, {useRef} from 'react';
-import {View, Button, Text, TextInput, StyleSheet, Image} from 'react-native';
+import {
+  View,
+  Button,
+  Text,
+  TextInput,
+  StyleSheet,
+  Image,
+  Linking,
+} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
@@ -74,6 +82,9 @@ const MessagesData = [
 
 export default function Message() {
   const navigation = useNavigation();
+  // const phoneCall = () => {
+  //   Linking.openURL(`tel:+1(637)-979-0833`);
+  // };
 
   return (
     <View style={{flex: 1, backgroundColor: 'black'}}>
@@ -112,7 +123,11 @@ export default function Message() {
                 <View style={styles.textSection}>
                   <View style={styles.userInfoText}>
                     <Text style={styles.userName}>{item.userName}</Text>
-                    <FontAwesomeIcon icon={faPhone} size={20} color="white" />
+                    <TouchableOpacity>
+                      {/* onPress={phoneCall()} */}
+                      <FontAwesomeIcon icon={faPhone} size={20} color="white" />
+                    </TouchableOpacity>
+
                     {/* <Text style={styles.postTime}>{item.messageTime}</Text> */}
                   </View>
                   <Text style={styles.messageText}>{item.messageText}</Text>

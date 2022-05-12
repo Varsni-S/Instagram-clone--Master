@@ -6,12 +6,11 @@ import {FriendsProfileData} from '../StaticDatas/FriendsProfileData';
 export default function Following() {
   return (
     <View style={styles.container}>
-      <Text style={{color: 'white'}}>120 Following</Text>
       <FlatList
         data={FriendsProfileData}
         keyExtractor={item => item.id}
         renderItem={({item}) => (
-          <TouchableOpacity style={{flexDirection: 'row'}}>
+          <View style={{flexDirection: 'row'}}>
             <View style={styles.userImgWrapper}>
               <Image source={item.profileImage} style={styles.userImg} />
             </View>
@@ -19,8 +18,25 @@ export default function Following() {
               <Text style={styles.userName}>{item.name}</Text>
               <Text style={styles.user}>{item.accountName}</Text>
             </View>
-            <View></View>
-          </TouchableOpacity>
+            <TouchableOpacity>
+              <Text
+                style={{
+                  color: 'white',
+                  borderWidth: 1,
+                  marginTop: 15,
+                  padding: 5,
+                  color: 'white',
+                  borderColor: 'white',
+                  backgroundColor: 'black',
+                  width: 80,
+
+                  borderRadius: 6,
+                  textAlign: 'center',
+                }}>
+                Following
+              </Text>
+            </TouchableOpacity>
+          </View>
         )}
       />
     </View>
@@ -68,7 +84,7 @@ const styles = StyleSheet.create({
     paddingLeft: 0,
     marginLeft: 10,
     marginBottom: 5,
-    width: 300,
+    width: 200,
     borderBottomWidth: 1,
     // borderBottomColor: '#cccccc',
   },

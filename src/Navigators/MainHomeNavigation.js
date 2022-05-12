@@ -33,6 +33,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faPlus, faVideoCamera} from '@fortawesome/free-solid-svg-icons';
 import Followers from '../Screens/Followers';
 import Following from '../Screens/Following';
+import FollowersTab from './FollowersTab';
 
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
@@ -199,13 +200,18 @@ export default function MyStack() {
         />
         <Stack.Screen
           name="Followers"
-          component={Followers}
-          options={{headerShown: false}}
+          component={FollowersTab}
+          options={({route}) => ({
+            title: 'Varsni_11',
+            headerStyle: {backgroundColor: 'black'},
+            headerTitleStyle: {color: 'white'},
+          })}
+          //options={{headerShown: false}}
         />
         <Stack.Screen
           name="Following"
-          component={Following}
-          options={{headerShown: false}}
+          component={FollowersTab}
+          //options={{headerShown: false}}
         />
       </Stack.Navigator>
     </>

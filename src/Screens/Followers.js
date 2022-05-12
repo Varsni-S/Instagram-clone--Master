@@ -1,16 +1,22 @@
-import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Image,
+  Button,
+} from 'react-native';
 import React from 'react';
 import {FlatList} from 'react-native-gesture-handler';
 import {FriendsProfileData} from '../StaticDatas/FriendsProfileData';
 export default function Followers() {
   return (
     <View style={styles.container}>
-      <Text style={{color: 'white'}}>250 Followers</Text>
       <FlatList
         data={FriendsProfileData}
         keyExtractor={item => item.id}
         renderItem={({item}) => (
-          <TouchableOpacity style={{flexDirection: 'row'}}>
+          <View style={{flexDirection: 'row'}}>
             <View style={styles.userImgWrapper}>
               <Image source={item.profileImage} style={styles.userImg} />
             </View>
@@ -18,8 +24,25 @@ export default function Followers() {
               <Text style={styles.userName}>{item.name}</Text>
               <Text style={styles.user}>{item.accountName}</Text>
             </View>
-            <View></View>
-          </TouchableOpacity>
+            <TouchableOpacity>
+              <Text
+                style={{
+                  color: 'white',
+                  borderWidth: 1,
+                  marginTop: 15,
+                  padding: 5,
+                  color: 'white',
+                  borderColor: 'white',
+                  backgroundColor: 'black',
+                  width: 80,
+
+                  borderRadius: 6,
+                  textAlign: 'center',
+                }}>
+                Remove
+              </Text>
+            </TouchableOpacity>
+          </View>
         )}
       />
     </View>
@@ -45,7 +68,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
   },
   card: {
-    width: '100%',
+    //width: '100%',
     color: 'white',
   },
   userInfo: {
@@ -68,7 +91,7 @@ const styles = StyleSheet.create({
     paddingLeft: 0,
     marginLeft: 10,
     marginBottom: 5,
-    width: 300,
+    width: 200,
     borderBottomWidth: 1,
     // borderBottomColor: '#cccccc',
   },

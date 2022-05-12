@@ -14,7 +14,7 @@ export default function ChatScreen() {
     setMessages([
       {
         _id: 1,
-        text: 'Hello',
+        text: 'Hello  Varsni',
         createdAt: new Date(),
         user: {
           _id: 2,
