@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {ScrollView, StyleSheet, View, Image} from 'react-native';
 import Header from '../Components/Homescreen/header';
 import NewStory from '../Components/Homescreen/NewStory';
 import Post from '../Components/Homescreen/post';
@@ -14,6 +14,7 @@ export default function HomeScreen() {
   return (
     <View style={style.container}>
       <Header heading="Instagram" icon1="plus-square" icon2="comment-dots" />
+
       <ScrollView style={{height: '100%'}} showsVerticalScrollIndicator={false}>
         {/* Story */}
         <ScrollView>

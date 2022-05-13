@@ -83,7 +83,7 @@ const MessagesData = [
 export default function Message() {
   const navigation = useNavigation();
   // const phoneCall = () => {
-  //   Linking.openURL(`tel:+1(637)-979-0833`);
+  //   Linking.openURL(`tel:+1(944)-223-9791`);
   // };
 
   return (
@@ -123,10 +123,13 @@ export default function Message() {
                 <View style={styles.textSection}>
                   <View style={styles.userInfoText}>
                     <Text style={styles.userName}>{item.userName}</Text>
-                    <TouchableOpacity>
-                      {/* onPress={phoneCall()} */}
+                    <View
+                      onPress={
+                        (phoneCall = () =>
+                          Linking.openURL(`tel:+1(944)-223-9791`))
+                      }>
                       <FontAwesomeIcon icon={faPhone} size={20} color="white" />
-                    </TouchableOpacity>
+                    </View>
 
                     {/* <Text style={styles.postTime}>{item.messageTime}</Text> */}
                   </View>

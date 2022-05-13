@@ -200,7 +200,7 @@ export default function GalleryScreen() {
             onPress={() => {
               navigation.navigate('PhotoCapture');
             }}>
-            PHOTOS
+            CAMERA
           </Text>
         </View>
         <View style={styles.footerSection}>

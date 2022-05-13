@@ -51,7 +51,7 @@ export default function PhotoCapture() {
             <FontAwesomeIcon icon={faTimes} color="white" size={22} />
           </TouchableOpacity>
           <View style={styles.headerTitleWrapper}>
-            <Text style={styles.headerTitle}>PHOTOS</Text>
+            <Text style={styles.headerTitle}>CAMERA</Text>
           </View>
         </View>
       </View>
@@ -86,7 +86,7 @@ export default function PhotoCapture() {
             onPress={() => {
               navigation.navigate('PhotoCapture');
             }}>
-            PHOTOS
+            CAMERA
           </Text>
         </View>
         <TouchableOpacity

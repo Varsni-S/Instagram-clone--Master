@@ -96,7 +96,7 @@ export default function VideoCapture() {
             onPress={() => {
               navigation.navigate('PhotoCapture');
             }}>
-            PHOTOS
+            CAMERA
           </Text>
         </View>
         <View style={styles.pickedFooterSection}>
