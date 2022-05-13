@@ -39,9 +39,17 @@ export default function VideoCapture() {
   const videoCapture = () => {
     ImagePicker.openCamera({
       mediaType: 'video',
-    }).then(image => {
-      console.log(image);
-    });
+    })
+      .then(video => {
+        navigation.navigate('NewPostScreen', {
+          video: video,
+        });
+        console.log('jjio');
+        // console.log(image);
+      })
+      .catch(error => {
+        console.log(error, 'ttt');
+      });
   };
   return (
     <View style={styles.container}>
@@ -77,7 +85,7 @@ export default function VideoCapture() {
         />
       </View>
 
-      {/* <Button title="Video capture" onPress={() => videoCapture()} /> */}
+      <Button title="Video capture" onPress={() => videoCapture()} />
 
       {/* footer */}
       <View style={styles.footer}>
