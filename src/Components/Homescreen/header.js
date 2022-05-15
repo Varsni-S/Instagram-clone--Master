@@ -12,6 +12,11 @@ export default function header({icon1, icon2, heading}) {
   const newContentFunction = () => {
     refRBSheet.current.open();
   };
+
+  const newSetting = () => {
+    refRBSheet.current.open();
+  };
+
   return (
     <>
       <View style={style.header}>
@@ -69,7 +74,7 @@ export default function header({icon1, icon2, heading}) {
 
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('ReelsScreen'), refRBSheet.current.close();
+              navigation.navigate('ReelsCamera'), refRBSheet.current.close();
             }}>
             <Text style={style.bottomSheetText}>Reels</Text>
           </TouchableOpacity>

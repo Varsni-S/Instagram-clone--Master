@@ -4,7 +4,7 @@ import {RNCamera} from 'react-native-camera';
 import {useCamera} from 'react-native-camera-hooks';
 import RNFS from 'react-native-fs';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faTimes} from '@fortawesome/free-solid-svg-icons';
+import {faTimes, faCircle, faRepeat} from '@fortawesome/free-solid-svg-icons';
 import {useNavigation} from '@react-navigation/native';
 import ImagePicker from 'react-native-image-crop-picker';
 
@@ -13,7 +13,7 @@ const RNFetchBlob = NativeModules.RNFetchBlob;
 
 export default function PhotoCapture() {
   const [{cameraRef}, {takePicture}] = useCamera(null);
-  //const [front, setFront] = useState;
+  const [front, setfront] = useState(false);
 
   const navigation = useNavigation();
 
@@ -57,17 +57,45 @@ export default function PhotoCapture() {
       </View>
 
       {/* camera */}
-      {}
-      <RNCamera
-        ref={cameraRef}
-        type={RNCamera.Constants.Type.back}
-        style={styles.preview}>
-        <Button
-          title="Capture"
-          color="#1eb900"
-          onPress={() => captureHandle()}
-        />
-      </RNCamera>
+      {front ? (
+        <RNCamera
+          ref={cameraRef}
+          type={RNCamera.Constants.Type.front}
+          style={styles.preview}>
+          {/* button */}
+          <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity
+              style={styles.captureBtn}
+              onPress={() => captureHandle()}>
+              <FontAwesomeIcon icon={faCircle} size={45} color="white" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{marginRight: 70, padding: 5}}
+              onPress={() => setfront(!front)}>
+              <FontAwesomeIcon icon={faRepeat} size={35} color="white" />
+            </TouchableOpacity>
+          </View>
+        </RNCamera>
+      ) : (
+        <RNCamera
+          ref={cameraRef}
+          type={RNCamera.Constants.Type.back}
+          style={styles.preview}>
+          {/* button */}
+          <View style={{flexDirection: 'row'}}>
+            <TouchableOpacity
+              style={styles.captureBtn}
+              onPress={() => captureHandle()}>
+              <FontAwesomeIcon icon={faCircle} size={45} color="white" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{marginRight: 70, padding: 5}}
+              onPress={() => setfront(true)}>
+              <FontAwesomeIcon icon={faRepeat} size={35} color="white" />
+            </TouchableOpacity>
+          </View>
+        </RNCamera>
+      )}
 
       {/* footer */}
       <View style={styles.footerWrapper}>
@@ -164,5 +192,12 @@ const styles = StyleSheet.create({
   pickedFooterTitle: {
     fontSize: 16,
     color: 'white',
+  },
+  captureBtn: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: 5,
+    marginLeft: 100,
   },
 });

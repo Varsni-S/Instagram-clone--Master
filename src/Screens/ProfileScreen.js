@@ -79,88 +79,99 @@ export default function ProfileScreen() {
 
   return (
     <View style={{flex: 1, backgroundColor: 'black'}}>
-      <Header heading="Profile" icon1="plus-square" icon2="bars" />
+      <View style={{flexDirection: 'row', margin: 10}}>
+        <Text style={{color: 'white', fontSize: 22, fontWeight: 'bold'}}>
+          Profile
+        </Text>
+        <TouchableOpacity
+          style={{marginLeft: 270}}
+          onPress={newContentFunction}>
+          <FontAwesomeIcon icon={faBars} size={20} color="white" />
+        </TouchableOpacity>
+      </View>
 
-      <ScrollView>
-        <View style={{flex: 1, marginTop: 10, flexDirection: 'row'}}>
-          <Image
-            source={{uri: changeImage}}
+      {/* profile data */}
+
+      <View style={{flex: 1, margin: 5, flexDirection: 'row'}}>
+        <Image
+          source={{uri: changeImage}}
+          style={{
+            width: 75,
+            height: 75,
+            borderRadius: 37.5,
+          }}
+        />
+
+        {/* numeric count */}
+        <View style={{flexDirection: 'row', marginTop: 20}}>
+          <Text
             style={{
-              width: 75,
-              height: 75,
-              borderRadius: 37.5,
-            }}
-          />
+              color: 'white',
+              marginLeft: 35,
+              fontSize: 20,
+              fontWeight: 'bold',
+            }}>
+            20
+          </Text>
 
-          {/* numeric count */}
-          <View style={{flexDirection: 'row', marginTop: 20}}>
+          <TouchableOpacity onPress={() => navigation.navigate('Followers')}>
             <Text
               style={{
                 color: 'white',
-                marginLeft: 35,
+                marginLeft: 58,
                 fontSize: 20,
                 fontWeight: 'bold',
               }}>
-              20
+              250
             </Text>
-
-            <TouchableOpacity onPress={() => navigation.navigate('Followers')}>
-              <Text
-                style={{
-                  color: 'white',
-                  marginLeft: 58,
-                  fontSize: 20,
-                  fontWeight: 'bold',
-                }}>
-                250
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Following')}>
-              <Text
-                style={{
-                  color: 'white',
-                  marginLeft: 65,
-                  fontSize: 20,
-                  fontWeight: 'bold',
-                }}>
-                120
-              </Text>
-            </TouchableOpacity>
-          </View>
-
-          {/* post followers following */}
-          <View style={{flexDirection: 'row', marginTop: 55, marginLeft: -250}}>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Following')}>
             <Text
               style={{
                 color: 'white',
-                marginLeft: 20,
+                marginLeft: 65,
                 fontSize: 20,
                 fontWeight: 'bold',
               }}>
-              Post
+              120
             </Text>
-            <Text
-              style={{
-                color: 'white',
-                marginLeft: 28,
-                fontSize: 20,
-                fontWeight: 'bold',
-              }}>
-              Followers
-            </Text>
-            <Text
-              style={{
-                color: 'white',
-                marginLeft: 25,
-                fontSize: 20,
-                fontWeight: 'bold',
-              }}>
-              Following
-            </Text>
-          </View>
+          </TouchableOpacity>
         </View>
 
-        {/* user name bio */}
+        {/* post followers following */}
+        <View style={{flexDirection: 'row', marginTop: 55, marginLeft: -250}}>
+          <Text
+            style={{
+              color: 'white',
+              marginLeft: 20,
+              fontSize: 20,
+              fontWeight: 'bold',
+            }}>
+            Post
+          </Text>
+          <Text
+            style={{
+              color: 'white',
+              marginLeft: 28,
+              fontSize: 20,
+              fontWeight: 'bold',
+            }}>
+            Followers
+          </Text>
+          <Text
+            style={{
+              color: 'white',
+              marginLeft: 25,
+              fontSize: 20,
+              fontWeight: 'bold',
+            }}>
+            Following
+          </Text>
+        </View>
+      </View>
+
+      {/* user name bio */}
+      <View style={{marginTop: -190, marginBottom: 5}}>
         <Text
           style={{
             color: 'white',
@@ -184,18 +195,19 @@ export default function ProfileScreen() {
           }}>
           {bio}
         </Text>
+      </View>
 
-        {/* edit user */}
-        <View style={{flexDirection: 'row'}}>
-          <View style={styles.container}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('EditProfileScreen')}>
-              <Text style={styles.text}>Edit Profile</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+      {/* edit user */}
 
-        {/* story */}
+      <View style={styles.container}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('EditProfileScreen')}>
+          <Text style={styles.text}>Edit Profile</Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* story */}
+      <View>
         <Text
           style={{
             color: 'white',
@@ -223,32 +235,22 @@ export default function ProfileScreen() {
           style={{
             paddingVertical: 5,
             paddingHorizontal: 10,
+            //  backgroundColor: 'red',
           }}>
           {circuls}
         </ScrollView>
-
-        {/* toptab Navigation */}
-        <TopTabNav />
-      </ScrollView>
-
-      {/* bottom sheet */}
-
-      {/* Logout */}
-      <View
-        style={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginTop: 120,
-        }}>
-        <Button title="Log Out" onPress={signOut} />
       </View>
+
+      {/* top tab */}
+
+      <TopTabNav />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+    // marginTop: -150,
   },
   text: {
     borderWidth: 1,
@@ -284,17 +286,3 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
 });
-
-{
-  /* <View style={{flexDirection: 'row', padding: 10}}>
-        <Text style={{color: 'white', fontSize: 18}}> Profile</Text>
-        <TouchableOpacity
-          onPress={newContentFunction}
-          style={{marginLeft: 250, marginRight: 20}}>
-          <FontAwesomeIcon icon={faPlusSquare} color="white" size={20} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <FontAwesomeIcon icon={faBars} color="white" size={20} />
-        </TouchableOpacity>
-      </View> */
-}

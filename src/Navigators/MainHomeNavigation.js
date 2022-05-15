@@ -34,6 +34,9 @@ import {faPlus, faVideoCamera} from '@fortawesome/free-solid-svg-icons';
 import Followers from '../Screens/Followers';
 import Following from '../Screens/Following';
 import FollowersTab from './FollowersTab';
+import ReelsCamera from '../Screens/ReelsCamera';
+import Setting from '../Screens/Setting';
+import SavedItems from '../Screens/SavedItems';
 
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
@@ -111,7 +114,7 @@ export default function MyStack() {
         />
         <Stack.Screen
           name="ProfileScreen"
-          component={ProfileScreen}
+          component={TopTabNav}
           options={{headerShown: false}}
         />
         <Stack.Screen
@@ -196,6 +199,21 @@ export default function MyStack() {
         <Stack.Screen
           name="ImageWarm"
           component={ImageWarm}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="ReelsCamera"
+          component={ReelsCamera}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Setting"
+          component={Setting}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="SavedItems"
+          component={SavedItems}
           options={{headerShown: false}}
         />
         <Stack.Screen

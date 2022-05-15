@@ -1,8 +1,9 @@
-import {View, Text, TextInput, Button, StyleSheet} from 'react-native';
+import {View, Text, TextInput, Button, StyleSheet, Image} from 'react-native';
 
 import React, {useState, useContext} from 'react';
 //import auth from '@react-native-firebase/auth';
 import {AuthContext} from '../Navigators/AuthProvider';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export default function SignUp() {
   const [email, setEmail] = useState('');
@@ -12,7 +13,12 @@ export default function SignUp() {
   const {register} = useContext(AuthContext);
   return (
     <View>
-      <Text style={styles.text}>SignUp Page</Text>
+      <View style={{alignItems: 'center', marginTop: 80}}>
+        <Image
+          source={require('../assests/Logo.png')}
+          style={{width: 250, height: 90}}
+        />
+      </View>
 
       <View>
         <TextInput
@@ -28,8 +34,9 @@ export default function SignUp() {
           onChangeText={setPassword}
           value={password}
         />
-
-        <Button title="Sign Up" onPress={() => register(email, password)} />
+        <TouchableOpacity style={styles.button}>
+          <Button title="Sign Up" onPress={() => register(email, password)} />
+        </TouchableOpacity>
       </View>
     </View>
   );

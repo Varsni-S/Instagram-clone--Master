@@ -7,7 +7,7 @@ export default function TopTabNav() {
   const Tab = createMaterialTopTabNavigator();
 
   let squares = [];
-  let numberOfSquare = 7;
+  let numberOfSquare = 4;
 
   for (let index = 0; index < numberOfSquare; index++) {
     squares.push(
@@ -17,7 +17,7 @@ export default function TopTabNav() {
             width: 130,
             height: 150,
             marginVertical: 0.5,
-            backgroundColor: 'white',
+            backgroundColor: 'grey',
             opacity: 0.1,
           }}></View>
       </View>,
@@ -33,13 +33,11 @@ export default function TopTabNav() {
           width: '100%',
           height: '100%',
         }}>
-        <Text style={{color: 'white'}}>Posts</Text>
-
         <View
           style={{
             width: '100%',
             height: '100%',
-            backgroundColor: 'white',
+            backgroundColor: 'black',
             flexWrap: 'wrap',
             flexDirection: 'row',
             paddingVertical: 5,
@@ -61,12 +59,11 @@ export default function TopTabNav() {
           width: '100%',
           height: '100%',
         }}>
-        <Text style={{color: 'white'}}>Video</Text>
         <View
           style={{
             width: '100%',
             height: '100%',
-            backgroundColor: 'white',
+            backgroundColor: 'black',
             flexWrap: 'wrap',
             flexDirection: 'row',
             paddingVertical: 5,
@@ -87,12 +84,11 @@ export default function TopTabNav() {
           width: '100%',
           height: '100%',
         }}>
-        <Text style={{color: 'white'}}>Tags</Text>
         <View
           style={{
             width: '100%',
             height: '100%',
-            backgroundColor: 'white',
+            backgroundColor: 'black',
             flexWrap: 'wrap',
             flexDirection: 'row',
             paddingVertical: 5,

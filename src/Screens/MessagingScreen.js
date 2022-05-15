@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Image,
   Linking,
+  Pressable,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
@@ -82,9 +83,9 @@ const MessagesData = [
 
 export default function Message() {
   const navigation = useNavigation();
-  // const phoneCall = () => {
-  //   Linking.openURL(`tel:+1(944)-223-9791`);
-  // };
+  const phoneCall = () => {
+    Linking.openURL(`tel:+1(944)-223-9791`);
+  };
 
   return (
     <View style={{flex: 1, backgroundColor: 'black'}}>
@@ -111,32 +112,31 @@ export default function Message() {
           data={MessagesData}
           keyExtractor={item => item.id}
           renderItem={({item}) => (
-            <TouchableOpacity
-              style={styles.card}
-              onPress={() =>
-                navigation.navigate('ChatScreen', {userName: item.userName})
-              }>
+            <View style={styles.card}>
               <View style={styles.userInfo}>
-                <View style={styles.userImgWrapper}>
+                <TouchableOpacity
+                  style={styles.userImgWrapper}
+                  onPress={() =>
+                    navigation.navigate('ChatScreen', {userName: item.userName})
+                  }>
                   <Image source={item.userImg} style={styles.userImg} />
-                </View>
+                </TouchableOpacity>
                 <View style={styles.textSection}>
                   <View style={styles.userInfoText}>
                     <Text style={styles.userName}>{item.userName}</Text>
-                    <View
-                      onPress={
-                        (phoneCall = () =>
-                          Linking.openURL(`tel:+1(944)-223-9791`))
-                      }>
+                    <Pressable
+                      onPress={() => {
+                        Linking.openURL('tel:9442239791');
+                      }}>
                       <FontAwesomeIcon icon={faPhone} size={20} color="white" />
-                    </View>
+                    </Pressable>
 
                     {/* <Text style={styles.postTime}>{item.messageTime}</Text> */}
                   </View>
                   <Text style={styles.messageText}>{item.messageText}</Text>
                 </View>
               </View>
-            </TouchableOpacity>
+            </View>
           )}
         />
       </View>

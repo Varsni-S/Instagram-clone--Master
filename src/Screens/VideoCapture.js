@@ -41,7 +41,7 @@ export default function VideoCapture() {
       mediaType: 'video',
     })
       .then(video => {
-        navigation.navigate('NewPostScreen', {
+        navigation.navigate('ApplyFilter', {
           video: video,
         });
         console.log('jjio');
@@ -85,6 +85,7 @@ export default function VideoCapture() {
         />
       </View>
 
+      {/* capture video */}
       <Button title="Video capture" onPress={() => videoCapture()} />
 
       {/* footer */}
