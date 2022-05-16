@@ -38,6 +38,8 @@ import ReelsCamera from '../Screens/ReelsCamera';
 import Setting from '../Screens/Setting';
 import SavedItems from '../Screens/SavedItems';
 
+import NewReelsScreen from '../Screens/NewReelsScreen';
+
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
 ]);
@@ -206,6 +208,18 @@ export default function MyStack() {
           component={ReelsCamera}
           options={{headerShown: false}}
         />
+        {/* <Stack.Screen
+          name="
+          NewReels"
+          component={NewReels}
+          options={{headerShown: false}}
+        /> */}
+        <Stack.Screen
+          name="NewReelsScreen"
+          component={NewReelsScreen}
+          options={{headerShown: false}}
+        />
+
         <Stack.Screen
           name="Setting"
           component={Setting}

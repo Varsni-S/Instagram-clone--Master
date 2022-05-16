@@ -25,7 +25,7 @@ export default function TopTabNav() {
   }
   //posts
   const Postss = () => {
-    console.log('posts');
+    //  console.log('posts');
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -51,7 +51,7 @@ export default function TopTabNav() {
 
   //video
   const Video = () => {
-    console.log('Video');
+    //   console.log('Video');
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}
@@ -76,7 +76,7 @@ export default function TopTabNav() {
   };
   // tags
   const Tags = () => {
-    console.log('tags');
+    // console.log('tags');
     return (
       <ScrollView
         showsVerticalScrollIndicator={false}

@@ -33,7 +33,7 @@ export default function ApplyFilter({route}) {
 
   const saveImg = image => {
     imgref.current.capture().then(uri => {
-      console.log('filter added ', uri);
+      //console.log('filter added ', uri);
       navigation.navigate('NewPostScreen', {
         image1: {path: uri},
       });

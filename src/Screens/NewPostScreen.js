@@ -27,7 +27,7 @@ export default function NewPostScreen({route}) {
   console.log(productId, route.params.image1, 'newPost');
   const video = route.params.video?.path;
 
-  console.log(video, productId, 'props');
+  //console.log(video, productId, 'props');
 
   const [data, setData] = useState({
     id: arrayData.length + 1,

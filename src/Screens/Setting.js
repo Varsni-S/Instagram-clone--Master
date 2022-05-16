@@ -1,9 +1,10 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {View, Text} from 'react-native';
 import React from 'react';
-import TopTabNav from '../Navigators/TopTabNav';
 
 export default function Setting() {
-  return <TopTabNav />;
+  return (
+    <View>
+      <Text>Setting</Text>
+    </View>
+  );
 }
-
-const styles = StyleSheet.create({});

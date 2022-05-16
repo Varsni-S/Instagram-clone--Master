@@ -41,11 +41,11 @@ export default function VideoCapture() {
       mediaType: 'video',
     })
       .then(video => {
-        navigation.navigate('ApplyFilter', {
+        navigation.navigate('NewPostScreen', {
           video: video,
         });
-        console.log('jjio');
-        // console.log(image);
+        // console.log('jjio');
+        //console.log(video);
       })
       .catch(error => {
         console.log(error, 'ttt');

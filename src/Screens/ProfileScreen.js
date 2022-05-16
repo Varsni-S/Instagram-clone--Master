@@ -244,6 +244,49 @@ export default function ProfileScreen() {
       {/* top tab */}
 
       <TopTabNav />
+
+      {/* bottom sheet */}
+      <RBSheet
+        ref={refRBSheet}
+        closeOnDragDown={true}
+        height={200}
+        openDuration={200}
+        closeDuration={150}
+        closeOnPressMask={true}
+        customStyles={{
+          wrapper: {
+            backgroundColor: 'black',
+            opacity: 0.9,
+          },
+          container: {
+            backgroundColor: 'black',
+            borderTopStartRadius: 20,
+            borderTopEndRadius: 20,
+          },
+          draggableIcon: {
+            backgroundColor: 'white',
+          },
+        }}>
+        <View style={styles.bottomSheetContainer}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Setting'), refRBSheet.current.close();
+            }}>
+            <Text style={styles.bottomSheetText}>Setting </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('SavedItems'), refRBSheet.current.close();
+            }}>
+            <Text style={styles.bottomSheetText}>Saved</Text>
+          </TouchableOpacity>
+          {/* Logout */}
+          <TouchableOpacity onPress={signOut}>
+            <Text style={styles.bottomSheetText}>Logout</Text>
+          </TouchableOpacity>
+        </View>
+      </RBSheet>
     </View>
   );
 }

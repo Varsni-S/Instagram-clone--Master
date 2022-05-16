@@ -1,4 +1,4 @@
-const videoData = [
+export default videoData = [
   {
     id: 1,
     video: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4',

@@ -1,11 +1,11 @@
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 import React from 'react';
 import {Dimensions} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faCamera} from '@fortawesome/free-solid-svg-icons';
 import Reels from '../Components/Homescreen/Reels';
 
-export default function ReelsScreen() {
+export default function ReelsScreen({imageUrl}) {
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
 
@@ -50,3 +50,12 @@ export default function ReelsScreen() {
     </View>
   );
 }
+
+const style = StyleSheet.create({
+  profilePicImage: {
+    // borderRadius: 100,
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+  },
+});

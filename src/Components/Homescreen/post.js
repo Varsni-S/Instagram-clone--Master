@@ -8,7 +8,7 @@ import Share from 'react-native-share';
 import RNFetchBlob from 'rn-fetch-blob';
 import Video from 'react-native-video';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {NativeModules} from 'react-native';
+
 //const RNFetchBlob = NativeModules.RNFetchBlob;
 
 export default function post({imageUrl, contentText, profileName}) {
@@ -190,7 +190,7 @@ export default function post({imageUrl, contentText, profileName}) {
         <View style={style.iconsRight}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('Demo');
+              navigation.navigate('NewReelsScreen');
             }}>
             <FontAwesomeIcon
               icon="bookmark"
