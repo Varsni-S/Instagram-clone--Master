@@ -6,7 +6,7 @@ import {useSelector, useDispatch} from 'react-redux';
 
 export default function Reels() {
   const {videoData: videoData} = useSelector(state => state.mainReducer);
-  console.log(videoData, 'video');
+  // console.log(videoData, 'video');
   // const videoData = [
   //   {
   //     id: 1,

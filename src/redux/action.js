@@ -4,6 +4,7 @@ export const SET_BIO = 'SET_BIO';
 export const SET_CHANGEIMAGE = 'SET_CHANGEIMAGE';
 export const ADD_POST = 'ADD_POST';
 export const ADD_REELS = 'ADD_REELS';
+export const SAVE_ITEM = 'SAVE_ITEM';
 
 export const setName = name => ({
   type: SET_NAME,
@@ -33,4 +34,9 @@ export const addPost = data => ({
 export const addReels = reelsVideo => ({
   type: ADD_REELS,
   payload: reelsVideo,
+});
+
+export const setSaveItem = saveItem => ({
+  type: SAVE_ITEM,
+  payload: saveItem,
 });

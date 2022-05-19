@@ -13,7 +13,7 @@ import {faCheck} from '@fortawesome/free-solid-svg-icons';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector, useDispatch} from 'react-redux';
 import {addPost} from '../redux/action';
-import Video from 'react-native-video';
+import Video, {FilterType} from 'react-native-video';
 
 export default function NewPostScreen({route}) {
   const {data: arrayData} = useSelector(state => state.mainReducer);
@@ -50,7 +50,7 @@ export default function NewPostScreen({route}) {
   const onError = error => {
     console.log('error', error);
   };
-
+  const [filterType, setfilterType] = useState(FilterType.MONOCHROME);
   const [isEnabled, setIsEnabled] = useState(false);
   const [isEnabled2, setIsEnabled2] = useState(false);
   const toggleSwitch = () => setIsEnabled2(previousState => !previousState);
@@ -104,6 +104,8 @@ export default function NewPostScreen({route}) {
               width: 400,
               height: 400,
             }}
+            filter={filterType}
+            filterEnabled={true}
             resizeMode="stretch"
             source={{uri: video}}
           />

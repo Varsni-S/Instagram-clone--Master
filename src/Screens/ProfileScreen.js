@@ -16,7 +16,7 @@ import {useNavigation} from '@react-navigation/native';
 import {faBars, faPlus, faPlusSquare} from '@fortawesome/free-solid-svg-icons';
 import RBSheet from 'react-native-raw-bottom-sheet';
 
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 export default function ProfileScreen() {
   const {name, accountname, bio, changeImage} = useSelector(

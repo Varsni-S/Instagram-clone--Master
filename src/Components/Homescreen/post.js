@@ -8,7 +8,9 @@ import Share from 'react-native-share';
 import RNFetchBlob from 'rn-fetch-blob';
 import Video from 'react-native-video';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-
+import {setSaveItem} from '../../redux/action';
+import {useSelector, useDispatch} from 'react-redux';
+import staticPosts from '../../StaticDatas/Datas';
 //const RNFetchBlob = NativeModules.RNFetchBlob;
 
 export default function post({imageUrl, contentText, profileName}) {
@@ -20,6 +22,27 @@ export default function post({imageUrl, contentText, profileName}) {
 
   const [like, setLike] = useState(false);
   const [bookmark, setBookMark] = useState(false);
+
+  //save item
+  const [userSavedItem, setUserSavedItem] = useState();
+  const dispatch = useDispatch();
+  const {saveItem} = useSelector(state => state.mainReducer);
+  const data = {
+    id: saveItem ? saveItem.length + 1 : 0,
+    contentText: contentText,
+    imageUrl: imageUrl,
+    profileName: profileName,
+    time: '5h',
+    likes: '50 Likes',
+  };
+  const onSaveItem = () => {
+    //  setUserSavedItem(!userSavedItem);
+    dispatch(setSaveItem(data));
+  };
+
+  // const [saveItem, setSaveItem] = useState(false);
+
+  //pause
 
   const [pause, setPause] = useState(false);
 
@@ -188,10 +211,8 @@ export default function post({imageUrl, contentText, profileName}) {
           </TouchableOpacity>
         </View>
         <View style={style.iconsRight}>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('NewReelsScreen');
-            }}>
+          <TouchableOpacity onPress={onSaveItem}>
+            {/* onPress={() => (saveItem.push(data), setSaveItem(''))} */}
             <FontAwesomeIcon
               icon="bookmark"
               size={20}

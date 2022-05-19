@@ -56,7 +56,7 @@ const EditProfileScreen = ({route, navigation}) => {
       compressImageMaxWidth: 300,
       compressImageMaxHeight: 300,
     }).then(image => {
-      console.log(image);
+      // console.log(image);
       setImage(image.path);
     });
   };
@@ -67,7 +67,7 @@ const EditProfileScreen = ({route, navigation}) => {
       height: 400,
       cropping: true,
     }).then(image => {
-      console.log(image);
+      // console.log(image);
       setImage(image.path);
     });
   };

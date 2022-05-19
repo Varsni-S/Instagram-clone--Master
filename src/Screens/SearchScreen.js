@@ -136,6 +136,7 @@ export default function SearchScreen() {
           </TouchableOpacity>
         </ScrollView>
       ) : null}
+      {/* modal view */}
       {image ? (
         <View
           style={{
