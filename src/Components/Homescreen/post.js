@@ -134,25 +134,25 @@ export default function post({imageUrl, contentText, profileName}) {
                 backgroundColor: 'black',
                 borderTopStartRadius: 20,
                 borderTopEndRadius: 20,
+                height: 150,
               },
               draggableIcon: {
                 backgroundColor: 'white',
               },
             }}>
             <View style={style.bottomSheetContainer}>
-              <TouchableOpacity
+              {/* <TouchableOpacity
                 onPress={() => {
                   navigation.navigate('ActivityScreen'),
                     refRBSheet.current.close();
                 }}>
                 <Text style={style.bottomSheetText}>Favorites</Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
               <TouchableOpacity
                 onPress={() => {
-                  navigation.navigate('ProfileScreen'),
-                    refRBSheet.current.close();
+                  navigation.navigate('SavedItems'), refRBSheet.current.close();
                 }}>
-                <Text style={style.bottomSheetText}>Setting</Text>
+                <Text style={style.bottomSheetText}>Saved</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {

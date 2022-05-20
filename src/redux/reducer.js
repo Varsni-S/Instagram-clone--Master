@@ -19,7 +19,7 @@ const initialState = {
     'https://images.unsplash.com/photo-1624887009213-040347b804c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1087&q=80',
 };
 
-console.log(initialState.saveItem, 'jjj');
+//console.log(initialState.saveItem, 'jjj');
 
 function mainReducer(state = initialState, action) {
   switch (action.type) {
@@ -32,7 +32,7 @@ function mainReducer(state = initialState, action) {
     case SET_CHANGEIMAGE:
       return {...state, changeImage: action.payload};
     case SAVE_ITEM:
-      console.log(action.payload);
+      //console.log(action.payload, 'jjj');
       return {...state, saveItem: [...state.saveItem, action.payload]};
     case ADD_POST:
       return {...state, data: [...state.data, action.payload]};

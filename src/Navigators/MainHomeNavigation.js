@@ -223,7 +223,15 @@ export default function MyStack() {
         <Stack.Screen
           name="Setting"
           component={Setting}
-          options={{headerShown: false}}
+          options={{
+            headerStyle: {
+              backgroundColor: 'black',
+            },
+            headerTitleStyle: {
+              color: 'white',
+            },
+            headerTitle: 'Setting',
+          }}
         />
         <Stack.Screen
           name="SavedItems"
