@@ -13,6 +13,7 @@ export default function Comments() {
   const likeToggled = () => {
     setLike(!like);
   };
+
   const data = {
     id: 2,
     contentText: comment,
@@ -21,7 +22,7 @@ export default function Comments() {
     time: '3h',
     likes: '450 Likes',
   };
-  console.log(data, staticPosts, 'dd');
+  // console.log(data, staticPosts, 'dd');
 
   return (
     <View style={{flex: 1, backgroundColor: 'black'}}>

@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   View,
   Button,
@@ -8,11 +8,13 @@ import {
   Image,
   Linking,
   Pressable,
+  ScrollView,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faPhone} from '@fortawesome/free-solid-svg-icons';
+import staticPosts from '../StaticDatas/Datas';
 
 const MessagesData = [
   {
@@ -83,29 +85,9 @@ const MessagesData = [
 
 export default function Message() {
   const navigation = useNavigation();
-  const phoneCall = () => {
-    Linking.openURL(`tel:+1(944)-223-9791`);
-  };
 
   return (
     <View style={{flex: 1, backgroundColor: 'black'}}>
-      {/* search bar */}
-      <TextInput
-        style={styles.textInputStyle}
-        //   onChangeText={text => searchFilterFunction(text)}
-        // value={search}
-        underlineColorAndroid="transparent"
-        placeholder="Search"
-        placeholderTextColor="white"
-      />
-
-      {/* <Button
-        title="Chat screen"
-        onPress={() => {
-          navigation.navigate('ChatScreen');
-        }}
-      /> */}
-
       {/* render message data */}
       <View style={styles.container}>
         <FlatList

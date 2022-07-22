@@ -1,12 +1,12 @@
 import {View, Text, ScrollView} from 'react-native';
 import React from 'react';
-import staticPosts from '../StaticDatas/Datas';
+
 import Post from '../Components/Homescreen/post';
 import {useSelector, useDispatch} from 'react-redux';
 
 export default function SavedItems() {
   const {saveItem} = useSelector(state => state.mainReducer);
-  console.log(saveItem, 'saved');
+  // console.log(saveItem, 'saved');
   return (
     <View style={{backgroundColor: 'black'}}>
       <ScrollView style={{height: '100%'}} showsVerticalScrollIndicator={false}>

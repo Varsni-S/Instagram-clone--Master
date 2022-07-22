@@ -3,6 +3,7 @@ import React, {useRef} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {useNavigation} from '@react-navigation/native';
 import RBSheet from 'react-native-raw-bottom-sheet';
+import ImagePicker from 'react-native-image-crop-picker';
 
 export default function header({icon1, icon2, heading}) {
   const navigation = useNavigation();
@@ -15,6 +16,21 @@ export default function header({icon1, icon2, heading}) {
 
   const newSetting = () => {
     refRBSheet.current.open();
+  };
+
+  //reels camera
+  const videoCapture = () => {
+    ImagePicker.openCamera({
+      mediaType: 'video',
+    })
+      .then(video => {
+        navigation.navigate('NewReelsScreen', {
+          video: video,
+        });
+      })
+      .catch(error => {
+        console.log(error, 'ttt');
+      });
   };
 
   return (
@@ -74,15 +90,16 @@ export default function header({icon1, icon2, heading}) {
 
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('ReelsCamera'), refRBSheet.current.close();
+              videoCapture(), refRBSheet.current.close();
             }}>
+            {/*  navigation.navigate('ReelsCamera') */}
             <Text style={style.bottomSheetText}>Reels</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('ProfileScreen'), refRBSheet.current.close();
+              navigation.navigate('Setting'), refRBSheet.current.close();
             }}>
-            <Text style={style.bottomSheetText}>Profile</Text>
+            <Text style={style.bottomSheetText}>Setting</Text>
           </TouchableOpacity>
           <TouchableOpacity>
             <Text style={style.bottomSheetText}>Live </Text>

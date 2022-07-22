@@ -4,10 +4,12 @@ import {Dimensions} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faCamera} from '@fortawesome/free-solid-svg-icons';
 import Reels from '../Components/Homescreen/Reels';
+import {useNavigation} from '@react-navigation/native';
 
 export default function ReelsScreen({imageUrl}) {
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
+  const navigation = useNavigation();
 
   return (
     <View
@@ -39,6 +41,9 @@ export default function ReelsScreen({imageUrl}) {
           Reels{' '}
         </Text>
         <FontAwesomeIcon
+          onPress={() => {
+            navigation.navigate('ReelsCamera');
+          }}
           icon={faCamera}
           color="white"
           size={20}

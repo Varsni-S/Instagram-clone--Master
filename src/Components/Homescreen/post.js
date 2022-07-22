@@ -1,6 +1,5 @@
 import {View, Text, Image, StyleSheet} from 'react-native';
-import React, {useEffect, useState, useRef} from 'react';
-
+import React, {useState, useRef} from 'react';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useNavigation} from '@react-navigation/native';
 import RBSheet from 'react-native-raw-bottom-sheet';
@@ -10,7 +9,7 @@ import Video from 'react-native-video';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {setSaveItem} from '../../redux/action';
 import {useSelector, useDispatch} from 'react-redux';
-import staticPosts from '../../StaticDatas/Datas';
+
 //const RNFetchBlob = NativeModules.RNFetchBlob;
 
 export default function post({imageUrl, contentText, profileName}) {
@@ -24,7 +23,7 @@ export default function post({imageUrl, contentText, profileName}) {
   const [bookmark, setBookMark] = useState(false);
 
   //save item
-  const [userSavedItem, setUserSavedItem] = useState();
+
   const dispatch = useDispatch();
   const {saveItem} = useSelector(state => state.mainReducer);
   const data = {
@@ -36,14 +35,10 @@ export default function post({imageUrl, contentText, profileName}) {
     likes: '50 Likes',
   };
   const onSaveItem = () => {
-    //  setUserSavedItem(!userSavedItem);
     dispatch(setSaveItem(data));
   };
 
-  // const [saveItem, setSaveItem] = useState(false);
-
   //pause
-
   const [pause, setPause] = useState(false);
 
   //like dislike
@@ -183,6 +178,7 @@ export default function post({imageUrl, contentText, profileName}) {
           />
         )}
       </View>
+
       <View style={style.postIcons}>
         {/* list of icons */}
         <View style={style.iconsLeft}>

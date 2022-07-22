@@ -29,22 +29,29 @@ export default function NewReelsScreen({route}) {
   console.log(videoDatas, 'vd');
 
   return (
-    <View style={{justifyContent: 'center', alignItems: 'center'}}>
-      <Text>NewReels</Text>
+    <View
+      style={{
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'black',
+        flex: 1,
+      }}>
       <Video
         style={{
           width: 400,
-          height: 400,
+          height: 650,
         }}
         resizeMode="stretch"
         source={{uri: video}}
       />
-      <Button
-        title="send"
-        onPress={() =>
-          dispatch(addReels(videoDatas), navigation.navigate('ReelsScreen'))
-        }
-      />
+      <View style={{marginTop: 12}}>
+        <Button
+          title="Next"
+          onPress={() =>
+            dispatch(addReels(videoDatas), navigation.navigate('ReelsScreen'))
+          }
+        />
+      </View>
     </View>
   );
 }

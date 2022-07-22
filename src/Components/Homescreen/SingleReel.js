@@ -60,6 +60,7 @@ export default function SingleReel({item, index, currentIndex}) {
           source={{uri: item.video}}
         />
       )}
+      
       {/* reels details */}
       <View
         style={{

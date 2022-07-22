@@ -10,8 +10,10 @@ import {
   faUserCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import auth from '@react-native-firebase/auth';
+import {useNavigation} from '@react-navigation/native';
 
 export default function Setting() {
+  const navigation = useNavigation();
   //Logout
   const signOut = () => {
     try {
@@ -24,32 +26,66 @@ export default function Setting() {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.subContainer}>
-        <FontAwesomeIcon icon={faUser} color="white" size={20} />
+        <FontAwesomeIcon
+          icon={faUser}
+          color="white"
+          size={20}
+          style={styles.icon}
+        />
         <Text style={styles.text}>Privacy</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.subContainer}>
-        <FontAwesomeIcon icon={faBell} color="white" size={20} />
+      <TouchableOpacity
+        style={styles.subContainer}
+        onPress={() => {
+          navigation.navigate('Demo');
+        }}>
+        <FontAwesomeIcon
+          icon={faBell}
+          color="white"
+          size={20}
+          style={styles.icon}
+        />
         <Text style={styles.text}>Notifications</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.subContainer}>
-        <FontAwesomeIcon icon={faLock} color="white" size={20} />
+        <FontAwesomeIcon
+          icon={faLock}
+          color="white"
+          size={20}
+          style={styles.icon}
+        />
         <Text style={styles.text}>Security</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.subContainer}>
-        <FontAwesomeIcon icon={faUserCircle} color="white" size={20} />
+        <FontAwesomeIcon
+          icon={faUserCircle}
+          color="white"
+          size={20}
+          style={styles.icon}
+        />
         <Text style={styles.text}>About</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.subContainer}>
-        <FontAwesomeIcon icon={faInfoCircle} color="white" size={20} />
+        <FontAwesomeIcon
+          icon={faInfoCircle}
+          color="white"
+          size={20}
+          style={styles.icon}
+        />
         <Text style={styles.text}>Help</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.subContainer} onPress={signOut}>
-        <FontAwesomeIcon icon={faSignOut} color="white" size={20} />
+        <FontAwesomeIcon
+          icon={faSignOut}
+          color="white"
+          size={20}
+          style={styles.icon}
+        />
         <Text style={styles.text}>Logout</Text>
       </TouchableOpacity>
     </View>
@@ -65,6 +101,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 20,
     marginRight: 10,
+
     marginLeft: 10,
   },
   subContainer: {

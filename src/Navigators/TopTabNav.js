@@ -23,6 +23,7 @@ export default function TopTabNav() {
       </View>,
     );
   }
+
   //posts
   const Postss = () => {
     //  console.log('posts');
