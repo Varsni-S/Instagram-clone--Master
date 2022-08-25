@@ -85,7 +85,7 @@ export default function header({icon1, icon2, heading}) {
             onPress={() => {
               navigation.navigate('GalleryScreen'), refRBSheet.current.close();
             }}>
-            <Text style={style.bottomSheetText}>Post </Text>
+            <Text style={style.bottomSheetText}>Posts</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
