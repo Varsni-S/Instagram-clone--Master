@@ -99,7 +99,7 @@ export default function header({icon1, icon2, heading}) {
             onPress={() => {
               navigation.navigate('Setting'), refRBSheet.current.close();
             }}>
-            <Text style={style.bottomSheetText}>Setting</Text>
+            <Text style={style.bottomSheetText}>Settinng</Text>
           </TouchableOpacity>
           <TouchableOpacity>
             <Text style={style.bottomSheetText}>Live </Text>
